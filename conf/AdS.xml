@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Global>
+    <debug_log_path>debug.log</debug_log_path>
+    <info_log_path>info.log</info_log_path>
+    <error_log_path>error.log</error_log_path>
+    <poll_size>1024</poll_size>
+</Global>
+
