@@ -134,5 +134,5 @@ static int fy_fcgi_accept_module_init(fy_module *module, void *ptr)
             inet_ntoa(((struct sockaddr_in *)&conn->addr)->sin_addr));
 #endif
 
-    return fy_event_add(conn, ptr, EPOLLIN);
+    return fy_event_add(conn, ptr, FY_EVIN);
 } 

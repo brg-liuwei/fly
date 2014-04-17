@@ -1,0 +1,7 @@
+#ifndef __FY_CONFIG_H__
+#define __FY_CONFIG_H__
+
+#cmakedefine HAVE_EPOLL
+#cmakedefine HAVE_KQUEUE
+
+#endif

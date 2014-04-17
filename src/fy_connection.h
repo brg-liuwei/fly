@@ -1,22 +1,11 @@
-#ifndef __FY_EVENT_H__
-#define __FY_EVENT_H__
+#ifndef __FY_CONNECTION_H__
+#define __FY_CONNECTION_H__
 
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <sys/epoll.h>
 
-typedef struct fy_event_t fy_event;
 typedef struct fy_conn_pool_t fy_conn_pool;
 typedef struct fy_connection_t fy_connection;
-typedef struct fy_event_loop_t fy_event_loop;
-typedef struct epoll_event ep_event;
-
-struct fy_event_t {
-    void             *data;
-    fy_connection   *conn;
-
-    int (*handler)(struct fy_event_t *, void *);
-};
 
 typedef enum __fy_conn_type {
     CONN_UNSET = 0,
@@ -75,18 +64,6 @@ struct fy_conn_pool_t {
     fy_connection    *err_list;
 };
 
-struct fy_event_loop_t {
-    int           stop;
-    int           poll_fd;
-    int           poll_timeout;
-    size_t        poll_size;
-    ep_event     *ep_events;
-    size_t        heap_size;    /* numbers of connections in poll */
-    fy_event    **event_heap;
-
-    void (*before_poll)(fy_event_loop *);
-};
-
 fy_conn_pool *fy_create_conn_pool(size_t pool_size, size_t max_load);
 
 void fy_push_connection(fy_conn_pool *pool, fy_connection *conn);
@@ -94,14 +71,5 @@ fy_connection *fy_pop_connection(fy_conn_pool *pool);
 
 void fy_push_err_conn(fy_conn_pool *pool, fy_connection *conn);
 fy_connection *fy_pop_err_conn(fy_conn_pool *pool);
-
-
-fy_event_loop *fy_create_event_loop(size_t poll_size);
-
-int fy_event_add(void *conn, void *loop, __uint32_t events);
-int fy_event_mod(void *conn, void *loop, __uint32_t events);
-int fy_event_del(void *conn, void *loop);
-
-void fy_main_loop(fy_event_loop *loop);
 
 #endif
