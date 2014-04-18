@@ -1,4 +1,10 @@
 fly
 ===
-
 an async server (using nginx, fastcgi)
+
+Compile
+=======
+    (1) CMake .
+    (2) make
+bin/ad_fly can be generated
+

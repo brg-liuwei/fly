@@ -1,6 +1,7 @@
 #include "fy_fcgi_accept_module.h"
 #include "fy_info.h"
 #include "fy_event.h"
+#include "fy_connection.h"
 #include "fy_logger.h"
 
 #include <fastcgi.h>
@@ -62,7 +63,7 @@ static int fy_fcgi_accept_read_handler(fy_event *ev, void *ptr)
     }
 
 #ifdef FY_DEBUG
-    fy_log_fmt("fy_fcgi_accept read_handler: accept fd: %d, listen fd: %d\n", r->ipcFd, r->listen_sock);
+    fy_log_debug("fy_fcgi_accept read_handler: accept fd: %d, listen fd: %d\n", r->ipcFd, r->listen_sock);
 #endif
 
     request = fy_request_create();
@@ -101,7 +102,7 @@ static int fy_fcgi_accept_module_init(fy_module *module, void *ptr)
     FCGX_Init();
 
     if ((conn = (fy_connection *)calloc(1, sizeof(fy_connection))) == NULL) {
-        fy_log_fmt("fy_fcgi_accept_module calloc conn error\n");
+        fy_log_error("fy_fcgi_accept_module calloc conn error\n");
         return -1;
     }
     conn->conn_type = CONN_TCP_LSN;
@@ -114,7 +115,7 @@ static int fy_fcgi_accept_module_init(fy_module *module, void *ptr)
     conn->revent = (fy_event *)calloc(1, sizeof(fy_event));
     conn->wevent = (fy_event *)calloc(1, sizeof(fy_event));
     if (conn->revent == NULL || conn->wevent == NULL) {
-        fy_log_fmt("fy_fcgi_accept_module calloc event error\n");
+        fy_log_error("fy_fcgi_accept_module calloc event error\n");
         return -1;
     }
 
@@ -129,8 +130,8 @@ static int fy_fcgi_accept_module_init(fy_module *module, void *ptr)
     module->data = conn;
 
 #ifdef FY_DEBUG
-    fy_log_fmt("fy_fcgi_accept_init hostname:%s\n", conn->addr_text);
-    fy_log_fmt("fy_fcgi_accept_init sin_addr:%s\n", 
+    fy_log_debug("fy_fcgi_accept_init hostname:%s\n", conn->addr_text);
+    fy_log_debug("fy_fcgi_accept_init sin_addr:%s\n", 
             inet_ntoa(((struct sockaddr_in *)&conn->addr)->sin_addr));
 #endif
 

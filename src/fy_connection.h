@@ -1,6 +1,8 @@
 #ifndef __FY_CONNECTION_H__
 #define __FY_CONNECTION_H__
 
+#include "fy_event.h"
+
 #include <sys/types.h>
 #include <sys/socket.h>
 

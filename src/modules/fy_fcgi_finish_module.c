@@ -32,14 +32,14 @@ static int fy_fcgi_finish_task_submit(fy_task *task, void *request)
     r = (fy_request *)request;
 
 #ifdef FY_DEBUG
-    fy_log_fmt("fy_fcgi_finish_request fd: %p\n", r);
-    fy_log_fmt("fy_fcgi_finish_request fd: %d\n", r->fcgi_request->ipcFd);
+    fy_log_debug("fy_fcgi_finish_request fd: %p\n", r);
+    fy_log_debug("fy_fcgi_finish_request fd: %d\n", r->fcgi_request->ipcFd);
 #endif
 
     FCGX_Finish_r(r->fcgi_request);
 
 #ifdef FY_DEBUG
-    fy_log_fmt("FCGX_Finish_r");
+    fy_log_debug("FCGX_Finish_r");
 #endif
 
     if (r->cln != NULL) {

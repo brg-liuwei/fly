@@ -7,7 +7,7 @@ extern fy_task null_task;
 extern fy_task *null_task_list[];
 
 extern fy_module fy_fcgi_accept_module;
-//extern fy_module fy_fcgi_getinfo_module;
+extern fy_module fy_fcgi_getinfo_module;
 extern fy_module fy_fcgi_layout_module;
 extern fy_module fy_fcgi_finish_module;
 
@@ -129,7 +129,7 @@ static fy_module module2 = {
 
 fy_module *fy_modules[] = {
     &fy_fcgi_accept_module,
-    //&fy_fcgi_getinfo_module,
+    &fy_fcgi_getinfo_module,
     &fy_fcgi_layout_module,
     &fy_fcgi_finish_module,
     &null_module

@@ -15,7 +15,7 @@ struct fy_time_t {
     time_t   cur;
 };
 
-static const char fy_time_fmt[] = "%04d-%02d-%02d %02d:%02d:%02d %03d ";
+static const char fy_time_fmt[] = "%04d-%02d-%02d %02d:%02d:%02d %03ld ";
 static char fy_time_str[FY_TIME_SLOTS][FY_TIME_SIZE];
 
 static volatile struct fy_time_t fy_time;

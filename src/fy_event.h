@@ -15,8 +15,8 @@ typedef struct fy_event_t fy_event;
 typedef struct fy_event_loop_t fy_event_loop;
 
 struct fy_event_t {
-    void             *data;
-    fy_connection   *conn;
+    void    *data;
+    void    *conn;
 
     int (*handler)(struct fy_event_t *, void *);
 };

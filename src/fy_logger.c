@@ -47,7 +47,7 @@ void __fy_log_fmt(fy_log_type type, const char *file, size_t line, const char *f
     va_list  ap;
 
     if (type == FY_ERROR) {
-        n = snprintf(content, FYLOGMAXLINE, "%s%s:%d ", fy_cur_time_str(), file, line);
+        n = snprintf(content, FYLOGMAXLINE, "%s%s:%ld ", fy_cur_time_str(), file, line);
     } else {
         n = snprintf(content, FYLOGMAXLINE, "%s", fy_cur_time_str());
     }

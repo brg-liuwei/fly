@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    if (fy_conf_init("conf/AdS.xml") == -1) {
+    if (fy_conf_init(FLY_DEFAULT_CONF_FILE) == -1) {
         printf("init conf file error\n");
         exit(-1);
     }
@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
 
     fy_event_loop *loop;
     if ((loop = fy_create_event_loop(fy_poll_size)) == NULL) {
-        fy_log_fmt("%s:%d fy_create_event_loop error, pool size = %ld\n",
+        fy_log_error("%s:%d fy_create_event_loop error, pool size = %ld\n",
                 __FILE__, __LINE__, fy_poll_size);
         return -1;
     }
@@ -147,13 +147,13 @@ void fy_module_init(void *data)
         if (module->module_conf) {
 
             if (fy_module_conf_begin(module) == -1) {
-                fy_log_fmt("fy_module_conf_begin of module: %s failed\n",
+                fy_log_error("fy_module_conf_begin of module: %s failed\n",
                         module->module_name);
                 exit(-1);
             }
 
             if (module->module_conf(module, NULL) < 0) {
-                fy_log_fmt("module: %s conf failed\n", module->module_name);
+                fy_log_error("module: %s conf failed\n", module->module_name);
                 exit(-1);
             }
 
@@ -165,7 +165,7 @@ void fy_module_init(void *data)
             if (module->module_init(module, data) < 0
                     && !fy_check_mode)
             {
-                fy_log_fmt("module: %s init failed\n", module->module_name);
+                fy_log_error("module: %s init failed\n", module->module_name);
                 exit(-1);
             }
         }

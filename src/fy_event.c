@@ -23,10 +23,17 @@ fy_event_loop *fy_create_event_loop(size_t poll_size)
     if ((ev_loop = (fy_event_loop *)calloc(sizeof(fy_event_loop), 1)) == NULL) {
         return NULL;
     }
+#ifdef HAVE_EPOLL
     if ((ev_loop->poll_fd = epoll_create(poll_size)) == -1) {
         printf("epoll_create errno: %d\n", errno);
         goto free1;
     }
+#elif defined HAVE_KQUEUE
+    if ((ev_loop->poll_fd = kqueue()) == -1) {
+        printf("kqueue_create errno: %d\n", errno);
+        goto free1;
+    }
+#endif
     ev_loop->poll_size = poll_size;
     ev_loop->poll_timeout = -1;
 
@@ -82,7 +89,7 @@ static int fy_process_events(fy_event_loop *loop)
     } else {
         tp = NULL;
     }
-    nevs = kevent(loop->pool_fd, NULL, 0, (struct kevent *)loop->poll_events,
+    nevs = kevent(loop->poll_fd, NULL, 0, (struct kevent *)loop->poll_events,
             loop->poll_size, tp);
 
 #endif
@@ -113,7 +120,7 @@ static int fy_process_events(fy_event_loop *loop)
             ev_mask = FY_EVOUT;
         }
 
-#elif HAVE_KQUEUE
+#elif defined HAVE_KQUEUE
         conn = (fy_connection *)evs[i].udata;
 
         if ((evs[i].flags & EV_ERROR)
@@ -148,7 +155,7 @@ static int fy_process_events(fy_event_loop *loop)
     return nevs;
 }
 
-static int fy_event(void *conn, void *loop, __uint32_t events, int op)
+static int fy_event_regist(void *conn, void *loop, __uint32_t events, int op)
 {
     fy_event_loop     *lp;
     fy_connection     *c;
@@ -170,7 +177,7 @@ static int fy_event(void *conn, void *loop, __uint32_t events, int op)
         return epoll_ctl(lp->poll_fd, EPOLL_CTL_MOD, c->fd, &ev);
     }
 
-#elif HAVE_KQUEUE
+#elif defined HAVE_KQUEUE
     struct kevent  ke;
 
     if (events & FY_EVOUT) {
@@ -192,12 +199,12 @@ static int fy_event(void *conn, void *loop, __uint32_t events, int op)
 
 int fy_event_add(void *conn, void *loop, __uint32_t events)
 {
-    fy_event(conn, loop, events, 1);
+    return fy_event_regist(conn, loop, events, 1);
 }
 
 int fy_event_mod(void *conn, void *loop, __uint32_t events)
 {
-    fy_event(conn, loop, events, 0);
+    return fy_event_regist(conn, loop, events, 0);
 }
 
 int fy_event_del(void *conn, void *loop)
@@ -212,7 +219,7 @@ int fy_event_del(void *conn, void *loop)
     return epoll_ctl(lp->poll_fd, EPOLL_CTL_DEL, c->fd, NULL);
 
 #elif defined HAVE_KQUEUE
-    kevent   ke;
+    struct kevent  ke;
     EV_SET(&ke, c->fd, EVFILT_READ | EVFILT_WRITE,
             EV_DELETE, 0, 0, NULL);
     return kevent(lp->poll_fd, &ke, 1, NULL, 0, NULL);

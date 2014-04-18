@@ -6,6 +6,8 @@
 typedef struct fy_info_t fy_info;
 
 struct fy_info_t {
+    int           req_type;
+    int           res_type;
     int64_t       current;
     void        (*cln)(struct fy_info_t *);
 };

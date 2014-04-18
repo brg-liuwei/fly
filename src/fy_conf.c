@@ -6,8 +6,6 @@
 #include <errno.h>
 #include <assert.h>
 
-#define ADS_DEFAULT_CONF_FILE "conf/AdS.conf"
-
 static mxml_node_t *fy_conf_tree;
 static mxml_node_t *fy_mod_root;
 
@@ -21,7 +19,7 @@ int fy_conf_init(const char *path)
         return 0;
     }
     if ((fp = fopen(path, "r")) == NULL) {
-        printf("open conf file: %d error, errno: %d\n", path, errno);
+        printf("open conf file: %s error, errno: %d\n", path, errno);
         return -1;
     }
     fy_conf_tree = mxmlLoadFile(NULL, fp, MXML_TEXT_CALLBACK);
@@ -38,7 +36,7 @@ int fy_module_conf_begin(fy_module *m)
     char *module_name;
 
     if (fy_conf_initialized == 0
-            && fy_conf_init(ADS_DEFAULT_CONF_FILE) == -1)
+            && fy_conf_init(FLY_DEFAULT_CONF_FILE) == -1)
     {
         return -1;
     }
@@ -51,7 +49,7 @@ int fy_module_conf_begin(fy_module *m)
     fy_mod_root = mxmlFindElement(fy_conf_tree, fy_conf_tree,
             module_name, NULL, NULL, MXML_DESCEND);
     if (fy_mod_root == NULL) {
-        fy_log_fmt("cannot find module who named %s\n", module_name);
+        fy_log_error("cannot find module who named %s\n", module_name);
         return -1;
     }
     return 0;

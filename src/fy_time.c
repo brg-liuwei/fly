@@ -51,7 +51,7 @@ void fy_time_update()
 
     if (fy_time.sec == tv.tv_sec) {
         memcpy(fy_time_str[slot], fy_time_str[fy_time.slot], FY_TIME_SIZE_PART);
-        sprintf(fy_time_str[slot] + FY_TIME_SIZE_PART, "%03d ", msec);
+        sprintf(fy_time_str[slot] + FY_TIME_SIZE_PART, "%03ld ", msec);
     } else {
         ptm = localtime(&tv.tv_sec);
         if (ptm == NULL) {

@@ -16,6 +16,5 @@ void __fy_log_fmt(fy_log_type type, const char *file, size_t line, const char *f
 #define fy_log_debug(fmt, ...) __fy_log_fmt(FY_DEBUG, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
 #define fy_log_info(fmt, ...) __fy_log_fmt(FY_INFO, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
 #define fy_log_error(fmt, ...) __fy_log_fmt(FY_ERROR, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
-#define fy_log_fmt fy_log_debug
 
 #endif

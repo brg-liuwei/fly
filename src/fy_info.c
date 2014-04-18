@@ -1,4 +1,5 @@
 #include "fy_info.h"
+#include "fy_time.h"
 #include "fy_logger.h"
 #include <stdlib.h>
 #include <assert.h>
