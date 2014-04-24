@@ -19,8 +19,7 @@ static fy_task *fy_fcgi_finish_tasks[] = {
 
 fy_module fy_fcgi_finish_module = {
     FY_MODULE_INIT("fy_fcgi_finish_module",
-            fy_fcgi_finish_tasks,
-            NULL, NULL, NULL)
+            fy_fcgi_finish_tasks, NULL, NULL)
 };
 
 static int fy_fcgi_finish_task_submit(fy_task *task, void *request)
@@ -45,7 +44,7 @@ static int fy_fcgi_finish_task_submit(fy_task *task, void *request)
     if (r->cln != NULL) {
         r->cln(r);
     }
-    free(r);
+    fy_pool_destroy(r->pool);
     return 0;
 }
 

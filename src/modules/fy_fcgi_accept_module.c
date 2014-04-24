@@ -5,10 +5,13 @@
 #include "fy_logger.h"
 
 #include <fastcgi.h>
+#include <errno.h>
 #include <stdlib.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+
+extern fy_pool_t *fy_mem_pool;
 
 extern fy_task *null_task_list[];
 extern fy_task  null_task;
@@ -28,8 +31,7 @@ static fy_task *fy_fcgi_accept_tasks[] = {
 fy_module fy_fcgi_accept_module = {
     FY_MODULE_INIT("fy_fcgi_accept_module", 
             fy_fcgi_accept_tasks,
-            fy_fcgi_accept_module_init, 
-            NULL, NULL)
+            fy_fcgi_accept_module_init, NULL)
 };
 
 static int fy_fcgi_accept_task_submit(fy_task *task, void *request)
@@ -39,26 +41,26 @@ static int fy_fcgi_accept_task_submit(fy_task *task, void *request)
 
 static int fy_fcgi_accept_read_handler(fy_event *ev, void *ptr)
 {
+    fy_pool_t     *pool;
+    fy_request    *request;
     FCGX_Request  *r;
-    fy_request   *request;
 
-#ifdef FY_DEBUG
-    int                  i;
-    struct fcgi_params  *p;
-#endif
-
-    r = (FCGX_Request *)calloc(1, sizeof(FCGX_Request));
+    /* pool for fy_request */
+    if ((pool = fy_pool_create(1024)) == NULL) {
+        fy_log_error("fy_fcgi_accept_module::read_handler::alloc pool error\n");
+        return -1;
+    }
+    r = (FCGX_Request *)fy_pool_alloc(pool, sizeof(FCGX_Request));
     if (r == NULL) {
-        /* TODO: log error */
+        fy_log_error("fy_fcgi_accept_module::read_handler::alloc r error\n");
         goto free1;
     }
     if (FCGX_InitRequest(r, FCGI_LISTENSOCK_FILENO, 0) != 0) {
-        /* TODO: log error */
+        fy_log_error("fy_fcgi_accept_module::read_handler::FCGX_InitRequest error\n");
         goto free1;
-        return 0;
     }
     if (FCGX_Accept_r(r) != 0) {
-        /* TODO: log error */
+        fy_log_debug("fy_fcgi_accept_module::read_handler::FCGX_Accept_r errno: %d\n", errno);
         goto free1;
     }
 
@@ -66,15 +68,16 @@ static int fy_fcgi_accept_read_handler(fy_event *ev, void *ptr)
     fy_log_debug("fy_fcgi_accept read_handler: accept fd: %d, listen fd: %d\n", r->ipcFd, r->listen_sock);
 #endif
 
-    request = fy_request_create();
+    request = fy_request_create(pool);
     if (request == NULL) {
-        /* TODO: log error */
-        goto free1;
+        fy_log_debug("fy_fcgi_accept_module::read_handler::fy_request_create error\n");
+        goto free2;
     }
+    request->pool = pool;
 
-    request->info = fy_info_create();
+    request->info = fy_info_create(pool);
     if (request->info == NULL) {
-        /* TODO: log error */
+        fy_log_debug("fy_fcgi_accept_module::read_handler::fy_info_create error\n");
         goto free2;
     }
 
@@ -89,9 +92,8 @@ free2:
     if (request->cln != NULL) {
         request->cln(request);
     }
-    free(request);
 free1:
-    free(r);
+    fy_pool_destroy(pool);
     return -1;
 }
 
@@ -101,8 +103,13 @@ static int fy_fcgi_accept_module_init(fy_module *module, void *ptr)
 
     FCGX_Init();
 
-    if ((conn = (fy_connection *)calloc(1, sizeof(fy_connection))) == NULL) {
-        fy_log_error("fy_fcgi_accept_module calloc conn error\n");
+    module->pool = fy_mem_pool;
+    if (module->pool == NULL) {
+        return -1;
+    }
+
+    if ((conn = (fy_connection *)fy_pool_alloc(module->pool, sizeof(fy_connection))) == NULL) {
+        fy_log_error("fy_fcgi_accept_module alloc conn error\n");
         return -1;
     }
     conn->conn_type = CONN_TCP_LSN;
@@ -112,10 +119,10 @@ static int fy_fcgi_accept_module_init(fy_module *module, void *ptr)
     getsockname(conn->fd, &conn->addr, &conn->socklen);
     gethostname(conn->addr_text, ADDRTEXTLEN);
     conn->pool = NULL;
-    conn->revent = (fy_event *)calloc(1, sizeof(fy_event));
-    conn->wevent = (fy_event *)calloc(1, sizeof(fy_event));
+    conn->revent = (fy_event *)fy_pool_alloc(module->pool, sizeof(fy_event));
+    conn->wevent = (fy_event *)fy_pool_alloc(module->pool, sizeof(fy_event));
     if (conn->revent == NULL || conn->wevent == NULL) {
-        fy_log_error("fy_fcgi_accept_module calloc event error\n");
+        fy_log_error("fy_fcgi_accept_module alloc event error\n");
         return -1;
     }
 

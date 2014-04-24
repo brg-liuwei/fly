@@ -8,57 +8,53 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#ifdef HAVE_EPOLL
+#ifdef FY_HAVE_EPOLL
     #include <epoll.h>
-#elif defined HAVE_KQUEUE
+#elif defined FY_HAVE_KQUEUE
     #include <sys/types.h>
     #include <sys/time.h>
     #include <sys/event.h>
 #endif
 
-fy_event_loop *fy_create_event_loop(size_t poll_size)
+fy_event_loop *fy_create_event_loop(fy_pool_t *pool, size_t poll_size)
 {
     fy_event_loop *ev_loop;
 
-    if ((ev_loop = (fy_event_loop *)calloc(sizeof(fy_event_loop), 1)) == NULL) {
+    if ((ev_loop = (fy_event_loop *)fy_pool_alloc(pool, sizeof(fy_event_loop))) == NULL) {
         return NULL;
     }
-#ifdef HAVE_EPOLL
+#ifdef FY_HAVE_EPOLL
     if ((ev_loop->poll_fd = epoll_create(poll_size)) == -1) {
         printf("epoll_create errno: %d\n", errno);
-        goto free1;
+        return NULL;
     }
-#elif defined HAVE_KQUEUE
+#elif defined FY_HAVE_KQUEUE
     if ((ev_loop->poll_fd = kqueue()) == -1) {
         printf("kqueue_create errno: %d\n", errno);
-        goto free1;
+        return NULL;
     }
 #endif
     ev_loop->poll_size = poll_size;
     ev_loop->poll_timeout = -1;
 
-    ev_loop->poll_events = (void *)calloc(poll_size,
-#ifdef HAVE_EPOLL
+    ev_loop->poll_events = (void *)fy_pool_alloc(pool, poll_size *
+#ifdef FY_HAVE_EPOLL
             sizeof(struct epoll_event)
-#elif defined HAVE_KQUEUE
+#elif defined FY_HAVE_KQUEUE
             sizeof(struct kevent)
 #endif
             );
     if (ev_loop->poll_events == NULL) {
-        goto free1;
+        return NULL;
     }
-    if ((ev_loop->event_heap = (fy_event **)calloc(poll_size, sizeof(fy_event *))) == NULL) {
-        goto free2;
+    if ((ev_loop->event_heap = (fy_event **)fy_pool_alloc(pool, 
+                    poll_size * sizeof(fy_event *))) == NULL)
+    {
+        return NULL;
     }
     ev_loop->heap_size = 0;
 
     return ev_loop;
-
-free2:
-    free(ev_loop->poll_events);
-free1:
-    free(ev_loop);
-    return NULL;
 }
 
 static int fy_process_events(fy_event_loop *loop)
@@ -68,19 +64,19 @@ static int fy_process_events(fy_event_loop *loop)
     __uint32_t           ev_mask;
     fy_connection       *conn;
 
-#ifdef HAVE_EPOLL
+#ifdef FY_HAVE_EPOLL
     struct epoll_event  *evs;
-#elif defined HAVE_KQUEUE
+#elif defined FY_HAVE_KQUEUE
     struct kevent       *evs;
 #endif
 
     assert(loop != NULL);
 
-#ifdef HAVE_EPOLL
+#ifdef FY_HAVE_EPOLL
     nevs = epoll_wait(loop->poll_fd, (struct epoll_event *)loop->poll_events,
             loop->poll_size, loop->poll_timeout);
 
-#elif defined HAVE_KQUEUE
+#elif defined FY_HAVE_KQUEUE
     struct timespec timeout, *tp;
     if (loop->poll_timeout != -1) {
         tp = &timeout;
@@ -109,7 +105,7 @@ static int fy_process_events(fy_event_loop *loop)
     for (i = 0; i < nevs; ++i) {
 
         /* if some error happens without FY_EVIN and FV_EVOUT, we need to handle it */
-#ifdef HAVE_EPOLL
+#ifdef FY_HAVE_EPOLL
         conn = (fy_connection *)evs[i].data.ptr;
 
         if ((evs[i].events & (EPOLLERR | EPOLLHUP))
@@ -120,7 +116,7 @@ static int fy_process_events(fy_event_loop *loop)
             ev_mask = FY_EVOUT;
         }
 
-#elif defined HAVE_KQUEUE
+#elif defined FY_HAVE_KQUEUE
         conn = (fy_connection *)evs[i].udata;
 
         if ((evs[i].flags & EV_ERROR)
@@ -163,7 +159,7 @@ static int fy_event_regist(void *conn, void *loop, __uint32_t events, int op)
     lp = (fy_event_loop *)loop;
     c = (fy_connection *)conn;
 
-#ifdef HAVE_EPOLL
+#ifdef FY_HAVE_EPOLL
     struct epoll_event  ev;
 
     ev.events = EPOLLIN;
@@ -177,7 +173,7 @@ static int fy_event_regist(void *conn, void *loop, __uint32_t events, int op)
         return epoll_ctl(lp->poll_fd, EPOLL_CTL_MOD, c->fd, &ev);
     }
 
-#elif defined HAVE_KQUEUE
+#elif defined FY_HAVE_KQUEUE
     struct kevent  ke;
 
     if (events & FY_EVOUT) {
@@ -215,10 +211,10 @@ int fy_event_del(void *conn, void *loop)
     lp = (fy_event_loop *)loop;
     c = (fy_connection *)conn;
 
-#ifdef HAVE_EPOLL
+#ifdef FY_HAVE_EPOLL
     return epoll_ctl(lp->poll_fd, EPOLL_CTL_DEL, c->fd, NULL);
 
-#elif defined HAVE_KQUEUE
+#elif defined FY_HAVE_KQUEUE
     struct kevent  ke;
     EV_SET(&ke, c->fd, EVFILT_READ | EVFILT_WRITE,
             EV_DELETE, 0, 0, NULL);

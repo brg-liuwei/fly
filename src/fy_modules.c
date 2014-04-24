@@ -115,13 +115,13 @@ static fy_task task8 = {
 static fy_task *module1_task_list[] = { &task1, &task8, &null_task };
 
 static fy_module module1 = {
-    FY_MODULE_INIT("module 1", module1_task_list, module_name_print, NULL, NULL)
+    FY_MODULE_INIT("module 1", module1_task_list, module_name_print, NULL)
 };
 
 static fy_task *module2_task_list[] = { &task8, &task1, &null_task };
 
 static fy_module module2 = {
-    FY_MODULE_INIT("module 2", module2_task_list, module_name_print, NULL, NULL)
+    FY_MODULE_INIT("module 2", module2_task_list, module_name_print, NULL)
 };
 
 

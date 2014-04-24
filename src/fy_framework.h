@@ -2,6 +2,7 @@
 #define __FY_FRAMEWORK_H__
 
 #include "fy_info.h"
+#include "fy_alloc.h"
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -30,24 +31,25 @@ struct fy_task_t {
     int             (*task_submit)(fy_task *, void *);
 };
 
-#define FY_MODULE_INIT(name, task_list, init_handler, conf_handler, request_handler) \
-    name, 0, 0, task_list, NULL, NULL, init_handler, conf_handler, request_handler
+#define FY_MODULE_INIT(name, task_list, init_handler, conf_handler) \
+    name, 0, 0, task_list, NULL, NULL, NULL, init_handler, conf_handler
 
 struct fy_module_t {
     char                  *module_name;
     size_t                 task_total;
     size_t                 task_size;
     fy_task              **tasks;
+    fy_pool_t             *pool;
     struct fy_module_t    *next;
     void                  *data;
 
     int (*module_init)(fy_module *, void *);
     int (*module_conf)(fy_module *, void *);
-    void (*request_handler)(fy_module *, void *);
 };
 
 struct fy_request_t {
     size_t         task_completes;
+    fy_pool_t     *pool;
     fy_module     *module;
     FCGX_Request  *fcgi_request;
 
@@ -59,7 +61,7 @@ void fy_module_init(void *data);
 void fy_module_display();
 void fy_module_display_no_null();
 
-fy_request *fy_request_create();
+fy_request *fy_request_create(fy_pool_t *pool);
 void fy_request_next_module(fy_request *);
 void fy_submit_subtask(fy_task *, fy_request *);
 

@@ -24,8 +24,7 @@ static fy_task *fy_fcgi_layout_tasks[] = {
 fy_module fy_fcgi_layout_module = {
     FY_MODULE_INIT("fy_fcgi_layout_module",
             fy_fcgi_layout_tasks,
-            fy_fcgi_layout_module_init,
-            NULL, NULL)
+            fy_fcgi_layout_module_init, NULL)
 };
 
 static int fy_fcgi_layout_module_init(fy_module *m, void *data){

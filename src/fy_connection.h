@@ -2,6 +2,7 @@
 #define __FY_CONNECTION_H__
 
 #include "fy_event.h"
+#include "fy_alloc.h"
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -66,7 +67,7 @@ struct fy_conn_pool_t {
     fy_connection    *err_list;
 };
 
-fy_conn_pool *fy_create_conn_pool(size_t pool_size, size_t max_load);
+fy_conn_pool *fy_create_conn_pool(fy_pool_t *mem_pool, size_t pool_size, size_t max_load);
 
 void fy_push_connection(fy_conn_pool *pool, fy_connection *conn);
 fy_connection *fy_pop_connection(fy_conn_pool *pool);

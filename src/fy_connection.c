@@ -8,22 +8,30 @@
 #include <stdlib.h>
 #include <errno.h>
 
-fy_conn_pool *fy_create_conn_pool(size_t pool_size, size_t max_load)
+fy_conn_pool *fy_create_conn_pool(fy_pool_t *mem_pool, size_t pool_size, size_t max_load)
 {
     int             n;
     fy_conn_pool  *pool;
 
-    if ((pool = (fy_conn_pool *)malloc(sizeof (fy_conn_pool))) == NULL) {
+    assert(pool != NULL);
+
+    if ((pool = (fy_conn_pool *)fy_pool_alloc(mem_pool, sizeof (fy_conn_pool))) == NULL) {
         return NULL;
     }
-    if ((pool->conns = (fy_connection *)calloc(pool_size, sizeof(fy_connection))) == NULL) {
-        goto free1;
+    if ((pool->conns = (fy_connection *)fy_pool_alloc(mem_pool,
+                    pool_size * sizeof(fy_connection))) == NULL)
+    {
+        return NULL;
     }
-    if ((pool->revents = (fy_event *)calloc(pool_size, sizeof(fy_event))) == NULL) {
-        goto free2;
+    if ((pool->revents = (fy_event *)fy_pool_alloc(mem_pool,
+                    pool_size * sizeof(fy_event))) == NULL)
+    {
+        return NULL;
     }
-    if ((pool->wevents = (fy_event *)calloc(pool_size, sizeof(fy_event))) == NULL) {
-        goto free3;
+    if ((pool->wevents = (fy_event *)fy_pool_alloc(mem_pool, 
+                    pool_size * sizeof(fy_event))) == NULL)
+    {
+        return NULL;
     }
     pool->size = pool_size;
     pool->free_size = pool_size;
@@ -48,14 +56,6 @@ fy_conn_pool *fy_create_conn_pool(size_t pool_size, size_t max_load)
     }
     pool->err_list = NULL;
     return pool;
-
-free3:
-    free(pool->revents);
-free2:
-    free(pool->conns);
-free1:
-    free(pool);
-    return NULL;
 }
 
 fy_connection *fy_pop_connection(fy_conn_pool *pool)

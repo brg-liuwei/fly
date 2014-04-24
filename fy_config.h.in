@@ -1,7 +1,11 @@
 #ifndef __FY_CONFIG_H__
 #define __FY_CONFIG_H__
 
-#cmakedefine HAVE_EPOLL
-#cmakedefine HAVE_KQUEUE
+#cmakedefine FY_HAVE_EPOLL 
+#cmakedefine FY_HAVE_KQUEUE
+
+#cmakedefine FY_HAVE_MALLOC_H
+#cmakedefine FY_HAVE_STDLIB_H
+#cmakedefine FY_HAVE_SYS_TYPES_H
 
 #endif

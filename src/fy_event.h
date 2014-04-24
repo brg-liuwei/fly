@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 
 #include "fy_config.h"
+#include "fy_alloc.h"
 
 #define FY_EVIN   0x1
 #define FY_EVOUT  0x2
@@ -33,7 +34,7 @@ struct fy_event_loop_t {
     void (*before_poll)(fy_event_loop *);
 };
 
-fy_event_loop *fy_create_event_loop(size_t poll_size);
+fy_event_loop *fy_create_event_loop(fy_pool_t *pool, size_t poll_size);
 
 int fy_event_add(void *conn, void *loop, __uint32_t events);
 int fy_event_mod(void *conn, void *loop, __uint32_t events);

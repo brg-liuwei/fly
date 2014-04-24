@@ -24,8 +24,7 @@ static fy_task *fy_fcgi_getinfo_tasks[] = {
 
 fy_module fy_fcgi_getinfo_module = {
     FY_MODULE_INIT("fy_fcgi_getinfo_module",
-            fy_fcgi_getinfo_tasks,
-            NULL, NULL, NULL)
+            fy_fcgi_getinfo_tasks, NULL, NULL)
 };
 
 #define FY_OS(haystack, needle, os) \

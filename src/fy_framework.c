@@ -17,7 +17,7 @@ fy_task null_task = {
 fy_task *null_task_list[] = { &null_task };
 
 fy_module null_module = {
-    FY_MODULE_INIT("null module", null_task_list, NULL, NULL, NULL)
+    FY_MODULE_INIT("null module", null_task_list, NULL, NULL)
 };
 
 extern fy_module *fy_modules[];
@@ -35,6 +35,8 @@ static const char *fy_debug_log_path;
 static const char *fy_info_log_path;
 static const char *fy_error_log_path;
 static size_t fy_poll_size;
+
+fy_pool_t *fy_mem_pool;
 
 int main(int argc, char *argv[])
 {
@@ -59,6 +61,10 @@ int main(int argc, char *argv[])
         }
     }
 
+    if ((fy_mem_pool = fy_pool_create(getpagesize())) == NULL) {
+        printf("init global pool error\n");
+        exit(-1);
+    }
     if (fy_conf_init(FLY_DEFAULT_CONF_FILE) == -1) {
         printf("init conf file error\n");
         exit(-1);
@@ -85,7 +91,7 @@ int main(int argc, char *argv[])
     fy_time_init();
 
     fy_event_loop *loop;
-    if ((loop = fy_create_event_loop(fy_poll_size)) == NULL) {
+    if ((loop = fy_create_event_loop(fy_mem_pool, fy_poll_size)) == NULL) {
         fy_log_error("%s:%d fy_create_event_loop error, pool size = %ld\n",
                 __FILE__, __LINE__, fy_poll_size);
         return -1;
@@ -103,6 +109,7 @@ int main(int argc, char *argv[])
         fy_main_loop(loop);
     }
 
+    fy_pool_destroy(fy_mem_pool);
     return 0;
 }
 
@@ -253,26 +260,22 @@ void fy_module_display()
 
 static void fy_request_cleanup(fy_request *r)
 {
-    r->task_completes = 0;
     r->module = NULL;
-
-    if (r->fcgi_request != NULL) {
-        free(r->fcgi_request);
-        r->fcgi_request = NULL;
-    }
+    r->fcgi_request = NULL;
+    r->task_completes = 0;
 
     if (r->info != NULL) {
         r->info->cln(r->info);
-        free(r->info);
         r->info = NULL;
     }
 }
 
-fy_request *fy_request_create()
+fy_request *fy_request_create(fy_pool_t *pool)
 {
     fy_request   *r;
 
-    r = (fy_request *)calloc(1, sizeof(fy_request));
+    assert(pool != NULL);
+    r = (fy_request *)fy_pool_alloc(pool, sizeof(fy_request));
     if (r != NULL) {
         r->cln = fy_request_cleanup;
     }

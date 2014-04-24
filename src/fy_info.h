@@ -1,6 +1,8 @@
 #ifndef __FY_INFO_H__
 #define __FY_INFO_H__
 
+#include "fy_alloc.h"
+
 #include <sys/types.h>
 
 typedef struct fy_info_t fy_info;
@@ -12,7 +14,7 @@ struct fy_info_t {
     void        (*cln)(struct fy_info_t *);
 };
 
-fy_info *fy_info_create();
+fy_info *fy_info_create(fy_pool_t *pool);
 
 #endif
 
