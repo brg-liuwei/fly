@@ -7,3 +7,9 @@
     <poll_size>1024</poll_size>
 </Global>
 
+<fy_http_lomark_module>
+    <http_conn_pool_size>64</http_conn_pool_size>
+    <http_conn_addr>apitest.lomark.cn/v2/get/</http_conn_addr>
+    <http_conn_port>80</http_conn_port>
+</fy_http_lomark_module>
+

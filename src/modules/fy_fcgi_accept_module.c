@@ -113,7 +113,6 @@ static int fy_fcgi_accept_module_init(fy_module *module, void *ptr)
         return -1;
     }
     conn->conn_type = CONN_TCP_LSN;
-    conn->rpc_type = RPC_UNSET;
     conn->fd = FCGI_LISTENSOCK_FILENO;
     conn->socklen = sizeof(struct sockaddr);
     getsockname(conn->fd, &conn->addr, &conn->socklen);

@@ -20,21 +20,10 @@ typedef enum __fy_conn_type {
     CONN_UNIX_SRV
 } fy_conn_type;
 
-typedef enum fy_rpc_type {
-    RPC_UNSET = 0,
-    RPC_PA_CLI,
-    RPC_UA_CLI,
-    RPC_ADIDX_CLI,
-    RPC_CTIDX_CLI,
-    RPC_CTR_CLI,
-    RPC_ADX_CLI
-} fy_rpc_type;
-
 #define ADDRTEXTLEN 256
 
 struct fy_connection_t {
     fy_conn_type      conn_type;
-    fy_rpc_type       rpc_type;
     int               fd;
     struct sockaddr   addr;
     socklen_t         socklen;
