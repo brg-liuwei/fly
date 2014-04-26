@@ -1,5 +1,5 @@
 INCLUDE_DIRECTORIES (.)
-SET (SRC_FILES fy_conf.c fy_connection.c fy_event.c fy_framework.c fy_info.c fy_logger.c fy_modules.c fy_time.c fy_util.c fy_md5.c fy_alloc.c modules/fy_fcgi_accept_module.c modules/fy_fcgi_getinfo_module.c modules/fy_fcgi_layout_module.c modules/fy_fcgi_finish_module)
+SET (SRC_FILES fy_conf.c fy_connection.c fy_event.c fy_framework.c fy_info.c fy_logger.c fy_modules.c fy_time.c fy_util.c fy_md5.c fy_alloc.c modules/fy_fcgi_accept_module.c modules/fy_http_lomark_module.c modules/fy_fcgi_layout_module.c modules/fy_fcgi_finish_module)
 LINK_DIRECTORIES (/usr/local/lib /usr/local/fcgi/lib/ /usr/local/mxml/lib/)
 ADD_EXECUTABLE (fly ${SRC_FILES})
 TARGET_LINK_LIBRARIES (fly fcgi.a mxml.a)

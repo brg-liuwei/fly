@@ -11,6 +11,17 @@ struct fy_info_t {
     int           req_type;
     int           res_type;
     int64_t       current;
+
+    char         *send_buf;
+    char         *send_buf_end;
+    char         *send_buf_rpos;
+    char         *send_buf_wpos;
+
+    char         *recv_buf;
+    char         *recv_buf_end;
+    char         *recv_buf_rpos;
+    char         *recv_buf_wpos;
+
     void        (*cln)(struct fy_info_t *);
 };
 

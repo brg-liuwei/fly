@@ -9,7 +9,10 @@
 
 <fy_http_lomark_module>
     <http_conn_pool_size>64</http_conn_pool_size>
-    <http_conn_addr>apitest.lomark.cn/v2/get/</http_conn_addr>
+    <http_conn_addr>apitest.lomark.cn</http_conn_addr>
+    <http_conn_location>/v2/get/</http_conn_location>
     <http_conn_port>80</http_conn_port>
+    <lomark_key>1000</lomark_key>
+    <lomark_secret_key>12345</lomark_secret_key>
 </fy_http_lomark_module>
 

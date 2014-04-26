@@ -33,8 +33,9 @@ struct fy_pool_s {
     fy_pool_cln_t       cln;
 };
 
+size_t fy_pagesize;
+
 static int fy_initialized = 0;
-static size_t fy_pagesize;
 
 static void *fy_memalign(size_t boundary, size_t size);
 

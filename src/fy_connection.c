@@ -13,7 +13,7 @@ fy_conn_pool *fy_create_conn_pool(fy_pool_t *mem_pool, size_t pool_size, size_t 
     int             n;
     fy_conn_pool  *pool;
 
-    assert(pool != NULL);
+    assert(mem_pool != NULL);
 
     if ((pool = (fy_conn_pool *)fy_pool_alloc(mem_pool, sizeof (fy_conn_pool))) == NULL) {
         return NULL;

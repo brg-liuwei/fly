@@ -4,7 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-ADDRTEXTLEN	fy_connection.h	33;"	d
+ADDRTEXTLEN	fy_connection.h	23;"	d
 CONN_TCP_CLI	fy_connection.h	/^    CONN_TCP_CLI,$/;"	e	enum:__fy_conn_type
 CONN_TCP_LSN	fy_connection.h	/^    CONN_TCP_LSN,$/;"	e	enum:__fy_conn_type
 CONN_TCP_SRV	fy_connection.h	/^    CONN_TCP_SRV,$/;"	e	enum:__fy_conn_type
@@ -15,7 +15,7 @@ CONN_UNSET	fy_connection.h	/^    CONN_UNSET = 0,$/;"	e	enum:__fy_conn_type
 F	fy_md5.c	49;"	d	file:
 FLY_DEFAULT_CONF_FILE	fy_conf.h	7;"	d
 FYLOGMAXLINE	fy_logger.c	11;"	d	file:
-FY_BRW	modules/fy_fcgi_getinfo_module.c	61;"	d	file:
+FY_BRW	fy_util.h	22;"	d
 FY_DEBUG	fy_logger.h	/^    FY_DEBUG = 0,$/;"	e	enum:__fy_log_type
 FY_ERROR	fy_logger.h	/^    FY_ERROR,$/;"	e	enum:__fy_log_type
 FY_EVERR	fy_event.h	12;"	d
@@ -25,7 +25,7 @@ FY_EVOUT	fy_event.h	11;"	d
 FY_INFO	fy_logger.h	/^    FY_INFO,$/;"	e	enum:__fy_log_type
 FY_MEMALIGN	fy_alloc.h	17;"	d
 FY_MODULE_INIT	fy_framework.h	34;"	d
-FY_OS	modules/fy_fcgi_getinfo_module.c	30;"	d	file:
+FY_OS	fy_util.h	15;"	d
 FY_POOLMINSIZE	fy_alloc.c	13;"	d	file:
 FY_TASK_INIT	fy_framework.h	22;"	d
 FY_TIME_SIZE	fy_time.h	8;"	d
@@ -42,13 +42,6 @@ MD5_Final	fy_md5.c	/^void MD5_Final(unsigned char *result, MD5_CTX *ctx)$/;"	f
 MD5_Init	fy_md5.c	/^void MD5_Init(MD5_CTX *ctx)$/;"	f
 MD5_Update	fy_md5.c	/^void MD5_Update(MD5_CTX *ctx, const void *data, unsigned long size)$/;"	f
 MD5_u32plus	fy_md5.h	/^typedef unsigned int MD5_u32plus;$/;"	t
-RPC_ADIDX_CLI	fy_connection.h	/^    RPC_ADIDX_CLI,$/;"	e	enum:fy_rpc_type
-RPC_ADX_CLI	fy_connection.h	/^    RPC_ADX_CLI$/;"	e	enum:fy_rpc_type
-RPC_CTIDX_CLI	fy_connection.h	/^    RPC_CTIDX_CLI,$/;"	e	enum:fy_rpc_type
-RPC_CTR_CLI	fy_connection.h	/^    RPC_CTR_CLI,$/;"	e	enum:fy_rpc_type
-RPC_PA_CLI	fy_connection.h	/^    RPC_PA_CLI,$/;"	e	enum:fy_rpc_type
-RPC_UA_CLI	fy_connection.h	/^    RPC_UA_CLI,$/;"	e	enum:fy_rpc_type
-RPC_UNSET	fy_connection.h	/^    RPC_UNSET = 0,$/;"	e	enum:fy_rpc_type
 SET	fy_md5.c	72;"	d	file:
 SET	fy_md5.c	77;"	d	file:
 STEP	fy_md5.c	58;"	d	file:
@@ -117,6 +110,7 @@ fy_connection	fy_connection.h	/^typedef struct fy_connection_t fy_connection;$/;
 fy_connection_t	fy_connection.h	/^struct fy_connection_t {$/;"	s
 fy_create_conn_pool	fy_connection.c	/^fy_conn_pool *fy_create_conn_pool(fy_pool_t *mem_pool, size_t pool_size, size_t max_load)$/;"	f
 fy_create_event_loop	fy_event.c	/^fy_event_loop *fy_create_event_loop(fy_pool_t *pool, size_t poll_size)$/;"	f
+fy_create_non_blocking_socket	modules/fy_http_lomark_module.c	/^static int fy_create_non_blocking_socket(fy_connection *conn)$/;"	f	file:
 fy_cur_msec	fy_time.c	/^inline time_t fy_cur_msec()$/;"	f
 fy_cur_sec	fy_time.c	/^inline time_t fy_cur_sec()$/;"	f
 fy_cur_time_str	fy_time.c	/^inline const char *fy_cur_time_str()$/;"	f
@@ -143,7 +137,7 @@ fy_fcgi_finish_module	modules/fy_fcgi_finish_module.c	/^fy_module fy_fcgi_finish
 fy_fcgi_finish_task	modules/fy_fcgi_finish_module.c	/^static fy_task fy_fcgi_finish_task = {$/;"	v	file:
 fy_fcgi_finish_task_submit	modules/fy_fcgi_finish_module.c	/^static int fy_fcgi_finish_task_submit(fy_task *task, void *request)$/;"	f	file:
 fy_fcgi_finish_tasks	modules/fy_fcgi_finish_module.c	/^static fy_task *fy_fcgi_finish_tasks[] = {$/;"	v	file:
-fy_fcgi_get_param	modules/fy_fcgi_getinfo_module.c	/^static char *fy_fcgi_get_param(const char *key, fy_request *r)$/;"	f	file:
+fy_fcgi_get_param	fy_util.c	/^char *fy_fcgi_get_param(const char *key, fy_request *r)$/;"	f
 fy_fcgi_getinfo_module	modules/fy_fcgi_getinfo_module.c	/^fy_module fy_fcgi_getinfo_module = {$/;"	v
 fy_fcgi_getinfo_task	modules/fy_fcgi_getinfo_module.c	/^static fy_task fy_fcgi_getinfo_task = {$/;"	v	file:
 fy_fcgi_getinfo_task_submit	modules/fy_fcgi_getinfo_module.c	/^static int fy_fcgi_getinfo_task_submit(fy_task *task, void *request)$/;"	f	file:
@@ -153,11 +147,24 @@ fy_fcgi_layout_module_init	modules/fy_fcgi_layout_module.c	/^static int fy_fcgi_
 fy_fcgi_layout_task	modules/fy_fcgi_layout_module.c	/^static fy_task fy_fcgi_layout_task = {$/;"	v	file:
 fy_fcgi_layout_task_submit	modules/fy_fcgi_layout_module.c	/^static int fy_fcgi_layout_task_submit(fy_task *task, void *request)$/;"	f	file:
 fy_fcgi_layout_tasks	modules/fy_fcgi_layout_module.c	/^static fy_task *fy_fcgi_layout_tasks[] = {$/;"	v	file:
-fy_get_browser	modules/fy_fcgi_getinfo_module.c	/^static char *fy_get_browser(const char *p)$/;"	f	file:
-fy_get_os	modules/fy_fcgi_getinfo_module.c	/^static char *fy_get_os(const char *p)$/;"	f	file:
+fy_get_browser	fy_util.c	/^char *fy_get_browser(const char *p)$/;"	f
+fy_get_os	fy_util.c	/^char *fy_get_os(const char *p)$/;"	f
+fy_http_event_loop	modules/fy_http_lomark_module.c	/^static fy_event_loop *fy_http_event_loop;$/;"	v	file:
+fy_http_lomark_addr	modules/fy_http_lomark_module.c	/^static const char *fy_http_lomark_addr;$/;"	v	file:
+fy_http_lomark_conn_handler	modules/fy_http_lomark_module.c	/^static int fy_http_lomark_conn_handler(fy_event *ev, void *request)$/;"	f	file:
+fy_http_lomark_conn_pool	modules/fy_http_lomark_module.c	/^static fy_conn_pool *fy_http_lomark_conn_pool;$/;"	v	file:
+fy_http_lomark_conn_pool_size	modules/fy_http_lomark_module.c	/^static size_t fy_http_lomark_conn_pool_size;;$/;"	v	file:
+fy_http_lomark_conn_repair	modules/fy_http_lomark_module.c	/^static void fy_http_lomark_conn_repair()$/;"	f	file:
 fy_http_lomark_module	modules/fy_http_lomark_module.c	/^static fy_module fy_http_lomark_module = {$/;"	v	file:
+fy_http_lomark_module_conf	modules/fy_http_lomark_module.c	/^static int fy_http_lomark_module_conf(fy_module *m, void *ptr)$/;"	f	file:
+fy_http_lomark_module_init	modules/fy_http_lomark_module.c	/^static int fy_http_lomark_module_init(fy_module *m, void *ev_loop)$/;"	f	file:
+fy_http_lomark_port	modules/fy_http_lomark_module.c	/^static int fy_http_lomark_port;$/;"	v	file:
+fy_http_lomark_read_handler	modules/fy_http_lomark_module.c	/^static int fy_http_lomark_read_handler(fy_event *ev, void *request)$/;"	f	file:
+fy_http_lomark_set_send_buf	modules/fy_http_lomark_module.c	/^static int fy_http_lomark_set_send_buf(fy_request *r)$/;"	f	file:
 fy_http_lomark_task	modules/fy_http_lomark_module.c	/^static fy_task fy_http_lomark_task = {$/;"	v	file:
+fy_http_lomark_task_submit	modules/fy_http_lomark_module.c	/^static int fy_http_lomark_task_submit(fy_task *task, void *request)$/;"	f	file:
 fy_http_lomark_tasks	modules/fy_http_lomark_module.c	/^static fy_task *fy_http_lomark_tasks[] = {$/;"	v	file:
+fy_http_lomark_write_handler	modules/fy_http_lomark_module.c	/^static int fy_http_lomark_write_handler(fy_event *ev, void *request)$/;"	f	file:
 fy_info	fy_info.h	/^typedef struct fy_info_t fy_info;$/;"	t	typeref:struct:fy_info_t
 fy_info_cleanup	fy_info.c	/^static void fy_info_cleanup(fy_info *info)$/;"	f	file:
 fy_info_create	fy_info.c	/^fy_info *fy_info_create(fy_pool_t *pool)$/;"	f
@@ -188,7 +195,7 @@ fy_module_init	fy_framework.c	/^void fy_module_init(void *data)$/;"	f
 fy_module_size	fy_framework.c	/^static size_t fy_module_size;$/;"	v	file:
 fy_module_t	fy_framework.h	/^struct fy_module_t {$/;"	s
 fy_modules	fy_modules.c	/^fy_module *fy_modules[] = {$/;"	v
-fy_pagesize	fy_alloc.c	/^static size_t fy_pagesize;$/;"	v	file:
+fy_pagesize	fy_alloc.c	/^size_t fy_pagesize;$/;"	v
 fy_poll_size	fy_framework.c	/^static size_t fy_poll_size;$/;"	v	file:
 fy_pool_alloc	fy_alloc.c	/^void *fy_pool_alloc(fy_pool_t *pool, size_t size)$/;"	f
 fy_pool_alloc_block	fy_alloc.c	/^static void *fy_pool_alloc_block(fy_pool_t *pool, size_t size)$/;"	f	file:
@@ -213,8 +220,6 @@ fy_request_create	fy_framework.c	/^fy_request *fy_request_create(fy_pool_t *pool
 fy_request_next_module	fy_framework.c	/^void fy_request_next_module(fy_request *r)$/;"	f
 fy_request_run	fy_framework.c	/^static void fy_request_run(fy_request *r)$/;"	f	file:
 fy_request_t	fy_framework.h	/^struct fy_request_t {$/;"	s
-fy_rpc_type	fy_connection.h	/^typedef enum fy_rpc_type {$/;"	g
-fy_rpc_type	fy_connection.h	/^} fy_rpc_type;$/;"	t	typeref:enum:fy_rpc_type
 fy_submit_subtask	fy_framework.c	/^void fy_submit_subtask(fy_task *task, fy_request *r)$/;"	f
 fy_task	fy_framework.h	/^typedef struct fy_task_t fy_task;$/;"	t	typeref:struct:fy_task_t
 fy_task_display	fy_framework.c	/^static void fy_task_display(fy_task *task, size_t level)$/;"	f	file:
@@ -269,14 +274,19 @@ port	fy_connection.h	/^    int               port;$/;"	m	struct:fy_connection_t
 prev	fy_connection.h	/^    fy_connection   **prev;$/;"	m	struct:fy_connection_t
 ptr	fy_alloc.c	/^    void              *ptr;$/;"	m	struct:fy_pool_large_s	file:
 ready	fy_framework.h	/^    ready = 0,$/;"	e	enum:fy_task_status
+recv_buf	fy_info.h	/^    char         *recv_buf;$/;"	m	struct:fy_info_t
+recv_buf_end	fy_info.h	/^    char         *recv_buf_end;$/;"	m	struct:fy_info_t
+recv_buf_pos	fy_info.h	/^    char         *recv_buf_pos;$/;"	m	struct:fy_info_t
 req_type	fy_info.h	/^    int           req_type;$/;"	m	struct:fy_info_t
 request	fy_connection.h	/^    void             *request;$/;"	m	struct:fy_connection_t
 res_type	fy_info.h	/^    int           res_type;$/;"	m	struct:fy_info_t
 revent	fy_connection.h	/^    fy_event         *revent;$/;"	m	struct:fy_connection_t
 revents	fy_connection.h	/^    fy_event         *revents;$/;"	m	struct:fy_conn_pool_t
-rpc_type	fy_connection.h	/^    fy_rpc_type       rpc_type;$/;"	m	struct:fy_connection_t
 running	fy_framework.h	/^    running,$/;"	e	enum:fy_task_status
 sec	fy_time.h	/^    time_t   sec;$/;"	m	struct:fy_time_t
+send_buf	fy_info.h	/^    char         *send_buf;$/;"	m	struct:fy_info_t
+send_buf_end	fy_info.h	/^    char         *send_buf_end;$/;"	m	struct:fy_info_t
+send_buf_pos	fy_info.h	/^    char         *send_buf_pos;$/;"	m	struct:fy_info_t
 size	fy_alloc.c	/^    size_t             size;$/;"	m	struct:fy_pool_large_s	file:
 size	fy_connection.h	/^    size_t            size;$/;"	m	struct:fy_conn_pool_t
 size_t	fy_alloc.h	/^typedef unsigned long size_t;$/;"	t

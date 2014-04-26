@@ -12,6 +12,7 @@
 #include <arpa/inet.h>
 
 extern fy_pool_t *fy_mem_pool;
+extern size_t fy_pagesize;
 
 extern fy_task *null_task_list[];
 extern fy_task  null_task;
@@ -46,7 +47,7 @@ static int fy_fcgi_accept_read_handler(fy_event *ev, void *ptr)
     FCGX_Request  *r;
 
     /* pool for fy_request */
-    if ((pool = fy_pool_create(1024)) == NULL) {
+    if ((pool = fy_pool_create(getpagesize())) == NULL) {
         fy_log_error("fy_fcgi_accept_module::read_handler::alloc pool error\n");
         return -1;
     }
