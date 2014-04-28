@@ -1,2 +1,3 @@
 #usage:
-#sudo /usr/local/bin/spawn-fcgi -a xxx.xxx.xxx.xxx -p xxxx -F 1 bin/ad_fly
+sudo killall fly
+sudo /usr/local/spawn-fcgi/bin/spawn-fcgi -a 127.0.0.1 -p 9000 -F 1 bin/fly

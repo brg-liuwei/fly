@@ -21,13 +21,13 @@ int fy_log_init(fy_log_type type, const char *path)
     assert(path != NULL);
 
     switch (type) {
-        case FY_DEBUG:
+        case FY_LOG_DEBUG:
             p = &fy_debug_log_fd;
             break;
-        case FY_INFO:
+        case FY_LOG_INFO:
             p = &fy_info_log_fd;
             break;
-        case FY_ERROR:
+        case FY_LOG_ERROR:
             p = &fy_err_log_fd;
             break;
         default:
@@ -46,7 +46,7 @@ void __fy_log_fmt(fy_log_type type, const char *file, size_t line, const char *f
     char     content[FYLOGMAXLINE];
     va_list  ap;
 
-    if (type == FY_ERROR) {
+    if (type == FY_LOG_ERROR) {
         n = snprintf(content, FYLOGMAXLINE, "%s%s:%ld ", fy_cur_time_str(), file, line);
     } else {
         n = snprintf(content, FYLOGMAXLINE, "%s", fy_cur_time_str());
@@ -57,17 +57,17 @@ void __fy_log_fmt(fy_log_type type, const char *file, size_t line, const char *f
     va_end(ap);
 
     switch (type) {
-        case FY_DEBUG:
+        case FY_LOG_DEBUG:
             log_fd = fy_debug_log_fd;
             break;
-        case FY_INFO:
+        case FY_LOG_INFO:
             log_fd = fy_info_log_fd;
             break;
-        case FY_ERROR:
+        case FY_LOG_ERROR:
             log_fd = fy_err_log_fd;
             break;
         default:
-            __fy_log_fmt(FY_ERROR, __FILE__, __LINE__, "error log type = %d\n", type);
+            __fy_log_fmt(FY_LOG_ERROR, __FILE__, __LINE__, "error log type = %d\n", type);
             abort();
     }
     write(log_fd, content, n);

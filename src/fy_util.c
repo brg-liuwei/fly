@@ -1,4 +1,5 @@
 #include "fy_util.h"
+#include "fy_logger.h"
 #include <string.h>
 #include <assert.h>
 

@@ -3,6 +3,9 @@ PROJECT (FLY)
 
 INCLUDE_DIRECTORIES (/usr/local/include /usr/local/fcgi/include /usr/local/mxml/include/)
 
+SET (${CMAKE_C_FLAGS} -g)
+ADD_DEFINITIONS(-g -std=c99 -DFY_DEBUG)
+
 INCLUDE (CheckFunctionExists)
 CHECK_FUNCTION_EXISTS (epoll FY_HAVE_EPOLL)
 CHECK_FUNCTION_EXISTS (kqueue FY_HAVE_KQUEUE)

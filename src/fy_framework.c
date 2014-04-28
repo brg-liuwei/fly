@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
 
     run_loop = 1;
 
+    printf("fly\n");
     while ((opt = getopt(argc, argv, "th?")) != -1) {
         run_loop = 0;
         switch (opt) {
@@ -78,13 +79,13 @@ int main(int argc, char *argv[])
     fy_poll_size = (size_t)fy_atoi(fy_conf_get_param("poll_size"));
     fy_module_conf_end(NULL);
 
-    if (fy_log_init(FY_DEBUG, fy_debug_log_path) == -1) {
+    if (fy_log_init(FY_LOG_DEBUG, fy_debug_log_path) == -1) {
         exit(-1);
     }
-    if (fy_log_init(FY_INFO, fy_info_log_path) == -1) {
+    if (fy_log_init(FY_LOG_INFO, fy_info_log_path) == -1) {
         exit(-1);
     }
-    if (fy_log_init(FY_ERROR, fy_error_log_path) == -1) {
+    if (fy_log_init(FY_LOG_ERROR, fy_error_log_path) == -1) {
         exit(-1);
     }
 
@@ -130,7 +131,6 @@ static void fy_task_init(fy_task *task, fy_module *module)
 void fy_module_init(void *data)
 {
     size_t      t_idx;
-    fy_task    *task;
     fy_module  *module, *pre_module;
 
     for (fy_module_size = 0, pre_module = NULL; 
@@ -247,7 +247,6 @@ void fy_module_display_no_null()
 
 void fy_module_display()
 {
-    char     pre[1024];
     size_t   i, j;
 
     for (i = 0; i <= fy_module_size; ++i) {

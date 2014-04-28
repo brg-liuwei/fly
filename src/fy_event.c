@@ -177,14 +177,14 @@ static int fy_event_regist(void *conn, void *loop, __uint32_t events, int op)
     struct kevent  ke;
 
     if (events & FY_EVOUT) {
-        EV_SET(&ke, c->fd, EVFILT_WRITE, EV_ADD, 0, 0, NULL);
+        EV_SET(&ke, c->fd, EVFILT_WRITE, EV_ADD, 0, 0, c);
         if (kevent(lp->poll_fd, &ke, 1, NULL, 0, NULL) == -1) {
             return -1;
         }
     }
 
     if ((events & FY_EVIN) || ~(events & FY_EVOUT)) {
-        EV_SET(&ke, c->fd, EVFILT_READ, EV_ADD, 0, 0, NULL);
+        EV_SET(&ke, c->fd, EVFILT_READ, EV_ADD, 0, 0, c);
         if (kevent(lp->poll_fd, &ke, 1, NULL, 0, NULL) == -1) {
             return -1;
         }
