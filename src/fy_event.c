@@ -9,7 +9,7 @@
 #include <errno.h>
 
 #ifdef FY_HAVE_EPOLL
-    #include <epoll.h>
+    #include <sys/epoll.h>
 #elif defined FY_HAVE_KQUEUE
     #include <sys/types.h>
     #include <sys/time.h>

@@ -22,6 +22,8 @@ struct fy_info_t {
     char         *recv_buf_rpos;
     char         *recv_buf_wpos;
 
+    char         *lomark_json_str;
+
     void        (*cln)(struct fy_info_t *);
 };
 

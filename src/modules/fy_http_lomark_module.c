@@ -147,18 +147,20 @@ static int fy_create_non_blocking_socket(fy_connection *conn)
         /* search ip of the domain name */
         /* TODO: cache the host ip addr */
         phost = (struct hostent *)gethostbyname(fy_http_lomark_addr);
-        if (phost == NULL || phost->h_addr == 0) {
+        if (phost == NULL || phost->h_addr_list[0] == NULL) {
             fy_log_error("gethostbyname error, errno: %d, host: %s\n",
                     errno, fy_http_lomark_addr);
             goto error;
         }
 
         /* TODO: select a random h_addr_list[i] */
+        //addr.sin_addr = *((struct in_addr *)phost->h_addr);
         addr.sin_addr = *((struct in_addr *)phost->h_addr_list[0]);
     }
 
     /* connecting */
     if (connect(s, (struct sockaddr *)(&addr), sizeof(addr)) == -1) {
+        fy_log_debug("connect lomark failed, errno: %d\n", errno);
         if (errno != EINPROGRESS) {
             fy_log_error("connect error, errno: %d, host: %s\n",
                     errno, fy_http_lomark_addr);
@@ -188,7 +190,9 @@ static int fy_http_lomark_conn_handler(fy_event *ev, void *request)
     fy_connection  *conn;
 
     assert(request == NULL);
+#ifdef FY_DEBUG
     fy_log_debug("lomark conn ok\n");
+#endif
     conn = ev->conn;
     conn->revent->handler = fy_http_lomark_read_handler;
     conn->wevent->handler = NULL;
@@ -201,7 +205,9 @@ static void fy_http_lomark_conn_repair()
 {
     fy_connection *err_conn;
 
+#ifdef FY_DEBUG
     fy_log_debug("lomark conn repair\n");
+#endif
     if (fy_http_lomark_conn_pool->err_list != NULL) {
         err_conn = fy_pop_err_conn(fy_http_lomark_conn_pool);
         if (err_conn == NULL) {
@@ -222,6 +228,28 @@ static void fy_http_lomark_conn_repair()
     }
 }
 
+static void fy_http_lomark_md5_2_hex(unsigned char *md5hex, unsigned char *md5)
+{
+    size_t         i;
+    unsigned char  hi, lo;
+
+    for (i = 0; i != 16; ++i) {
+        hi = (md5[i] & 0xF0) >> 4;
+        lo = md5[i] & 0x0F;
+        if (hi >= 0 && hi <= 9) {
+            md5hex[2 * i] = '0' + hi;
+        } else {
+            md5hex[2 * i] = 'a' + (hi - 10);
+        }
+
+        if (lo >= 0 && lo <= 9) {
+            md5hex[2 * i + 1] = '0' + lo;
+        } else {
+            md5hex[2 * i + 1] = 'a' + (lo - 10);
+        }
+    }
+}
+
 #define FY_BUF_APPEND(p, limit, fmt, ...) do { \
     len = snprintf(p, limit, fmt, ##__VA_ARGS__); \
     limit -= len; \
@@ -230,12 +258,12 @@ static void fy_http_lomark_conn_repair()
 
 static int fy_http_lomark_set_send_buf(fy_request *r)
 {
-    char        *w, *sign_buf_p, *param;
-    char         sign_buf[2048];
-    size_t       n, sign_buf_n, len;
-    time_t       cur_sec;
-    u_char       md5[17];
-    fy_md5_ctx   md5_ctx;
+    char         *w, *sign_buf_p, *param;
+    char          sign_buf[2048];
+    size_t        n, sign_buf_n, len;
+    time_t        cur_sec;
+    fy_md5_ctx    md5_ctx;
+    unsigned char md5[17], md5hex[33];
 
     assert(r->info->send_buf == NULL);
 
@@ -252,7 +280,7 @@ static int fy_http_lomark_set_send_buf(fy_request *r)
     FY_BUF_APPEND(w, n, "GET ");
 
     /* location */
-    FY_BUF_APPEND(w, n, "%s ", fy_http_lomark_location);
+    FY_BUF_APPEND(w, n, "%s", fy_http_lomark_location);
 
     if (w >= r->info->send_buf_end) {
         fy_log_error("buf limit\n");
@@ -380,7 +408,7 @@ static int fy_http_lomark_set_send_buf(fy_request *r)
     }
 
     /* ip: 设备ip地址 */
-    param = fy_fcgi_get_param("IP", r);
+    param = fy_fcgi_get_param("REMOTE_ADDR", r);
     if (param != NULL) {
         FY_BUF_APPEND(w, n, "&ip=%s", param);
         FY_BUF_APPEND(sign_buf_p, sign_buf_n, "ip=%s", param);
@@ -526,17 +554,33 @@ static int fy_http_lomark_set_send_buf(fy_request *r)
 
     /* md5 */
     fy_md5_init(&md5_ctx);
-    fy_md5_update(&md5_ctx, sign_buf, sign_buf_n);
+#ifdef FY_DEBUG
+    fy_log_debug("sign buf len = %d\n%s\n", sign_buf_n, sign_buf);
+#endif
+    fy_md5_update(&md5_ctx, sign_buf, sizeof(sign_buf) - sign_buf_n);
     fy_md5_final(md5, &md5_ctx);
     md5[16] = '\0';
 
-    FY_BUF_APPEND(w, n, "&sign=%s", md5);
+    fy_http_lomark_md5_2_hex(md5hex, md5);
+    md5hex[32] = '\0';
+
+    FY_BUF_APPEND(w, n, "&sign=%s", md5hex);
+    if (w >= r->info->send_buf_end) {
+        fy_log_error("buf limit\n");
+        return -1;
+    }
+
+    /* version */
+    FY_BUF_APPEND(w, n, " HTTP/1.1\r\n"
+            "Host: %s\r\n"
+            "Connection: Keep-Alive\r\n\r\n", fy_http_lomark_addr);
     if (w >= r->info->send_buf_end) {
         fy_log_error("buf limit\n");
         return -1;
     }
 
     r->info->send_buf_wpos = w;
+    *w = 0;
     r->info->send_buf_rpos = r->info->send_buf;
 
     return 0;
@@ -544,30 +588,149 @@ static int fy_http_lomark_set_send_buf(fy_request *r)
 
 static int fy_http_lomark_read_handler(fy_event *ev, void *request)
 {
-    /* recv http response */
+    int              r_size, j_len;
+    char            *p, *q;
+    fy_request      *r;
     fy_connection   *c;
 
+#ifdef FY_DEBUG
     fy_log_debug("http lomark read handler, request: %p\n", request);
+#endif
+    r = (fy_request *)request;
     c = ev->conn;
+
     if (request == NULL) {
         close(c->fd);
         fy_push_err_conn(fy_http_lomark_conn_pool, c);
+        fy_http_lomark_conn_repair();
         return -1;
     }
+
+    if (r->info->recv_buf == NULL) {
+        r->info->recv_buf = fy_pool_alloc(r->pool, 4096);
+        if (r->info->recv_buf == NULL) {
+            goto error;
+        }
+        r->info->recv_buf_end = r->info->recv_buf + 4096;
+        r->info->recv_buf_rpos = r->info->recv_buf_wpos = r->info->recv_buf;
+    }
+
+    for (r_size = 4096; r_size > 0; ) {
+        r_size = recv(c->fd, r->info->recv_buf_wpos, r_size, 0);
+        if (r_size == 0) {
+            /* peer closed */
+            fy_log_debug("lomark read handler peer closed\n");
+            goto error;
+        } else if (r_size == -1) {
+            if (errno != EAGAIN) {
+                fy_log_error("lomark read handler recv errno: %d\n", errno);
+                goto error;
+            }
+            break;
+        }
+        r->info->recv_buf_wpos += r_size;
+        r_size = r->info->recv_buf_end - r->info->recv_buf_wpos;
+    }
+
+    /* deal HTTP response */
+#ifdef FY_DEBUG
+    fy_log_debug("lomark response:\n%s\n", r->info->recv_buf);
+#endif
+
+    /* get json str */
+    if (strstr(r->info->recv_buf, "HTTP/1.1 200 OK") == NULL) {
+        fy_log_error("lomark response error:\n%s\n", r->info->recv_buf);
+        goto error;
+    }
+    p = strstr(r->info->recv_buf, "\r\n\r\n");
+    if (p == NULL) {
+        fy_log_error("lomark response error:\n%s\n", r->info->recv_buf);
+        goto error;
+    }
+    p += 4;
+    q = strstr(p, "\r\n");
+    if (q == NULL) {
+        fy_log_error("lomark response error:\n%s\n", r->info->recv_buf);
+        goto error;
+    }
+    j_len = fy_hex_atoi_n(p, q - p);
+    if (j_len == 0 || p + j_len >= r->info->recv_buf_wpos) {
+        fy_log_error("chunk error: \n%s\n", p);
+        goto error;
+    }
+
+    p = q + 2;
+    r->info->lomark_json_str = p;
+    p[j_len] = '\0';
+
+#ifdef FY_DEBUG
+    fy_log_debug("recv json str len = %d:\n%s\n", j_len, r->info->lomark_json_str);
+#endif
+
+    fy_push_connection(fy_http_lomark_conn_pool, c);
     fy_request_next_module(request);
     return 0;
+
+error:
+    close(c->fd);
+    fy_push_err_conn(fy_http_lomark_conn_pool, c);
+    fy_http_lomark_conn_repair();
+    fy_request_next_module(request);
+    return -1;
 }
 
 static int fy_http_lomark_write_handler(fy_event *ev, void *request)
 {
-    /* send http request */
-    fy_request *r;
+    int             s_size;
+    fy_request     *r;
+    fy_connection  *c;
 
-    fy_log_debug("http lomark write handler\n");
     r = (fy_request *)request;
-    *r->info->send_buf_wpos = '\0';
+    c = ev->conn;
+
+#ifdef FY_DEBUG
+    fy_log_debug("http lomark write handler, request: %p\n", request);
     fy_log_debug("send_buf: %s\n", r->info->send_buf_rpos);
-    fy_request_next_module(r);
+#endif
+
+    /* send */
+    s_size = send(c->fd, r->info->send_buf_rpos, 
+            r->info->send_buf_wpos - r->info->send_buf_rpos, 0);
+
+#ifdef FY_DEBUG
+    fy_log_debug("s_size: %d, buf_size: %d\n", s_size,
+            r->info->send_buf_wpos - r->info->send_buf_rpos);
+#endif
+
+    if (s_size == -1) {
+        if (errno != EAGAIN) {
+            /* error */
+            fy_log_error("lomark write handler errno: %d\n", errno);
+            close(c->fd);
+            fy_push_err_conn(fy_http_lomark_conn_pool, ev->conn);
+        } else {
+#ifdef FY_DEBUG
+            fy_log_debug("send EAGAIN\n");
+#endif
+        }
+        fy_request_next_module(r);
+        return -1;
+    }
+
+    if (s_size != r->info->send_buf_wpos - r->info->send_buf_rpos) {
+#ifdef FY_DEBUG
+        fy_log_debug("not send completely: s_size: %d, buf_size: %d\n", s_size,
+                r->info->send_buf_wpos - r->info->send_buf_rpos);
+#endif
+        r->info->send_buf_wpos += s_size;
+        fy_event_mod(ev->conn, fy_http_event_loop, FY_EVOUT);
+        fy_request_next_module(r);
+        return -1;
+    }
+
+    /* send completely */
+    //r->info->send_buf_wpos = r->info->send_buf_rpos = r->info->send_buf;
+    fy_event_mod(ev->conn, fy_http_event_loop, FY_EVIN);
     return 0;
 }
 
@@ -592,6 +755,13 @@ static int fy_http_lomark_task_submit(fy_task *task, void *request)
         fy_request_next_module(request);
         return -1;
     }
+    fy_log_debug("fy_http_lomark_task_submit, request: %p\n", request);
+
+    /* set request */
+    conn->request = request;
+
+    conn->revent->handler = fy_http_lomark_read_handler;
+    conn->wevent->handler = fy_http_lomark_write_handler;
     return fy_event_mod(conn, fy_http_event_loop, FY_EVOUT);
 }
 

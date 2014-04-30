@@ -97,6 +97,29 @@ int fy_atoi_n(const char *ptr, size_t n)
     return value;
 }
 
+int fy_hex_atoi_n(const char *ptr, size_t n)
+{
+    int      value;
+    size_t   i;
+
+    value = 0;
+    if (ptr != NULL) {
+        for (i = 0; i != n && ptr[i] != '\0'; ++i) {
+            value *= 16;
+            if (ptr[i] >= '0' && ptr[i] <= '9') {
+                value += ptr[i] - '0';
+            } else if (ptr[i] >= 'a' && ptr[i] <= 'f') {
+                value += ptr[i] - 'a' + 10;
+            } else if (ptr[i] >= 'A' && ptr[i] <= 'F') {
+                value += ptr[i] - 'A' + 10;
+            } else {
+                return 0;
+            }
+        }
+    }
+    return value;
+}
+
 char *fy_get_os(const char *p)
 {
     if (p == NULL) {

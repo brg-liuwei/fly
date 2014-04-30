@@ -38,7 +38,7 @@ static int fy_fcgi_finish_task_submit(fy_task *task, void *request)
     FCGX_Finish_r(r->fcgi_request);
 
 #ifdef FY_DEBUG
-    fy_log_debug("FCGX_Finish_r");
+    fy_log_debug("FCGX_Finish_r\n");
 #endif
 
     if (r->cln != NULL) {

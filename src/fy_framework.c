@@ -9,6 +9,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h>
 
 fy_task null_task = {
     FY_TASK_INIT("null task", NULL, NULL)
@@ -104,6 +105,19 @@ int main(int argc, char *argv[])
         fy_module_display_no_null();
         printf("\n");
         return 0;
+    }
+
+    /* capture sigpipe */
+    sigset_t         mask;  
+    struct sigaction sa; 
+
+    sa.sa_handler = SIG_IGN;
+    sa.sa_flags = 0;
+    sigemptyset(&mask);
+    sigaddset(&mask, SIGUSR1);
+    sa.sa_mask = mask;    
+    if (sigaction(SIGPIPE, &sa, 0) == -1) {
+        exit(-1);
     }
 
     if (run_loop) {
