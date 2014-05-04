@@ -573,6 +573,7 @@ static int fy_http_lomark_set_send_buf(fy_request *r)
     /* version */
     FY_BUF_APPEND(w, n, " HTTP/1.1\r\n"
             "Host: %s\r\n"
+            "Keep-Alive: 900\r\n"
             "Connection: Keep-Alive\r\n\r\n", fy_http_lomark_addr);
     if (w >= r->info->send_buf_end) {
         fy_log_error("buf limit\n");

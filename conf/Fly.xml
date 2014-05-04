@@ -12,7 +12,7 @@
     <http_conn_addr>api.lomark.cn</http_conn_addr>
     <http_conn_location>/v2/get</http_conn_location>
     <http_conn_port>80</http_conn_port>
-    <lomark_key>1000</lomark_key>
-    <lomark_secret_key>1000</lomark_secret_key>
+    <lomark_key>06ED59022B5245F58179F9BBAB1F2A23</lomark_key>
+    <lomark_secret_key>17C942F6766A4BA089C8332A1906CBD3</lomark_secret_key>
 </fy_http_lomark_module>
 

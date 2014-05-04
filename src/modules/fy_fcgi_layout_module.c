@@ -39,27 +39,44 @@ static int fy_fcgi_layout_task_submit(fy_task *task, void *request)
 {
     fy_request   *r;
     jc_val_t     *val;
-    jc_json_t    *lomark_js, *qt_js, *qt_data;
+    jc_json_t    *lomark_js, *qt_js, *qt_data, *err_js;
 
-    const char err_js[] = "{\"errorno\":\"1\",\"errormsg\":\"no ad return\",\"expiredtime\":1398502624,\"data\":{}}";
+    const char *err_js_str;
 
     r = (fy_request *)request;
     assert(r != NULL);
     assert(r->info != NULL);
 
+    err_js = jc_json_create();
+    assert(err_js != NULL);
+
     if (r->info->lomark_json_str == NULL) {
+        jc_json_add_str(err_js, "errormsg", "no lomark str");
         goto no_ad;
     }
     lomark_js = jc_json_parse(r->info->lomark_json_str);
     if (lomark_js == NULL) {
+        jc_json_add_str(err_js, "errormsg", "parse lomark json error");
         fy_log_error("layout module parse json error: \n%s\n", r->info->lomark_json_str);
         goto no_ad;
     }
+
     val = jc_json_find(lomark_js, "status");
-    if (val == NULL || val->type != JC_STR 
-            || strncmp("100", val->data.s->body, val->data.s->size) != 0)
-    {
+    if (val == NULL || val->type != JC_STR) {
+        jc_json_add_str(err_js, "errormsg", "lomark json str without status");
         fy_log_error("layout module, lomark return json illegal:\n%s\n", r->info->lomark_json_str);
+        goto free_lomark_js;
+    }
+
+    if (strncmp("100", val->data.s->body, val->data.s->size) != 0) {
+        val = jc_json_find(lomark_js, "msg");
+        if (val == NULL || val->type != JC_STR) {
+            jc_json_add_str(err_js, "errormsg", "no lomark error msg");
+            fy_log_error("layout module, lomark json: %s\n", r->info->lomark_json_str);
+        } else {
+            jc_json_add_str(err_js, "errormsg", val->data.s->body);
+            fy_log_error("layout module, lomark msg: %s\n", val->data.s->body);
+        }
         goto free_lomark_js;
     }
 
@@ -172,7 +189,7 @@ static int fy_fcgi_layout_task_submit(fy_task *task, void *request)
 
     jc_json_add_str(qt_js, "errorno", "0");
     jc_json_add_str(qt_js, "errormsg", "ok");
-    jc_json_add_num(qt_js, "expiredtime", (double)fy_cur_sec());
+    jc_json_add_num(qt_js, "expiredtime", fy_cur_sec() + 60);
 
     jc_json_add_str(qt_data, "image", img_addr);
     jc_json_add_str(qt_data, "tracker", tracker_addr);
@@ -198,10 +215,16 @@ static int fy_fcgi_layout_task_submit(fy_task *task, void *request)
 free_lomark_js:
     jc_json_destroy(lomark_js);
 no_ad:
+
+    jc_json_add_str(err_js, "errorno", "1");
+    jc_json_add_num(err_js, "expiredtime", fy_cur_sec() + 60);
+    jc_json_add_json(err_js, "data", jc_json_create());
+    err_js_str = jc_json_str(err_js);
+
     FCGX_FPrintF(r->fcgi_request->out, "Status: 200 OK\r\n"
             "Content-type: text/html\r\n"
             "Content-Length: %d\r\n\r\n%s\r",
-            sizeof(err_js), err_js);
+            strlen(err_js_str), err_js_str);
     fy_request_next_module(r);
     return 0;
 
