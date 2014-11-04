@@ -12,6 +12,7 @@ struct fy_info_t {
     int           res_type;
     int64_t       current;
 
+    /* ======= for lomark ad ======= */
     char         *send_buf;
     char         *send_buf_end;
     char         *send_buf_rpos;
@@ -23,6 +24,11 @@ struct fy_info_t {
     char         *recv_buf_wpos;
 
     char         *lomark_json_str;
+    /* ======= lomark end =======*/
+
+    /* ======= for graph service */
+    char         *graph_addr;
+    /* ======= graph  end =======*/
 
     void        (*cln)(struct fy_info_t *);
 };

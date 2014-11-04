@@ -87,7 +87,6 @@ static int fy_process_events(fy_event_loop *loop)
     }
     nevs = kevent(loop->poll_fd, NULL, 0, (struct kevent *)loop->poll_events,
             loop->poll_size, tp);
-
 #endif
 
     if (nevs < 0) {

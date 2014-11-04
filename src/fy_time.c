@@ -29,7 +29,7 @@ void fy_time_update()
 {
     size_t          slot;
     time_t          msec;
-    struct tm      *ptm;
+    struct tm      *ptm, tm_buf;
     struct timeval  tv;
 
     if (pthread_mutex_trylock(&fy_time_mutex) != 0) {
@@ -53,7 +53,7 @@ void fy_time_update()
         memcpy(fy_time_str[slot], fy_time_str[fy_time.slot], FY_TIME_SIZE_PART);
         sprintf(fy_time_str[slot] + FY_TIME_SIZE_PART, "%03ld ", msec);
     } else {
-        ptm = localtime(&tv.tv_sec);
+        ptm = localtime_r(&tv.tv_sec, &tm_buf);
         if (ptm == NULL) {
             /* TODO: log errno */
             pthread_mutex_unlock(&fy_time_mutex);
@@ -62,6 +62,7 @@ void fy_time_update()
         snprintf(fy_time_str[slot], FY_TIME_SIZE, fy_time_fmt,
                 ptm->tm_year + 1900, ptm->tm_mon + 1, ptm->tm_mday,
                 ptm->tm_hour, ptm->tm_min, ptm->tm_sec, msec);
+        fy_time.hour = ptm->tm_hour;
     }
 
     /* memory barrier */
@@ -73,6 +74,11 @@ void fy_time_update()
     fy_time.slot = slot;
 
     pthread_mutex_unlock(&fy_time_mutex);
+}
+
+inline int fy_cur_hour()
+{
+    return fy_time.hour;
 }
 
 inline time_t fy_cur_sec()
