@@ -1,5 +1,6 @@
 #include "fy_graph_module.h"
 #include "fy_conf.h"
+#include "fy_logger.h"
 
 extern fy_task *null_task_list[];
 extern fy_task  null_task;
@@ -42,9 +43,16 @@ static int fy_graph_task_submit(fy_task *task, void *request)
     fy_info     *info;
     fy_request  *r;
 
+#ifdef FY_DEBUG
+    fy_log_debug("fy_graph_task_submit\n");
+#endif
     r = (fy_request *)request;
     info = r->info;
     info->graph_addr = (char *)fy_graph_addr;
     fy_request_next_module(r);
     return 0;
 }
+
+
+
+

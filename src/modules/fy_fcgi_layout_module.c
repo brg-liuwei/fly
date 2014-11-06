@@ -44,6 +44,9 @@ static int fy_fcgi_layout_task_submit(fy_task *task, void *request)
     assert(r != NULL);
     assert(r->info != NULL);
 
+#ifdef FY_DEBUG
+    fy_log_debug("fy_fcgi_layout_task_submit\n");
+#endif
     if (r->info->graph_addr == NULL) {
         goto error;
     }
@@ -51,7 +54,7 @@ static int fy_fcgi_layout_task_submit(fy_task *task, void *request)
     qt_js = jc_json_create();
     assert(qt_js != NULL);
 
-    jc_json_add_str(qt_js, "errorno", "0");
+    jc_json_add_num(qt_js, "errorno", 0);
     jc_json_add_str(qt_js, "errormsg", "ok");
     jc_json_add_num(qt_js, "expiredtime", fy_cur_sec() + 60);
 
@@ -61,6 +64,7 @@ static int fy_fcgi_layout_task_submit(fy_task *task, void *request)
     jc_json_add_str(qt_data, "image", r->info->graph_addr);
     jc_json_add_str(qt_data, "tracker", "");
     jc_json_add_str(qt_data, "id", "");
+    jc_json_add_num(qt_data, "duration", 18);
     jc_json_add_json(qt_js, "data", qt_data);
 
     display_str = jc_json_str(qt_js);
