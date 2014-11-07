@@ -81,7 +81,7 @@ error:
     err_js = jc_json_create();
     assert(err_js != NULL);
 
-    jc_json_add_str(err_js, "errorno", "1");
+    jc_json_add_num(err_js, "errorno", 1);
     jc_json_add_str(err_js, "errormsg", "graph addr NULL");
     jc_json_add_num(err_js, "expiredtime", fy_cur_sec() + 60);
     jc_json_add_json(err_js, "data", jc_json_create());
