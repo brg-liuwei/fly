@@ -1,8 +1,8 @@
 #ifndef __FY_TIME_H__
 #define __FY_TIME_H__
 
-#include <pthread.h>
 #include <sys/time.h>
+#include <sys/types.h>
 
 #define FY_TIME_SLOTS 64
 #define FY_TIME_SIZE sizeof("2011-11-11 11:11:11 111 ")
@@ -19,7 +19,7 @@ static const char fy_time_fmt[] = "%04d-%02d-%02d %02d:%02d:%02d %03ld ";
 static char fy_time_str[FY_TIME_SLOTS][FY_TIME_SIZE];
 
 static volatile struct fy_time_t fy_time;
-static pthread_mutex_t fy_time_mutex;
+static int32_t fy_time_lock;
 
 void fy_time_init();
 void fy_time_update();

@@ -4,6 +4,20 @@
 #include <signal.h>
 #include <unistd.h>
 
+static int fy_trylock(int32_t *lock)
+{
+    /* lock == 0: freed; lock == 1: locked */
+    return __sync_val_compare_and_swap(lock, 0, 1);
+}
+
+static int fy_unlock(int32_t *lock)
+{
+    if (*lock != 1) {
+        return -1;
+    }
+    return __sync_val_compare_and_swap(lock, 1, 0);
+}
+
 static void fy_time_update_signal(int signum)
 {
     if (signum == SIGALRM) {
@@ -17,7 +31,7 @@ void fy_time_init()
     static int fy_time_initialized = 0;
 
     if (fy_time_initialized == 0) {
-        pthread_mutex_init(&fy_time_mutex, NULL);
+        fy_time_lock = 0;
         fy_time_initialized = 1;
         fy_time_update();
         signal(SIGALRM, fy_time_update_signal);
@@ -32,7 +46,7 @@ void fy_time_update()
     struct tm      *ptm, buf;
     struct timeval  tv;
 
-    if (pthread_mutex_trylock(&fy_time_mutex) != 0) {
+    if (fy_trylock(&fy_time_lock) != 0) {
         return;
     }
 
@@ -43,7 +57,7 @@ void fy_time_update()
     if (fy_time.sec == tv.tv_sec 
             && fy_time.msec == msec)
     {
-        pthread_mutex_unlock(&fy_time_mutex);
+        fy_unlock(&fy_time_lock);
         return;
     }
 
@@ -56,7 +70,7 @@ void fy_time_update()
         ptm = localtime_r(&tv.tv_sec, &buf);
         if (ptm == NULL) {
             /* TODO: log errno */
-            pthread_mutex_unlock(&fy_time_mutex);
+            fy_unlock(&fy_time_lock);
             return;
         }
         snprintf(fy_time_str[slot], FY_TIME_SIZE, fy_time_fmt,
@@ -72,7 +86,7 @@ void fy_time_update()
     fy_time.cur = fy_time.sec * 1000 + fy_time.msec;
     fy_time.slot = slot;
 
-    pthread_mutex_unlock(&fy_time_mutex);
+    fy_unlock(&fy_time_lock);
 }
 
 inline time_t fy_cur_sec()
