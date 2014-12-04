@@ -5,7 +5,7 @@ INCLUDE_DIRECTORIES (/usr/local/include /usr/local/fcgi/include /usr/local/mxml/
 
 SET (CMAKE_C_FLAGS -g)
 ADD_DEFINITIONS(-g -std=c99)
-ADD_DEFINITIONS(-DFY_DEBUG)
+#ADD_DEFINITIONS(-DFY_DEBUG)
 ADD_DEFINITIONS(-D_GNU_SOURCE)
 
 INCLUDE (CheckFunctionExists)
