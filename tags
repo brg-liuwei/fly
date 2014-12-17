@@ -16,15 +16,12 @@ F	src/fy_md5.c	49;"	d	file:
 FLY_DEFAULT_CONF_FILE	src/fy_conf.h	7;"	d
 FYLOGMAXLINE	src/fy_logger.c	11;"	d	file:
 FY_BRW	src/fy_util.h	23;"	d
+FY_BUF_APPEND	src/modules/fy_api_adpos_module.c	152;"	d	file:
 FY_BUF_APPEND	src/modules/fy_http_lomark_module.c	253;"	d	file:
 FY_EVERR	src/fy_event.h	12;"	d
 FY_EVHUP	src/fy_event.h	13;"	d
 FY_EVIN	src/fy_event.h	10;"	d
 FY_EVOUT	src/fy_event.h	11;"	d
-FY_HAVE_EPOLL	src/fy_config.h	4;"	d
-FY_HAVE_MALLOC_H	src/fy_config.h	7;"	d
-FY_HAVE_STDLIB_H	src/fy_config.h	8;"	d
-FY_HAVE_SYS_TYPES_H	src/fy_config.h	9;"	d
 FY_LOG_DEBUG	src/fy_logger.h	/^    FY_LOG_DEBUG = 0,$/;"	e	enum:__fy_log_type
 FY_LOG_ERROR	src/fy_logger.h	/^    FY_LOG_ERROR,$/;"	e	enum:__fy_log_type
 FY_LOG_INFO	src/fy_logger.h	/^    FY_LOG_INFO,$/;"	e	enum:__fy_log_type
@@ -84,7 +81,6 @@ SET	src/fy_md5.c	72;"	d	file:
 SET	src/fy_md5.c	77;"	d	file:
 STEP	src/fy_md5.c	58;"	d	file:
 __FY_ALLOC_H__	src/fy_alloc.h	2;"	d
-__FY_CONFIG_H__	src/fy_config.h	2;"	d
 __FY_CONF_H__	src/fy_conf.h	2;"	d
 __FY_CONNECTION_H__	src/fy_connection.h	2;"	d
 __FY_EVENT_H__	src/fy_event.h	2;"	d
@@ -150,6 +146,7 @@ data	src/fy_event.h	/^    void    *data;$/;"	m	struct:fy_event_t
 data	src/fy_framework.h	/^    void                  *data;$/;"	m	struct:fy_module_t
 data	src/json4c/jc_alloc.c	/^    jc_pool_data_t      data;$/;"	m	struct:jc_pool_s	file:
 data	src/json4c/jc_type.h	/^    } data;$/;"	m	struct:jc_val_s	typeref:union:jc_val_s::__anon6
+data	src/modules/fy_api_adpos_module.c	/^    char    data[];$/;"	m	struct:__anon7	file:
 end	src/fy_alloc.c	/^    char        *end;       \/* end of current pool *\/$/;"	m	struct:fy_pool_data_s	file:
 end	src/json4c/jc_alloc.c	/^    char        *end;       \/* end of current pool *\/$/;"	m	struct:jc_pool_data_s	file:
 err_list	src/fy_connection.h	/^    fy_connection    *err_list;$/;"	m	struct:fy_conn_pool_t
@@ -163,7 +160,24 @@ free	src/json4c/jc_type.h	/^    size_t      free;     \/* free size of array *\/
 free	src/json4c/jc_type.h	/^    size_t   free;     \/* free space *\/$/;"	m	struct:jc_str_s
 free_list	src/fy_connection.h	/^    fy_connection    *free_list;$/;"	m	struct:fy_conn_pool_t
 free_size	src/fy_connection.h	/^    size_t            free_size;$/;"	m	struct:fy_conn_pool_t
+fy_adpos_conn_handler	src/modules/fy_api_adpos_module.c	/^static int fy_adpos_conn_handler(fy_event *ev, void *request)$/;"	f	file:
+fy_adpos_conn_pool	src/modules/fy_api_adpos_module.c	/^static fy_conn_pool *fy_adpos_conn_pool;$/;"	v	file:
+fy_adpos_conn_pool_size	src/modules/fy_api_adpos_module.c	/^static int fy_adpos_conn_pool_size;$/;"	v	file:
+fy_adpos_event_loop	src/modules/fy_api_adpos_module.c	/^static fy_event_loop *fy_adpos_event_loop;$/;"	v	file:
+fy_adpos_module_conf	src/modules/fy_api_adpos_module.c	/^static int fy_adpos_module_conf(fy_module *m, void *ptr)$/;"	f	file:
+fy_adpos_module_init	src/modules/fy_api_adpos_module.c	/^static int fy_adpos_module_init(fy_module *module, void *ev_loop)$/;"	f	file:
+fy_adpos_read_handler	src/modules/fy_api_adpos_module.c	/^static int fy_adpos_read_handler(fy_event *ev, void *request)$/;"	f	file:
+fy_adpos_req_hdr	src/modules/fy_api_adpos_module.c	/^} fy_adpos_req_hdr;$/;"	t	typeref:struct:__anon7	file:
+fy_adpos_server_addr	src/modules/fy_api_adpos_module.c	/^static const char *fy_adpos_server_addr;$/;"	v	file:
+fy_adpos_server_port	src/modules/fy_api_adpos_module.c	/^static int fy_adpos_server_port;$/;"	v	file:
+fy_adpos_task	src/modules/fy_api_adpos_module.c	/^static fy_task fy_adpos_task = {$/;"	v	file:
+fy_adpos_task_submit	src/modules/fy_api_adpos_module.c	/^static int fy_adpos_task_submit(fy_task *task, void *request)$/;"	f	file:
+fy_adpos_tasks	src/modules/fy_api_adpos_module.c	/^static fy_task *fy_adpos_tasks[] = {$/;"	v	file:
+fy_adpos_write_handler	src/modules/fy_api_adpos_module.c	/^static int fy_adpos_write_handler(fy_event *ev, void *request)$/;"	f	file:
+fy_adpos_write_ready	src/modules/fy_api_adpos_module.c	/^static int fy_adpos_write_ready(void *request)$/;"	f	file:
 fy_align	src/fy_alloc.h	18;"	d
+fy_api_adpos_module	src/modules/fy_api_adpos_module.c	/^fy_module fy_api_adpos_module = {$/;"	v
+fy_api_adpos_uri	src/modules/fy_api_adpos_module.c	/^static const char *fy_api_adpos_uri;$/;"	v	file:
 fy_atoi	src/fy_util.c	/^int fy_atoi(const char *ptr)$/;"	f
 fy_atoi_n	src/fy_util.c	/^int fy_atoi_n(const char *ptr, size_t n)$/;"	f
 fy_check_mode	src/fy_framework.c	/^static int fy_check_mode = 0;$/;"	v	file:
@@ -176,9 +190,11 @@ fy_conn_pool_t	src/fy_connection.h	/^struct fy_conn_pool_t {$/;"	s
 fy_conn_type	src/fy_connection.h	/^} fy_conn_type;$/;"	t	typeref:enum:__fy_conn_type
 fy_connection	src/fy_connection.h	/^typedef struct fy_connection_t fy_connection;$/;"	t	typeref:struct:fy_connection_t
 fy_connection_t	src/fy_connection.h	/^struct fy_connection_t {$/;"	s
+fy_cpymem	src/modules/fy_api_adpos_module.c	163;"	d	file:
 fy_create_conn_pool	src/fy_connection.c	/^fy_conn_pool *fy_create_conn_pool(fy_pool_t *mem_pool, size_t pool_size, size_t max_load)$/;"	f
 fy_create_event_loop	src/fy_event.c	/^fy_event_loop *fy_create_event_loop(fy_pool_t *pool, size_t poll_size)$/;"	f
 fy_create_non_blocking_socket	src/modules/fy_http_lomark_module.c	/^static int fy_create_non_blocking_socket(fy_connection *conn)$/;"	f	file:
+fy_create_nonblocking_conn	src/fy_connection.c	/^int fy_create_nonblocking_conn(fy_connection *conn, const char *remote_addr, int port)$/;"	f
 fy_cur_msec	src/fy_time.c	/^inline time_t fy_cur_msec()$/;"	f
 fy_cur_sec	src/fy_time.c	/^inline time_t fy_cur_sec()$/;"	f
 fy_cur_time_str	src/fy_time.c	/^inline const char *fy_cur_time_str()$/;"	f
@@ -297,6 +313,7 @@ fy_pop_err_conn	src/fy_connection.c	/^fy_connection *fy_pop_err_conn(fy_conn_poo
 fy_process_events	src/fy_event.c	/^static int fy_process_events(fy_event_loop *loop)$/;"	f	file:
 fy_push_connection	src/fy_connection.c	/^void fy_push_connection(fy_conn_pool *pool, fy_connection *conn)$/;"	f
 fy_push_err_conn	src/fy_connection.c	/^void fy_push_err_conn(fy_conn_pool *pool, fy_connection *conn)$/;"	f
+fy_repair_conn_pool	src/fy_connection.c	/^void fy_repair_conn_pool(fy_conn_pool *pool, void *ev_loop,$/;"	f
 fy_request	src/fy_framework.h	/^typedef struct fy_request_t fy_request;$/;"	t	typeref:struct:fy_request_t
 fy_request_cleanup	src/fy_framework.c	/^static void fy_request_cleanup(fy_request *r)$/;"	f	file:
 fy_request_create	src/fy_framework.c	/^fy_request *fy_request_create(fy_pool_t *pool)$/;"	f
@@ -358,6 +375,7 @@ jc_json_find	src/json4c/jc_type.c	/^jc_val_t *jc_json_find(jc_json_t *js, const 
 jc_json_parse	src/json4c/jc_type.c	/^jc_json_t *jc_json_parse(const char *p)$/;"	f
 jc_json_s	src/json4c/jc_type.h	/^struct jc_json_s {$/;"	s
 jc_json_str	src/json4c/jc_type.c	/^const char *jc_json_str(jc_json_t *js)$/;"	f
+jc_json_str_n	src/json4c/jc_type.c	/^const char *jc_json_str_n(jc_json_t *js, size_t *len)$/;"	f
 jc_json_t	src/json4c/jc_type.h	/^typedef struct jc_json_s     jc_json_t;$/;"	t	typeref:struct:jc_json_s
 jc_key	src/json4c/jc_type.c	/^static jc_key_t *jc_key(jc_pool_t *pool, const char *key)$/;"	f	file:
 jc_key_t	src/json4c/jc_type.h	/^typedef struct jc_str_s      jc_key_t;$/;"	t	typeref:struct:jc_str_s
@@ -388,6 +406,7 @@ jc_trans_array	src/json4c/jc_type.c	/^static int jc_trans_array(jc_json_t *js, i
 jc_type_t	src/json4c/jc_type.h	/^} jc_type_t;$/;"	t	typeref:enum:__jc_type_t
 jc_val_s	src/json4c/jc_type.h	/^struct jc_val_s {$/;"	s
 jc_val_t	src/json4c/jc_type.h	/^typedef struct jc_val_s      jc_val_t;$/;"	t	typeref:struct:jc_val_s
+json_rc	src/fy_info.h	/^    jc_json_t    *json_rc;$/;"	m	struct:fy_info_t
 keys	src/json4c/jc_type.h	/^    jc_key_t   **keys;     \/* keys of json *\/$/;"	m	struct:jc_json_s
 large	src/fy_alloc.c	/^    fy_pool_large_t    *large;$/;"	m	struct:fy_pool_s	file:
 large	src/json4c/jc_alloc.c	/^    jc_pool_large_t    *large;$/;"	m	struct:jc_pool_s	file:
@@ -395,6 +414,7 @@ last	src/fy_alloc.c	/^    char        *last;      \/* last position of alloced d
 last	src/json4c/jc_alloc.c	/^    char        *last;      \/* last position of alloced data *\/$/;"	m	struct:jc_pool_data_s	file:
 lo	src/fy_md5.h	/^    MD5_u32plus lo, hi;$/;"	m	struct:__anon1
 load	src/fy_connection.h	/^    size_t            load;$/;"	m	struct:fy_connection_t
+magic	src/modules/fy_api_adpos_module.c	/^    int32_t magic;$/;"	m	struct:__anon7	file:
 main	src/fy_framework.c	/^int main(int argc, char *argv[])$/;"	f
 max	src/fy_alloc.c	/^    size_t              max;     \/* max data can alloc from pool *\/$/;"	m	struct:fy_pool_s	file:
 max	src/json4c/jc_alloc.c	/^    size_t              max;     \/* max data can alloc from pool *\/$/;"	m	struct:jc_pool_s	file:
@@ -428,6 +448,10 @@ prev	src/fy_connection.h	/^    fy_connection   **prev;$/;"	m	struct:fy_connectio
 ptr	src/fy_alloc.c	/^    void              *ptr;$/;"	m	struct:fy_pool_large_s	file:
 ptr	src/json4c/jc_alloc.c	/^    void              *ptr;$/;"	m	struct:jc_pool_large_s	file:
 ready	src/fy_framework.h	/^    ready = 0,$/;"	e	enum:fy_task_status
+recv_buf	src/fy_info.h	/^    char         *recv_buf;$/;"	m	struct:fy_info_t
+recv_buf_end	src/fy_info.h	/^    char         *recv_buf_end;$/;"	m	struct:fy_info_t
+recv_buf_rpos	src/fy_info.h	/^    char         *recv_buf_rpos;$/;"	m	struct:fy_info_t
+recv_buf_wpos	src/fy_info.h	/^    char         *recv_buf_wpos;$/;"	m	struct:fy_info_t
 req_type	src/fy_info.h	/^    int           req_type;$/;"	m	struct:fy_info_t
 request	src/fy_connection.h	/^    void             *request;$/;"	m	struct:fy_connection_t
 res_type	src/fy_info.h	/^    int           res_type;$/;"	m	struct:fy_info_t
@@ -436,12 +460,17 @@ revents	src/fy_connection.h	/^    fy_event         *revents;$/;"	m	struct:fy_con
 running	src/fy_framework.h	/^    running,$/;"	e	enum:fy_task_status
 s	src/json4c/jc_type.h	/^        jc_str_t     *s;$/;"	m	union:jc_val_s::__anon6
 sec	src/fy_time.h	/^    time_t   sec;$/;"	m	struct:fy_time_t
+send_buf	src/fy_info.h	/^    char         *send_buf;$/;"	m	struct:fy_info_t
+send_buf_end	src/fy_info.h	/^    char         *send_buf_end;$/;"	m	struct:fy_info_t
+send_buf_rpos	src/fy_info.h	/^    char         *send_buf_rpos;$/;"	m	struct:fy_info_t
+send_buf_wpos	src/fy_info.h	/^    char         *send_buf_wpos;$/;"	m	struct:fy_info_t
 size	src/fy_alloc.c	/^    size_t             size;$/;"	m	struct:fy_pool_large_s	file:
 size	src/fy_connection.h	/^    size_t            size;$/;"	m	struct:fy_conn_pool_t
 size	src/json4c/jc_alloc.c	/^    size_t             size;$/;"	m	struct:jc_pool_large_s	file:
 size	src/json4c/jc_type.h	/^    size_t       size;     \/* size of keys and values *\/$/;"	m	struct:jc_json_s
 size	src/json4c/jc_type.h	/^    size_t      size;     \/* length of array *\/$/;"	m	struct:jc_array_s
 size	src/json4c/jc_type.h	/^    size_t   size;     \/* size of str *\/$/;"	m	struct:jc_str_s
+size	src/modules/fy_api_adpos_module.c	/^    int32_t size;$/;"	m	struct:__anon7	file:
 size_t	src/fy_alloc.h	/^typedef unsigned long size_t;$/;"	t
 size_t	src/json4c/jc_alloc.h	/^typedef unsigned long size_t;$/;"	t
 slot	src/fy_time.h	/^    size_t   slot;$/;"	m	struct:fy_time_t

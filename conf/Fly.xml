@@ -19,12 +19,20 @@
 --?>
 
 <Global>
-    <debug_log_path>/var/log/api/fly_debug.log</debug_log_path>
-    <info_log_path>/var/log/api/fly_info.log</info_log_path>
-    <error_log_path>/var/log/api/fly_error.log</error_log_path>
+    <debug_log_path>fly_debug.log</debug_log_path>
+    <info_log_path>fly_info.log</info_log_path>
+    <error_log_path>fly_error.log</error_log_path>
     <poll_size>4096</poll_size>
 </Global>
 
+<fy_api_adpos_module>
+    <adpos_conn_pool_size>4</adpos_conn_pool_size>
+    <adpos_server_addr>115.29.214.89</adpos_server_addr>
+    <adpos_server_port>7777</adpos_server_port>
+    <adpos_api_uri>/api/ad/splash</adpos_api_uri>
+</fy_api_adpos_module>
+
+<?--
 <fy_graph_module>
     <duration>3</duration>
     <adid>0001</adid>
@@ -32,6 +40,7 @@
     <graph_addr>http://qingtingpic.qiniudn.com/14_12_3_4.jpg</graph_addr>
     <!-- <graph_addr></graph_addr> -->
 </fy_graph_module>
+--?>
 
 <?--
 <fy_http_lomark_module>

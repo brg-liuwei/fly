@@ -64,4 +64,10 @@ fy_connection *fy_pop_connection(fy_conn_pool *pool);
 void fy_push_err_conn(fy_conn_pool *pool, fy_connection *conn);
 fy_connection *fy_pop_err_conn(fy_conn_pool *pool);
 
+int fy_create_nonblocking_conn(fy_connection *conn, const char *remote_addr, int port);
+
+void fy_repair_conn_pool(fy_conn_pool *pool, void *ev_loop,
+        int (*conn_handler)(fy_event *, void *),
+        int (*read_handler)(fy_event *, void *));
+
 #endif

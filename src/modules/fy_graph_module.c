@@ -58,6 +58,7 @@ static int fy_graph_task_submit(fy_task *task, void *request)
     fy_request  *r;
 
     r = (fy_request *)request;
+
     info = r->info;
     info->graph_duration = fy_graph_duration;
     info->graph_tracker = (char *)fy_graph_tracker;
