@@ -64,11 +64,11 @@ int main(int argc, char *argv[])
     }
 
     if ((fy_mem_pool = fy_pool_create(getpagesize())) == NULL) {
-        printf("init global pool error\n");
+        fprintf(stderr, "init global pool error\n");
         exit(-1);
     }
     if (fy_conf_init(FLY_DEFAULT_CONF_FILE) == -1) {
-        printf("init conf file error\n");
+        fprintf(stderr, "init conf file error\n");
         exit(-1);
     }
 
@@ -81,12 +81,15 @@ int main(int argc, char *argv[])
     fy_module_conf_end(NULL);
 
     if (fy_log_init(FY_LOG_DEBUG, fy_debug_log_path) == -1) {
+        fprintf(stderr, "init debug log error\n");
         exit(-1);
     }
     if (fy_log_init(FY_LOG_INFO, fy_info_log_path) == -1) {
+        fprintf(stderr, "init info log error\n");
         exit(-1);
     }
     if (fy_log_init(FY_LOG_ERROR, fy_error_log_path) == -1) {
+        fprintf(stderr, "init error log error\n");
         exit(-1);
     }
 

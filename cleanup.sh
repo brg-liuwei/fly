@@ -1,4 +1,4 @@
-#!/usr/bash
+#!/bin/bash
 
 rm -rf bin
 rm -rf CMakeFiles

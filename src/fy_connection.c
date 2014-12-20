@@ -209,11 +209,13 @@ int fy_create_nonblocking_conn(fy_connection *conn, const char *remote_addr, int
                     errno, remote_addr, port);
             goto error;
         }
+#ifdef FY_DEBUG
         fy_log_debug("connect remote addr %s:%d EINPROGRESS\n",
                 remote_addr, port);
     } else {
         fy_log_debug("connect remote addr %s:%d seccessful\n",
                 remote_addr, port);
+#endif
     }
 
     /* fill conn */

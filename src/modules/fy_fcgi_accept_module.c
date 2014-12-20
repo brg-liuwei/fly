@@ -3,6 +3,7 @@
 #include "fy_event.h"
 #include "fy_connection.h"
 #include "fy_logger.h"
+#include "fy_util.h"
 
 #include <fastcgi.h>
 #include <errno.h>
@@ -85,6 +86,9 @@ static int fy_fcgi_accept_read_handler(fy_event *ev, void *ptr)
     request->fcgi_request = r;
     request->module = &fy_fcgi_accept_module;
 
+#ifdef FY_DEBUG
+    fy_log_debug("accept location: %s\n", fy_fcgi_get_param("DOCUMENT_URI", request));
+#endif
     fy_request_next_module(request);
 
     return 0;

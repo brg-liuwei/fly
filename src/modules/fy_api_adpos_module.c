@@ -33,8 +33,9 @@ static int fy_adpos_write_handler(fy_event *ev, void *request);
 typedef struct {
     int32_t magic;
     int32_t size;
+    int32_t version;
     char    data[];
-} fy_adpos_req_hdr;
+} fy_adpos_hdr;
 
 static fy_task fy_adpos_task = {
     FY_TASK_INIT("fy_adpos_task", null_task_list, fy_adpos_task_submit)
@@ -128,8 +129,11 @@ static int fy_adpos_conn_handler(fy_event *ev, void *request)
 
 static int fy_adpos_read_handler(fy_event *ev, void *request)
 {
+    ssize_t         s_size, recved;
+    jc_json_t      *jsdata;
     fy_request     *r;
     fy_connection  *c;
+    fy_adpos_hdr   *rephdr;
 
     r = (fy_request *)request;
     c = ev->conn;
@@ -145,28 +149,116 @@ static int fy_adpos_read_handler(fy_event *ev, void *request)
         return -1;
     }
 
-    // TODO: read data and update cache
+    assert(r->info != NULL);
+
+    while (1) {
+        switch (r->info->recv_state) {
+            case 0: /* state 0: alloc memory for magic and size */
+                r->info->recv_buf = fy_pool_alloc(r->pool, sizeof(fy_adpos_hdr));
+                if (r->info->recv_buf == NULL) {
+                    goto error;
+                }
+                r->info->recv_buf_rpos = r->info->recv_buf_wpos = r->info->recv_buf;
+                r->info->recv_state = 1;
+                break;
+
+            case 1: /* state 1: recv magic and size */
+                recved = r->info->recv_buf_wpos - r->info->recv_buf_rpos;
+                assert(recved <= sizeof(fy_adpos_hdr));
+                if (recved == sizeof(fy_adpos_hdr)) {
+                    r->info->recv_state = 2;
+                    break;
+                }
+                s_size = sizeof(fy_adpos_hdr) - recved;
+                s_size = recv(c->fd, r->info->recv_buf_wpos, s_size, 0);
+                if (s_size == 0) {
+                    goto error;
+                }
+                if (s_size == -1) {
+                    if (errno == EAGAIN) {
+                        fy_event_mod(c, fy_adpos_event_loop, FY_EVIN);
+                        return 0;
+                    }
+                    goto error;
+                }
+                r->info->recv_buf_wpos += s_size;
+                break;
+
+            case 2: /* state 2: alloc memory for adpos data */
+                rephdr = (fy_adpos_hdr *)r->info->recv_buf_rpos;
+                if (rephdr->magic != 0xFEED) {
+                    fy_log_error("fy_adpos_read_handler read magic error: 0x%x\n", rephdr->magic);
+                    goto error;
+                }
+                r->info->recv_buf = fy_pool_alloc(r->pool, rephdr->size + sizeof(fy_adpos_hdr));
+                if (r->info->recv_buf == NULL) {
+                    goto error;
+                }
+                r->info->recv_buf_wpos = fy_cpymem(r->info->recv_buf, r->info->recv_buf_rpos, sizeof(fy_adpos_hdr));
+                r->info->recv_buf_rpos = r->info->recv_buf;
+                r->info->recv_state = 3;
+                break;
+
+            case 3: /* state 3: recv rephdr data */
+                rephdr = (fy_adpos_hdr *)r->info->recv_buf_rpos;
+                recved = r->info->recv_buf_wpos - r->info->recv_buf_rpos - sizeof(fy_adpos_hdr);
+                assert(recved <= rephdr->size);
+                if (recved == rephdr->size) {
+                    r->info->recv_state = 4;
+                    break;
+                }
+                s_size = rephdr->size - recved;
+                s_size = recv(c->fd, r->info->recv_buf_wpos, s_size, 0);
+                if (s_size == 0) {
+                    goto error;
+                }
+                if (s_size == -1) {
+                    if (errno == EAGAIN) {
+                        fy_event_mod(c, fy_adpos_event_loop, FY_EVIN);
+                        return 0;
+                    }
+                    goto error;
+                }
+                r->info->recv_buf_wpos += s_size;
+                break;
+
+            case 4: /* state 4: accept */
+                rephdr = (fy_adpos_hdr *)r->info->recv_buf_rpos;
+                jsdata = jc_json_parse(rephdr->data);
+                if (jsdata == NULL) {
+                    fy_log_error("parse json response error, rep str: %s\n", rephdr->data);
+                    goto error;
+                }
+
+                fy_push_connection(fy_adpos_conn_pool, c);
+
+                assert(r->info->json_rc == NULL);
+                jc_json_add_str(jsdata, "errormsg", "ok");
+                jc_json_add_num(jsdata, "errorno", 0);
+                jc_json_add_num(jsdata, "expiredtime", fy_cur_sec() + 60);
+
+                r->info->json_rc = jsdata;
+                fy_request_next_module(r);
+                return 0;
+        }
+    }
     return 0;
+
+error:
+    if (c->fd != -1) {
+        close(c->fd);
+        c->fd = -1;
+    }
+    fy_push_err_conn(fy_adpos_conn_pool, c);
+    fy_request_next_module(r);
+    return -1;
 }
 
-#define FY_BUF_APPEND(p, limit, fmt, ...) do { \
-    int n = snprintf(p, limit, fmt, ##__VA_ARGS__); \
-    if (n > limit) { \
-        p += limit; \
-        limit = 0; \
-    } else { \
-        p += n; \
-        limit -= n; \
-    } \
-} while (0)
-
-#define fy_cpymem(dst, src, n) (memcpy((void *)dst, (void *)src, n) + n)
-
-static int fy_adpos_write_ready(void *request)
+static int fy_adpos_write_ready(void *request, int32_t version)
 {
-    const int         send_buf_size = 64;
-    fy_request       *r;
-    fy_adpos_req_hdr  reqhdr;
+    const int      send_buf_size = 64;
+    fy_request    *r;
+    fy_adpos_hdr   reqhdr;
 
     assert(request != NULL);
 
@@ -179,6 +271,7 @@ static int fy_adpos_write_ready(void *request)
 
     reqhdr.magic = 0xCAFE;
     reqhdr.size = sizeof("GETZONE"); // just for test
+    reqhdr.version = version;
 
     r->info->send_buf_wpos = fy_cpymem(r->info->send_buf_wpos, &reqhdr, sizeof(reqhdr));
     r->info->send_buf_wpos = fy_cpymem(r->info->send_buf_wpos, "GETZONE", sizeof("GETZONE"));
@@ -190,11 +283,6 @@ static int fy_adpos_write_handler(fy_event *ev, void *request)
     ssize_t         s_size;
     fy_request     *r;
     fy_connection  *c;
-
-    if (fy_adpos_write_ready(request) == -1) {
-        fy_request_next_module(request);
-        return 0;
-    }
 
     r = (fy_request *)request;
     c = ev->conn;
@@ -216,16 +304,17 @@ static int fy_adpos_write_handler(fy_event *ev, void *request)
 
     if (s_size != r->info->send_buf_wpos - r->info->send_buf_rpos) {
         r->info->send_buf_wpos += s_size;
+        fy_event_mod(ev->conn, fy_adpos_event_loop, FY_EVOUT);
+        return 0;
     }
 
-    fy_event_mod(ev->conn, fy_adpos_event_loop, FY_EVOUT);
+    fy_event_mod(ev->conn, fy_adpos_event_loop, FY_EVIN);
     return 0;
 }
 
 static int fy_adpos_task_submit(fy_task *task, void *request)
 {
     int             i, api_version;
-    jc_json_t      *out, *sub;
     const char     *doc_uri;
     fy_request     *r;
     fy_connection  *conn;
@@ -238,45 +327,31 @@ static int fy_adpos_task_submit(fy_task *task, void *request)
             fy_adpos_conn_handler, fy_adpos_read_handler);
 
     doc_uri = fy_fcgi_get_param("DOCUMENT_URI", r);
-    if (doc_uri == NULL && strcmp(doc_uri, fy_api_adpos_uri) != 0) {
+    if (doc_uri == NULL || strcmp(doc_uri, fy_api_adpos_uri) != 0) {
         fy_request_next_module(r);
         return 0;
     }
 
     api_version = fy_atoi(fy_fcgi_get_param("API_VERSION", r));
+    fy_log_error("poslist adpos api_version error: %d\n", api_version);
 
-    out = jc_json_create();
-
-    // for test
-    for (i = 0; i != 3; ++i) {
-        sub = jc_json_create();
-        jc_json_add_num(sub, "posid", i);
-        jc_json_add_str(sub, "posdesc", "pos_desc");
-        jc_json_add_json(out, "adpos", sub);
+    if (api_version != 5 && api_version != 6) {
+        fy_log_error("adpos api_version error: %d\n", api_version);
+        fy_request_next_module(r);
+        return -1;
     }
 
-    switch(api_version) {
-        case 5: // TODO: return V5 adpos list
-            break;
-        case 6: // TODO: return V6 adpos list
-            break;
-        default: // TODO: return version error
-            break;
+    if ((conn = fy_pop_connection(fy_adpos_conn_pool)) == NULL) {
+        fy_request_next_module(r);
+        return -1;
     }
 
-    r->info->json_rc = out;
-    fy_request_next_module(request);
+    fy_adpos_write_ready(r, api_version);
+
+    conn->request = r;
+    conn->revent->handler = fy_adpos_read_handler;
+    conn->wevent->handler = fy_adpos_write_handler;
+
+    fy_event_mod(conn, fy_adpos_event_loop, FY_EVOUT);
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-

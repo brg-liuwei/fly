@@ -1,8 +1,8 @@
 #include "jc_alloc.h"
 
-#ifdef HAVE_MALLOC_H
+#ifdef FY_HAVE_MALLOC_H
 #include <malloc.h>
-#else
+#elif defined FY_HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
 
@@ -35,9 +35,11 @@ struct jc_pool_s {
 static int jc_initialized = 0;
 static size_t jc_pagesize;
 
-#ifdef HAVE_MALLOC_H
+#ifdef FY_HAVE_MALLOC_H
 #define jc_memalign memalign
-#else
+#elif defined FY_HAVE_STDLIB_H
+static void *jc_memalign(size_t boundary, size_t size);
+
 static void *jc_memalign(size_t boundary, size_t size)
 {
     int   rc;

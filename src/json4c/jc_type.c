@@ -8,6 +8,26 @@
 #define JC_MEMSIZE 1024
 #define JC_INCSTEP 16
 
+struct jc_str_s {
+    size_t   size;     /* size of str */
+    size_t   free;     /* free space */
+    char     body[];   /* str */
+};
+
+struct jc_array_s {
+    size_t      size;     /* length of array */
+    size_t      free;     /* free size of array */
+    jc_val_t  **value;
+};
+
+struct jc_json_s {
+    size_t       size;     /* size of keys and values */
+    size_t       free;     /* free size of keys and values */
+    jc_key_t   **keys;     /* keys of json */
+    jc_val_t   **vals;     /* values of json */
+    jc_pool_t   *pool;     /* mem pool of json */
+};
+
 static int __jc_json_str(jc_json_t *js, char *p);
 static size_t __jc_json_val_size(jc_val_t *val);
 static size_t __jc_json_size(jc_json_t *js);
@@ -100,6 +120,16 @@ static void jc_kv_insert(jc_json_t *js, jc_key_t *key, jc_val_t *val)
     js->vals[i] = val;
     ++js->size;
     --js->free;
+}
+
+size_t jc_array_size(jc_array_t *jarray)
+{
+    return jarray->size;
+}
+
+jc_val_t *jc_array_get(jc_array_t *jarray, size_t idx)
+{
+    return idx >= jarray->size ? NULL : jarray->value[idx];
 }
 
 static int jc_array_incr(jc_array_t *arr, jc_pool_t *pool)
@@ -402,7 +432,7 @@ static size_t __jc_json_val_size(jc_val_t *val)
             break;
         case JC_NUM:
             /* use snprintf to calc the size of double */
-            s += snprintf(f, 511, "%.0lf", val->data.n);
+            s += snprintf(f, 511, "%.03lg", val->data.n);
             break;
         case JC_STR:
             s += val->data.s->size + sizeof("\"\"") - 1;
@@ -818,7 +848,11 @@ static int __jc_json_parse_array(jc_json_t *js, const char *p, jc_val_t **val)
     for (n = 0; p[n] != '\0'; ++n) {
         switch (state) {
             case JC_ARR_START:
-                state = JC_ARR_VAL;
+                if (p[n+1] == ']') {
+                    state = JC_ARR_END;
+                } else {
+                    state = JC_ARR_VAL;
+                }
                 break;
                 
             case JC_ARR_VAL:

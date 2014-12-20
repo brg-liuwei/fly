@@ -29,6 +29,8 @@ struct fy_info_t {
     char         *recv_buf_wpos;
     char         *recv_buf_end;
 
+    int           recv_state;
+
     jc_json_t    *json_rc;
 
     void        (*cln)(struct fy_info_t *);

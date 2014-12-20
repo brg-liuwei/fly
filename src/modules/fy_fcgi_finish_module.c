@@ -43,6 +43,7 @@ static int fy_fcgi_finish_task_submit(fy_task *task, void *request)
     if (r->cln != NULL) {
         r->cln(r);
     }
+
     fy_pool_destroy(r->pool);
     return 0;
 }
