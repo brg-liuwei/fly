@@ -6,5 +6,5 @@ Compile
 =======
     (1) CMake .
     (2) make
-bin/ad_fly can be generated
+bin/fly can be generated
 
