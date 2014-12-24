@@ -4,11 +4,14 @@
 #include "fy_connection.h"
 #include "fy_logger.h"
 #include "fy_util.h"
+#include "fy_conf.h"
 
 #include <fastcgi.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
@@ -18,8 +21,15 @@ extern size_t fy_pagesize;
 extern fy_task *null_task_list[];
 extern fy_task  null_task;
 
+static const char *fy_unix_path;
+static int fy_unix_fd;
+
 static int fy_fcgi_accept_module_init(fy_module *, void *);
+static int fy_fcgi_accept_module_conf(fy_module *, void *);
 static int fy_fcgi_accept_task_submit(fy_task *, void *);
+
+static int fy_fcgi_accept_module_init_tcp_listener(fy_module *, void *ptr);
+static int fy_fcgi_accept_module_init_unix_listener(fy_module *, void *ptr);
 
 static fy_task fy_fcgi_accept_task = {
     FY_TASK_INIT("fy_fcgi_accept_task", null_task_list, fy_fcgi_accept_task_submit)
@@ -31,9 +41,10 @@ static fy_task *fy_fcgi_accept_tasks[] = {
 };
 
 fy_module fy_fcgi_accept_module = {
-    FY_MODULE_INIT("fy_fcgi_accept_module", 
+    FY_MODULE_INIT("fy_fcgi_accept_module",
             fy_fcgi_accept_tasks,
-            fy_fcgi_accept_module_init, NULL)
+            fy_fcgi_accept_module_init,
+            fy_fcgi_accept_module_conf)
 };
 
 static int fy_fcgi_accept_task_submit(fy_task *task, void *request)
@@ -43,9 +54,12 @@ static int fy_fcgi_accept_task_submit(fy_task *task, void *request)
 
 static int fy_fcgi_accept_read_handler(fy_event *ev, void *ptr)
 {
-    fy_pool_t     *pool;
-    fy_request    *request;
-    FCGX_Request  *r;
+    fy_pool_t      *pool;
+    fy_request     *request;
+    FCGX_Request   *r;
+    fy_connection  *c;
+
+    c = ev->conn;
 
     /* pool for fy_request */
     if ((pool = fy_pool_create(getpagesize())) == NULL) {
@@ -57,7 +71,7 @@ static int fy_fcgi_accept_read_handler(fy_event *ev, void *ptr)
         fy_log_error("fy_fcgi_accept_module::read_handler::alloc r error\n");
         goto free1;
     }
-    if (FCGX_InitRequest(r, FCGI_LISTENSOCK_FILENO, 0) != 0) {
+    if (FCGX_InitRequest(r, c->fd, 0) != 0) {
         fy_log_error("fy_fcgi_accept_module::read_handler::FCGX_InitRequest error\n");
         goto free1;
     }
@@ -102,25 +116,47 @@ free1:
     return -1;
 }
 
+static int fy_fcgi_accept_module_conf(fy_module *m, void *ptr)
+{
+    if ((fy_unix_path = fy_conf_get_param("accept_unix_path")) == NULL) {
+        fy_log_error("accept_unix_path NULL\n");
+        return -1;
+    }
+    return 0;
+}
+
 static int fy_fcgi_accept_module_init(fy_module *module, void *ptr)
 {
-    fy_connection   *conn;
+    int rc;
 
     FCGX_Init();
-
     module->pool = fy_mem_pool;
+
     if (module->pool == NULL) {
         return -1;
     }
+
+    rc = fy_fcgi_accept_module_init_tcp_listener(module, ptr);
+    if (rc != 0) {
+        return rc;
+    }
+    rc = fy_fcgi_accept_module_init_unix_listener(module, ptr);
+    return rc;
+}
+
+static int fy_fcgi_accept_module_init_tcp_listener(fy_module *module, void *ptr)
+{
+    fy_connection   *conn;
 
     if ((conn = (fy_connection *)fy_pool_alloc(module->pool, sizeof(fy_connection))) == NULL) {
         fy_log_error("fy_fcgi_accept_module alloc conn error\n");
         return -1;
     }
+
     conn->conn_type = CONN_TCP_LSN;
     conn->fd = FCGI_LISTENSOCK_FILENO;
-    conn->socklen = sizeof(struct sockaddr);
-    getsockname(conn->fd, &conn->addr, &conn->socklen);
+    conn->socklen = sizeof(struct sockaddr_in);
+    getsockname(conn->fd, (struct sockaddr *)&conn->addr, &conn->socklen);
     gethostname(conn->addr_text, ADDRTEXTLEN);
     conn->pool = NULL;
     conn->revent = (fy_event *)fy_pool_alloc(module->pool, sizeof(fy_event));
@@ -144,6 +180,57 @@ static int fy_fcgi_accept_module_init(fy_module *module, void *ptr)
     fy_log_debug("fy_fcgi_accept_init hostname:%s\n", conn->addr_text);
     fy_log_debug("fy_fcgi_accept_init sin_addr:%s\n", 
             inet_ntoa(((struct sockaddr_in *)&conn->addr)->sin_addr));
+#endif
+
+    return fy_event_add(conn, ptr, FY_EVIN);
+}
+
+static int fy_fcgi_accept_module_init_unix_listener(fy_module *module, void *ptr)
+{
+    fy_connection   *conn;
+
+    if ((conn = (fy_connection *)fy_pool_alloc(module->pool, sizeof(fy_connection))) == NULL) {
+        fy_log_error("fy_fcgi_accept_module alloc conn error\n");
+        return -1;
+    }
+
+    if ((fy_unix_fd = FCGX_OpenSocket(fy_unix_path, 4096)) == -1) {
+        fy_log_error("fy_fcgi_accept_module open domain socket error\n");
+        return -1;
+    }
+
+    if (chmod(fy_unix_path, 0666) != 0) {
+        fy_log_error("fy_fcgi_accept_module %s chmod error: %d\n", fy_unix_path, errno);
+        return -1;
+    }
+
+    conn->conn_type = CONN_UNIX_LSN;
+    conn->fd = fy_unix_fd;
+    conn->socklen = sizeof(struct sockaddr_un);
+    getsockname(conn->fd, (struct sockaddr *)&conn->addr, &conn->socklen);
+    gethostname(conn->addr_text, ADDRTEXTLEN);
+    conn->pool = NULL;
+    conn->revent = (fy_event *)fy_pool_alloc(module->pool, sizeof(fy_event));
+    conn->wevent = (fy_event *)fy_pool_alloc(module->pool, sizeof(fy_event));
+    if (conn->revent == NULL || conn->wevent == NULL) {
+        fy_log_error("fy_fcgi_accept_module alloc event error\n");
+        return -1;
+    }
+
+    conn->revent->conn = conn;
+    conn->revent->data = NULL;
+    conn->revent->handler = fy_fcgi_accept_read_handler;
+
+    conn->wevent->conn = conn;
+    conn->wevent->data = NULL;
+    conn->wevent->handler = NULL;
+
+    module->data = conn;
+
+#ifdef FY_DEBUG
+    fy_log_debug("fy_fcgi_accept_init hostname:%s\n", conn->addr_text);
+    fy_log_debug("fy_fcgi_accept_init sin_addr:%s\n", 
+            ((struct sockaddr_un *)&conn->addr)->sun_path);
 #endif
 
     return fy_event_add(conn, ptr, FY_EVIN);

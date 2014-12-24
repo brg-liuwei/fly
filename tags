@@ -4,7 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-ADDRTEXTLEN	src/fy_connection.h	23;"	d
+ADDRTEXTLEN	src/fy_connection.h	24;"	d
 CONN_TCP_CLI	src/fy_connection.h	/^    CONN_TCP_CLI,$/;"	e	enum:__fy_conn_type
 CONN_TCP_LSN	src/fy_connection.h	/^    CONN_TCP_LSN,$/;"	e	enum:__fy_conn_type
 CONN_TCP_SRV	src/fy_connection.h	/^    CONN_TCP_SRV,$/;"	e	enum:__fy_conn_type
@@ -116,8 +116,8 @@ __jc_json_value	src/json4c/jc_type.c	/^static int __jc_json_value(jc_val_t *val,
 __jc_type_t	src/json4c/jc_type.h	/^typedef enum __jc_type_t {$/;"	g
 a	src/fy_md5.h	/^    MD5_u32plus a, b, c, d;$/;"	m	struct:__anon1
 a	src/json4c/jc_type.h	/^        jc_array_t   *a;$/;"	m	union:jc_val_s::__anon6
-addr	src/fy_connection.h	/^    struct sockaddr   addr;$/;"	m	struct:fy_connection_t	typeref:struct:fy_connection_t::sockaddr
-addr_text	src/fy_connection.h	/^    char              addr_text[ADDRTEXTLEN];$/;"	m	struct:fy_connection_t
+addr	src/fy_connection.h	/^    struct sockaddr_un  addr;$/;"	m	struct:fy_connection_t	typeref:struct:fy_connection_t::sockaddr_un
+addr_text	src/fy_connection.h	/^    char                addr_text[ADDRTEXTLEN];$/;"	m	struct:fy_connection_t
 b	src/fy_md5.h	/^    MD5_u32plus a, b, c, d;$/;"	m	struct:__anon1
 b	src/json4c/jc_type.h	/^        jc_bool_t     b;$/;"	m	union:jc_val_s::__anon6
 before_poll	src/fy_event.h	/^    void (*before_poll)(fy_event_loop *);$/;"	m	struct:fy_event_loop_t
@@ -132,7 +132,7 @@ cln	src/fy_info.h	/^    void        (*cln)(struct fy_info_t *);$/;"	m	struct:fy_
 cln	src/json4c/jc_alloc.c	/^    jc_pool_cln_t       cln;$/;"	m	struct:jc_pool_s	file:
 compeleted	src/fy_framework.h	/^    compeleted$/;"	e	enum:fy_task_status
 conn	src/fy_event.h	/^    void    *conn;$/;"	m	struct:fy_event_t
-conn_type	src/fy_connection.h	/^    fy_conn_type      conn_type;$/;"	m	struct:fy_connection_t
+conn_type	src/fy_connection.h	/^    fy_conn_type        conn_type;$/;"	m	struct:fy_connection_t
 conns	src/fy_connection.h	/^    fy_connection    *conns;$/;"	m	struct:fy_conn_pool_t
 cur	src/fy_time.h	/^    time_t   cur;$/;"	m	struct:fy_time_t
 current	src/fy_alloc.c	/^    fy_pool_t          *current;$/;"	m	struct:fy_pool_s	file:
@@ -140,7 +140,7 @@ current	src/fy_info.h	/^    int64_t       current;$/;"	m	struct:fy_info_t
 current	src/json4c/jc_alloc.c	/^    jc_pool_t          *current;$/;"	m	struct:jc_pool_s	file:
 d	src/fy_md5.h	/^    MD5_u32plus a, b, c, d;$/;"	m	struct:__anon1
 data	src/fy_alloc.c	/^    fy_pool_data_t      data;$/;"	m	struct:fy_pool_s	file:
-data	src/fy_connection.h	/^    void             *data;$/;"	m	struct:fy_connection_t
+data	src/fy_connection.h	/^    void               *data;$/;"	m	struct:fy_connection_t
 data	src/fy_event.h	/^    void    *data;$/;"	m	struct:fy_event_t
 data	src/fy_framework.h	/^    void                  *data;$/;"	m	struct:fy_module_t
 data	src/json4c/jc_alloc.c	/^    jc_pool_data_t      data;$/;"	m	struct:jc_pool_s	file:
@@ -154,7 +154,7 @@ event_heap	src/fy_event.h	/^    fy_event    **event_heap;$/;"	m	struct:fy_event_
 fail	src/fy_alloc.c	/^    short        fail;$/;"	m	struct:fy_pool_data_s	file:
 fail	src/json4c/jc_alloc.c	/^    short        fail;$/;"	m	struct:jc_pool_data_s	file:
 fcgi_request	src/fy_framework.h	/^    FCGX_Request  *fcgi_request;$/;"	m	struct:fy_request_t
-fd	src/fy_connection.h	/^    int               fd;$/;"	m	struct:fy_connection_t
+fd	src/fy_connection.h	/^    int                 fd;$/;"	m	struct:fy_connection_t
 free	src/json4c/jc_type.c	/^    size_t       free;     \/* free size of keys and values *\/$/;"	m	struct:jc_json_s	file:
 free	src/json4c/jc_type.c	/^    size_t      free;     \/* free size of array *\/$/;"	m	struct:jc_array_s	file:
 free	src/json4c/jc_type.c	/^    size_t   free;     \/* free space *\/$/;"	m	struct:jc_str_s	file:
@@ -236,7 +236,10 @@ fy_event_mod	src/fy_event.c	/^int fy_event_mod(void *conn, void *loop, __uint32_
 fy_event_regist	src/fy_event.c	/^static int fy_event_regist(void *conn, void *loop, __uint32_t events, int op)$/;"	f	file:
 fy_event_t	src/fy_event.h	/^struct fy_event_t {$/;"	s
 fy_fcgi_accept_module	src/modules/fy_fcgi_accept_module.c	/^fy_module fy_fcgi_accept_module = {$/;"	v
+fy_fcgi_accept_module_conf	src/modules/fy_fcgi_accept_module.c	/^static int fy_fcgi_accept_module_conf(fy_module *m, void *ptr)$/;"	f	file:
 fy_fcgi_accept_module_init	src/modules/fy_fcgi_accept_module.c	/^static int fy_fcgi_accept_module_init(fy_module *module, void *ptr)$/;"	f	file:
+fy_fcgi_accept_module_init_tcp_listener	src/modules/fy_fcgi_accept_module.c	/^static int fy_fcgi_accept_module_init_tcp_listener(fy_module *module, void *ptr)$/;"	f	file:
+fy_fcgi_accept_module_init_unix_listener	src/modules/fy_fcgi_accept_module.c	/^static int fy_fcgi_accept_module_init_unix_listener(fy_module *module, void *ptr)$/;"	f	file:
 fy_fcgi_accept_read_handler	src/modules/fy_fcgi_accept_module.c	/^static int fy_fcgi_accept_read_handler(fy_event *ev, void *ptr)$/;"	f	file:
 fy_fcgi_accept_task	src/modules/fy_fcgi_accept_module.c	/^static fy_task fy_fcgi_accept_task = {$/;"	v	file:
 fy_fcgi_accept_task_submit	src/modules/fy_fcgi_accept_module.c	/^static int fy_fcgi_accept_task_submit(fy_task *task, void *request)$/;"	f	file:
@@ -361,6 +364,8 @@ fy_time_t	src/fy_time.h	/^struct fy_time_t {$/;"	s
 fy_time_update	src/fy_time.c	/^void fy_time_update()$/;"	f
 fy_time_update_signal	src/fy_time.c	/^static void fy_time_update_signal(int signum)$/;"	f	file:
 fy_trylock	src/fy_time.c	/^static int fy_trylock(int32_t *lock)$/;"	f	file:
+fy_unix_fd	src/modules/fy_fcgi_accept_module.c	/^static int fy_unix_fd;$/;"	v	file:
+fy_unix_path	src/modules/fy_fcgi_accept_module.c	/^static const char *fy_unix_path;$/;"	v	file:
 fy_unlock	src/fy_time.c	/^static int fy_unlock(int32_t *lock)$/;"	f	file:
 fy_url_decode	src/fy_util.c	/^size_t fy_url_decode(const char *e, size_t e_size, char *d, size_t d_size)$/;"	f
 fy_util_init	src/fy_util.c	/^static int fy_util_init = 0;$/;"	v	file:
@@ -440,13 +445,13 @@ large	src/json4c/jc_alloc.c	/^    jc_pool_large_t    *large;$/;"	m	struct:jc_poo
 last	src/fy_alloc.c	/^    char        *last;      \/* last position of alloced data *\/$/;"	m	struct:fy_pool_data_s	file:
 last	src/json4c/jc_alloc.c	/^    char        *last;      \/* last position of alloced data *\/$/;"	m	struct:jc_pool_data_s	file:
 lo	src/fy_md5.h	/^    MD5_u32plus lo, hi;$/;"	m	struct:__anon1
-load	src/fy_connection.h	/^    size_t            load;$/;"	m	struct:fy_connection_t
+load	src/fy_connection.h	/^    size_t              load;$/;"	m	struct:fy_connection_t
 magic	src/modules/fy_api_adidx_module.c	/^    int32_t magic;$/;"	m	struct:__anon7	file:
 magic	src/modules/fy_api_adpos_module.c	/^    int32_t magic;$/;"	m	struct:__anon8	file:
 main	src/fy_framework.c	/^int main(int argc, char *argv[])$/;"	f
 max	src/fy_alloc.c	/^    size_t              max;     \/* max data can alloc from pool *\/$/;"	m	struct:fy_pool_s	file:
 max	src/json4c/jc_alloc.c	/^    size_t              max;     \/* max data can alloc from pool *\/$/;"	m	struct:jc_pool_s	file:
-max_load	src/fy_connection.h	/^    size_t            max_load;$/;"	m	struct:fy_connection_t
+max_load	src/fy_connection.h	/^    size_t              max_load;$/;"	m	struct:fy_connection_t
 module	src/fy_framework.h	/^    fy_module        *module;$/;"	m	struct:fy_task_t
 module	src/fy_framework.h	/^    fy_module     *module;$/;"	m	struct:fy_request_t
 module_conf	src/fy_framework.h	/^    int (*module_conf)(fy_module *, void *);$/;"	m	struct:fy_module_t
@@ -456,7 +461,7 @@ msec	src/fy_time.h	/^    time_t   msec;$/;"	m	struct:fy_time_t
 n	src/json4c/jc_type.h	/^        jc_num_t      n;$/;"	m	union:jc_val_s::__anon6
 next	src/fy_alloc.c	/^    fy_pool_large_t   *next;$/;"	m	struct:fy_pool_large_s	file:
 next	src/fy_alloc.c	/^    fy_pool_t   *next;$/;"	m	struct:fy_pool_data_s	file:
-next	src/fy_connection.h	/^    fy_connection    *next;$/;"	m	struct:fy_connection_t
+next	src/fy_connection.h	/^    fy_connection      *next;$/;"	m	struct:fy_connection_t
 next	src/fy_framework.h	/^    struct fy_module_t    *next;$/;"	m	struct:fy_module_t	typeref:struct:fy_module_t::fy_module_t
 next	src/json4c/jc_alloc.c	/^    jc_pool_large_t   *next;$/;"	m	struct:jc_pool_large_s	file:
 next	src/json4c/jc_alloc.c	/^    jc_pool_t   *next;$/;"	m	struct:jc_pool_data_s	file:
@@ -467,12 +472,12 @@ poll_events	src/fy_event.h	/^    void         *poll_events;$/;"	m	struct:fy_even
 poll_fd	src/fy_event.h	/^    int           poll_fd;$/;"	m	struct:fy_event_loop_t
 poll_size	src/fy_event.h	/^    size_t        poll_size;$/;"	m	struct:fy_event_loop_t
 poll_timeout	src/fy_event.h	/^    int           poll_timeout;$/;"	m	struct:fy_event_loop_t
-pool	src/fy_connection.h	/^    fy_conn_pool     *pool;$/;"	m	struct:fy_connection_t
+pool	src/fy_connection.h	/^    fy_conn_pool       *pool;$/;"	m	struct:fy_connection_t
 pool	src/fy_framework.h	/^    fy_pool_t             *pool;$/;"	m	struct:fy_module_t
 pool	src/fy_framework.h	/^    fy_pool_t     *pool;$/;"	m	struct:fy_request_t
 pool	src/json4c/jc_type.c	/^    jc_pool_t   *pool;     \/* mem pool of json *\/$/;"	m	struct:jc_json_s	file:
-port	src/fy_connection.h	/^    int               port;$/;"	m	struct:fy_connection_t
-prev	src/fy_connection.h	/^    fy_connection   **prev;$/;"	m	struct:fy_connection_t
+port	src/fy_connection.h	/^    int                 port;$/;"	m	struct:fy_connection_t
+prev	src/fy_connection.h	/^    fy_connection     **prev;$/;"	m	struct:fy_connection_t
 ptr	src/fy_alloc.c	/^    void              *ptr;$/;"	m	struct:fy_pool_large_s	file:
 ptr	src/json4c/jc_alloc.c	/^    void              *ptr;$/;"	m	struct:jc_pool_large_s	file:
 ready	src/fy_framework.h	/^    ready = 0,$/;"	e	enum:fy_task_status
@@ -482,9 +487,9 @@ recv_buf_rpos	src/fy_info.h	/^    char         *recv_buf_rpos;$/;"	m	struct:fy_i
 recv_buf_wpos	src/fy_info.h	/^    char         *recv_buf_wpos;$/;"	m	struct:fy_info_t
 recv_state	src/fy_info.h	/^    int           recv_state;$/;"	m	struct:fy_info_t
 req_type	src/fy_info.h	/^    int           req_type;$/;"	m	struct:fy_info_t
-request	src/fy_connection.h	/^    void             *request;$/;"	m	struct:fy_connection_t
+request	src/fy_connection.h	/^    void               *request;$/;"	m	struct:fy_connection_t
 res_type	src/fy_info.h	/^    int           res_type;$/;"	m	struct:fy_info_t
-revent	src/fy_connection.h	/^    fy_event         *revent;$/;"	m	struct:fy_connection_t
+revent	src/fy_connection.h	/^    fy_event           *revent;$/;"	m	struct:fy_connection_t
 revents	src/fy_connection.h	/^    fy_event         *revents;$/;"	m	struct:fy_conn_pool_t
 running	src/fy_framework.h	/^    running,$/;"	e	enum:fy_task_status
 s	src/json4c/jc_type.h	/^        jc_str_t     *s;$/;"	m	union:jc_val_s::__anon6
@@ -506,7 +511,7 @@ size	src/modules/fy_api_adpos_module.c	/^    int32_t size;$/;"	m	struct:__anon8	
 size_t	src/fy_alloc.h	/^typedef unsigned long size_t;$/;"	t
 size_t	src/json4c/jc_alloc.h	/^typedef unsigned long size_t;$/;"	t
 slot	src/fy_time.h	/^    size_t   slot;$/;"	m	struct:fy_time_t
-socklen	src/fy_connection.h	/^    socklen_t         socklen;$/;"	m	struct:fy_connection_t
+socklen	src/fy_connection.h	/^    socklen_t           socklen;$/;"	m	struct:fy_connection_t
 stop	src/fy_event.h	/^    int           stop;$/;"	m	struct:fy_event_loop_t
 sub_task_size	src/fy_framework.h	/^    size_t            sub_task_size;$/;"	m	struct:fy_task_t
 sub_tasks	src/fy_framework.h	/^    fy_task         **sub_tasks;$/;"	m	struct:fy_task_t
@@ -520,5 +525,5 @@ type	src/json4c/jc_type.h	/^    jc_type_t         type;$/;"	m	struct:jc_val_s
 vals	src/json4c/jc_type.c	/^    jc_val_t   **vals;     \/* values of json *\/$/;"	m	struct:jc_json_s	file:
 value	src/json4c/jc_type.c	/^    jc_val_t  **value;$/;"	m	struct:jc_array_s	file:
 version	src/modules/fy_api_adpos_module.c	/^    int32_t version;$/;"	m	struct:__anon8	file:
-wevent	src/fy_connection.h	/^    fy_event         *wevent;$/;"	m	struct:fy_connection_t
+wevent	src/fy_connection.h	/^    fy_event           *wevent;$/;"	m	struct:fy_connection_t
 wevents	src/fy_connection.h	/^    fy_event         *wevents;$/;"	m	struct:fy_conn_pool_t

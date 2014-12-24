@@ -333,7 +333,6 @@ static int fy_adpos_task_submit(fy_task *task, void *request)
     }
 
     api_version = fy_atoi(fy_fcgi_get_param("API_VERSION", r));
-    fy_log_error("poslist adpos api_version error: %d\n", api_version);
 
     if (api_version != 5 && api_version != 6) {
         fy_log_error("adpos api_version error: %d\n", api_version);

@@ -6,6 +6,7 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/un.h>
 
 typedef struct fy_conn_pool_t fy_conn_pool;
 typedef struct fy_connection_t fy_connection;
@@ -23,25 +24,25 @@ typedef enum __fy_conn_type {
 #define ADDRTEXTLEN 256
 
 struct fy_connection_t {
-    fy_conn_type      conn_type;
-    int               fd;
-    struct sockaddr   addr;
-    socklen_t         socklen;
-    char              addr_text[ADDRTEXTLEN];
-    int               port;
+    fy_conn_type        conn_type;
+    int                 fd;
+    struct sockaddr_un  addr;
+    socklen_t           socklen;
+    char                addr_text[ADDRTEXTLEN];
+    int                 port;
 
-    fy_event         *revent;
-    fy_event         *wevent;
+    fy_event           *revent;
+    fy_event           *wevent;
 
-    fy_conn_pool     *pool;
-    size_t            load;
-    size_t            max_load;
+    fy_conn_pool       *pool;
+    size_t              load;
+    size_t              max_load;
 
-    void             *request;
-    void             *data;
+    void               *request;
+    void               *data;
 
-    fy_connection    *next;
-    fy_connection   **prev;
+    fy_connection      *next;
+    fy_connection     **prev;
 };
 
 struct fy_conn_pool_t {
