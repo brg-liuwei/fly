@@ -359,6 +359,7 @@ fy_time	src/fy_time.h	/^static volatile struct fy_time_t fy_time;$/;"	v	typeref:
 fy_time_fmt	src/fy_time.h	/^static const char fy_time_fmt[] = "%04d-%02d-%02d %02d:%02d:%02d %03ld ";$/;"	v
 fy_time_init	src/fy_time.c	/^void fy_time_init()$/;"	f
 fy_time_lock	src/fy_time.h	/^static int32_t fy_time_lock;$/;"	v
+fy_time_need_update	src/fy_time.c	/^static int fy_time_need_update = 0;$/;"	v	file:
 fy_time_str	src/fy_time.h	/^static char fy_time_str[FY_TIME_SLOTS][FY_TIME_SIZE];$/;"	v
 fy_time_t	src/fy_time.h	/^struct fy_time_t {$/;"	s
 fy_time_update	src/fy_time.c	/^void fy_time_update()$/;"	f

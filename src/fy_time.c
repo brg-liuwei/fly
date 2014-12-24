@@ -4,6 +4,8 @@
 #include <signal.h>
 #include <unistd.h>
 
+static int fy_time_need_update = 0;
+
 static int fy_trylock(int32_t *lock)
 {
     /* lock == 0: freed; lock == 1: locked */
@@ -21,7 +23,7 @@ static int fy_unlock(int32_t *lock)
 static void fy_time_update_signal(int signum)
 {
     if (signum == SIGALRM) {
-        fy_time_update();
+        fy_time_need_update = 1;
         alarm(1);
     }
 }
@@ -33,6 +35,7 @@ void fy_time_init()
     if (fy_time_initialized == 0) {
         fy_time_lock = 0;
         fy_time_initialized = 1;
+        fy_time_need_update = 1;
         fy_time_update();
         signal(SIGALRM, fy_time_update_signal);
         alarm(1);
@@ -45,6 +48,12 @@ void fy_time_update()
     time_t          msec;
     struct tm      *ptm, buf;
     struct timeval  tv;
+
+    if (fy_time_need_update == 0) {
+        return;
+    }
+
+    fy_time_need_update = 0;
 
     if (fy_trylock(&fy_time_lock) != 0) {
         return;
