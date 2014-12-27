@@ -44,10 +44,10 @@ JC_ARR_END	src/json4c/jc_type.c	/^    JC_ARR_END$/;"	e	enum:__anon3	file:
 JC_ARR_START	src/json4c/jc_type.c	/^    JC_ARR_START = 0,$/;"	e	enum:__anon3	file:
 JC_ARR_VAL	src/json4c/jc_type.c	/^    JC_ARR_VAL,$/;"	e	enum:__anon3	file:
 JC_BOOL	src/json4c/jc_type.h	/^    JC_BOOL = 0,$/;"	e	enum:__jc_type_t
-JC_INCSTEP	src/json4c/jc_type.c	9;"	d	file:
+JC_INCSTEP	src/json4c/jc_type.c	10;"	d	file:
 JC_JSON	src/json4c/jc_type.h	/^    JC_JSON,$/;"	e	enum:__jc_type_t
 JC_MEMALIGN	src/json4c/jc_alloc.h	17;"	d
-JC_MEMSIZE	src/json4c/jc_type.c	8;"	d	file:
+JC_MEMSIZE	src/json4c/jc_type.c	9;"	d	file:
 JC_NULL	src/json4c/jc_type.h	/^    JC_NULL$/;"	e	enum:__jc_type_t
 JC_NUM	src/json4c/jc_type.h	/^    JC_NUM,$/;"	e	enum:__jc_type_t
 JC_NUM_E_DIG	src/json4c/jc_type.c	/^    JC_NUM_E_DIG$/;"	e	enum:__anon2	file:
@@ -126,6 +126,7 @@ body	src/fy_md5.c	/^static const void *body(MD5_CTX *ctx, const void *data, unsi
 body	src/json4c/jc_type.c	/^    char     body[];   \/* str *\/$/;"	m	struct:jc_str_s	file:
 buffer	src/fy_md5.h	/^    unsigned char buffer[64];$/;"	m	struct:__anon1
 c	src/fy_md5.h	/^    MD5_u32plus a, b, c, d;$/;"	m	struct:__anon1
+ch2hex	src/json4c/jc_wchar.c	/^static int ch2hex(char ch)$/;"	f	file:
 cln	src/fy_alloc.c	/^    fy_pool_cln_t       cln;$/;"	m	struct:fy_pool_s	file:
 cln	src/fy_framework.h	/^    void         (*cln)(struct fy_request_t *);$/;"	m	struct:fy_request_t
 cln	src/fy_info.h	/^    void        (*cln)(struct fy_info_t *);$/;"	m	struct:fy_info_t
@@ -378,6 +379,7 @@ graph_tracker	src/fy_info.h	/^    char         *graph_tracker;$/;"	m	struct:fy_i
 handler	src/fy_event.h	/^    int (*handler)(struct fy_event_t *, void *);$/;"	m	struct:fy_event_t
 heap_size	src/fy_event.h	/^    size_t        heap_size;    \/* numbers of connections in poll *\/$/;"	m	struct:fy_event_loop_t
 hex2ch	src/fy_util.c	/^static char hex2ch[256][256];$/;"	v	file:
+hex_table	src/json4c/jc_wchar.c	/^static int hex_table[256];$/;"	v	file:
 hi	src/fy_md5.h	/^    MD5_u32plus lo, hi;$/;"	m	struct:__anon1
 info	src/fy_framework.h	/^    fy_info       *info;$/;"	m	struct:fy_request_t
 j	src/json4c/jc_type.h	/^        jc_json_t    *j;$/;"	m	union:jc_val_s::__anon6
@@ -439,6 +441,10 @@ jc_trans_array	src/json4c/jc_type.c	/^static int jc_trans_array(jc_json_t *js, i
 jc_type_t	src/json4c/jc_type.h	/^} jc_type_t;$/;"	t	typeref:enum:__jc_type_t
 jc_val_s	src/json4c/jc_type.h	/^struct jc_val_s {$/;"	s
 jc_val_t	src/json4c/jc_type.h	/^typedef struct jc_val_s      jc_val_t;$/;"	t	typeref:struct:jc_val_s
+jc_wc_init	src/json4c/jc_wchar.c	/^static int jc_wc_init(const char *unicode, char *chs)$/;"	f	file:
+jc_wctomb	src/json4c/jc_wchar.c	/^int jc_wctomb(const char *unicode, char *chs)$/;"	f
+jc_wctomb_func	src/json4c/jc_wchar.c	/^static int (*jc_wctomb_func)(const char *, char *) = jc_wc_init;$/;"	v	file:
+jc_wctomb_interal	src/json4c/jc_wchar.c	/^static int jc_wctomb_interal(const char *unicode, char *chs)$/;"	f	file:
 json_rc	src/fy_info.h	/^    jc_json_t    *json_rc;$/;"	m	struct:fy_info_t
 keys	src/json4c/jc_type.c	/^    jc_key_t   **keys;     \/* keys of json *\/$/;"	m	struct:jc_json_s	file:
 large	src/fy_alloc.c	/^    fy_pool_large_t    *large;$/;"	m	struct:fy_pool_s	file:

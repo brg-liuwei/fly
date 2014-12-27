@@ -91,7 +91,7 @@ static int fy_graph_task_submit(fy_task *task, void *request)
     graph_data = jc_json_create();
     jc_json_add_num(graph_data, "duration", fy_graph_duration);
     jc_json_add_str(graph_data, "tracker", fy_graph_tracker);
-    jc_json_add_str(graph_data, "id", "fy_graph_adid");
+    jc_json_add_str(graph_data, "id", fy_graph_adid);
     jc_json_add_str(graph_data, "image", fy_graph_addr);
 
     info->json_rc = jc_json_create();

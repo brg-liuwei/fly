@@ -56,10 +56,6 @@ void __fy_log_fmt(fy_log_type type, const char *file, size_t line, const char *f
     n += vsnprintf(content + n, FYLOGMAXLINE - n, fmt, ap);
     va_end(ap);
 
-    if (n >= FYLOGMAXLINE) {
-        n = FYLOGMAXLINE;
-    }
-
     switch (type) {
         case FY_LOG_DEBUG:
             log_fd = fy_debug_log_fd;
