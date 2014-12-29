@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 2.6)
 PROJECT (FLY)
 
-INCLUDE_DIRECTORIES (/usr/local/include /usr/local/fcgi/include /usr/local/mxml/include/)
+INCLUDE_DIRECTORIES (/usr/include /usr/local/include /usr/local/fcgi/include /usr/local/mxml/include/)
 
 SET (CMAKE_C_FLAGS -g)
 #ADD_DEFINITIONS(-g -std=c99)
