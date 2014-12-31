@@ -1254,3 +1254,17 @@ error:
     return NULL;
 }
 
+size_t jc_str_copy(void *dst, jc_str_t *s, size_t dst_n)
+{
+    if (dst_n > s->size) {
+        *((char *)dst + s->size) = '\0';
+    } else {
+        dst_n = s->size;
+    }
+    memcpy(dst, s->body, dst_n);
+    return s->size;
+}
+
+
+
+

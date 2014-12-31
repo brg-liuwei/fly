@@ -15,7 +15,8 @@ CONN_UNSET	src/fy_connection.h	/^    CONN_UNSET = 0,$/;"	e	enum:__fy_conn_type
 F	src/fy_md5.c	49;"	d	file:
 FLY_DEFAULT_CONF_FILE	src/fy_conf.h	7;"	d
 FYLOGMAXLINE	src/fy_logger.c	11;"	d	file:
-FY_BRW	src/fy_util.h	26;"	d
+FY_BRW	src/fy_util.c	165;"	d	file:
+FY_BRW	src/fy_util.c	195;"	d	file:
 FY_BUF_APPEND	src/modules/fy_http_lomark_module.c	253;"	d	file:
 FY_EVERR	src/fy_event.h	12;"	d
 FY_EVHUP	src/fy_event.h	13;"	d
@@ -24,9 +25,12 @@ FY_EVOUT	src/fy_event.h	11;"	d
 FY_LOG_DEBUG	src/fy_logger.h	/^    FY_LOG_DEBUG = 0,$/;"	e	enum:__fy_log_type
 FY_LOG_ERROR	src/fy_logger.h	/^    FY_LOG_ERROR,$/;"	e	enum:__fy_log_type
 FY_LOG_INFO	src/fy_logger.h	/^    FY_LOG_INFO,$/;"	e	enum:__fy_log_type
+FY_MAX_IDX_SERVER	src/modules/fy_api_adidx_module.c	55;"	d	file:
+FY_MAX_IP_LEN	src/modules/fy_api_adidx_module.c	56;"	d	file:
 FY_MEMALIGN	src/fy_alloc.h	17;"	d
 FY_MODULE_INIT	src/fy_framework.h	34;"	d
-FY_OS	src/fy_util.h	19;"	d
+FY_OS	src/fy_util.c	130;"	d	file:
+FY_OS	src/fy_util.c	154;"	d	file:
 FY_POOLMINSIZE	src/fy_alloc.c	13;"	d	file:
 FY_TASK_INIT	src/fy_framework.h	22;"	d
 FY_TIME_SIZE	src/fy_time.h	9;"	d
@@ -174,8 +178,8 @@ fy_adidx_hdr	src/modules/fy_api_adidx_module.c	/^} fy_adidx_hdr;$/;"	t	typeref:s
 fy_adidx_module_conf	src/modules/fy_api_adidx_module.c	/^static int fy_adidx_module_conf(fy_module *m, void *ptr)$/;"	f	file:
 fy_adidx_module_init	src/modules/fy_api_adidx_module.c	/^static int fy_adidx_module_init(fy_module *module, void *ev_loop)$/;"	f	file:
 fy_adidx_read_handler	src/modules/fy_api_adidx_module.c	/^static int fy_adidx_read_handler(fy_event *ev, void *request)$/;"	f	file:
-fy_adidx_server_addr	src/modules/fy_api_adidx_module.c	/^static const char *fy_adidx_server_addr;$/;"	v	file:
-fy_adidx_server_port	src/modules/fy_api_adidx_module.c	/^static int fy_adidx_server_port;$/;"	v	file:
+fy_adidx_server_addrs	src/modules/fy_api_adidx_module.c	/^static char fy_adidx_server_addrs[FY_MAX_IDX_SERVER][FY_MAX_IP_LEN];$/;"	v	file:
+fy_adidx_server_n	src/modules/fy_api_adidx_module.c	/^static int fy_adidx_server_n;$/;"	v	file:
 fy_adidx_task	src/modules/fy_api_adidx_module.c	/^static fy_task fy_adidx_task = {$/;"	v	file:
 fy_adidx_task_submit	src/modules/fy_api_adidx_module.c	/^static int fy_adidx_task_submit(fy_task *task, void *request)$/;"	f	file:
 fy_adidx_tasks	src/modules/fy_api_adidx_module.c	/^static fy_task *fy_adidx_tasks[] = {$/;"	v	file:
@@ -201,6 +205,13 @@ fy_api_adfilter_module	src/modules/fy_api_adfilter_module.c	/^fy_module fy_api_a
 fy_api_adfilter_uri	src/modules/fy_api_adfilter_module.c	/^static const char *fy_api_adfilter_uri;$/;"	v	file:
 fy_api_adidx_module	src/modules/fy_api_adidx_module.c	/^fy_module fy_api_adidx_module = {$/;"	v
 fy_api_adidx_uri	src/modules/fy_api_adidx_module.c	/^static const char *fy_api_adidx_uri;$/;"	v	file:
+fy_api_adlog_module	src/modules/fy_api_adlog_module.c	/^fy_module fy_api_adlog_module = {$/;"	v
+fy_api_adlog_module_conf	src/modules/fy_api_adlog_module.c	/^static int fy_api_adlog_module_conf(fy_module *m, void *ptr) {$/;"	f	file:
+fy_api_adlog_module_init	src/modules/fy_api_adlog_module.c	/^static int fy_api_adlog_module_init(fy_module *m, void *data) {$/;"	f	file:
+fy_api_adlog_task	src/modules/fy_api_adlog_module.c	/^static fy_task fy_api_adlog_task = {$/;"	v	file:
+fy_api_adlog_task_submit	src/modules/fy_api_adlog_module.c	/^static int fy_api_adlog_task_submit(fy_task *task, void *request)$/;"	f	file:
+fy_api_adlog_tasks	src/modules/fy_api_adlog_module.c	/^static fy_task *fy_api_adlog_tasks[] = {$/;"	v	file:
+fy_api_adlog_uri	src/modules/fy_api_adlog_module.c	/^static const char *fy_api_adlog_uri;$/;"	v	file:
 fy_api_adpos_module	src/modules/fy_api_adpos_module.c	/^fy_module fy_api_adpos_module = {$/;"	v
 fy_api_adpos_uri	src/modules/fy_api_adpos_module.c	/^static const char *fy_api_adpos_uri;$/;"	v	file:
 fy_atoi	src/fy_util.c	/^int fy_atoi(const char *ptr)$/;"	f
@@ -215,7 +226,7 @@ fy_conn_pool_t	src/fy_connection.h	/^struct fy_conn_pool_t {$/;"	s
 fy_conn_type	src/fy_connection.h	/^} fy_conn_type;$/;"	t	typeref:enum:__fy_conn_type
 fy_connection	src/fy_connection.h	/^typedef struct fy_connection_t fy_connection;$/;"	t	typeref:struct:fy_connection_t
 fy_connection_t	src/fy_connection.h	/^struct fy_connection_t {$/;"	s
-fy_cpymem	src/fy_util.h	17;"	d
+fy_cpymem	src/fy_util.h	21;"	d
 fy_create_conn_pool	src/fy_connection.c	/^fy_conn_pool *fy_create_conn_pool(fy_pool_t *mem_pool, size_t pool_size, size_t max_load)$/;"	f
 fy_create_event_loop	src/fy_event.c	/^fy_event_loop *fy_create_event_loop(fy_pool_t *pool, size_t poll_size)$/;"	f
 fy_create_non_blocking_socket	src/modules/fy_http_lomark_module.c	/^static int fy_create_non_blocking_socket(fy_connection *conn)$/;"	f	file:
@@ -261,6 +272,9 @@ fy_fcgi_layout_task_submit	src/modules/fy_fcgi_layout_module.c	/^static int fy_f
 fy_fcgi_layout_tasks	src/modules/fy_fcgi_layout_module.c	/^static fy_task *fy_fcgi_layout_tasks[] = {$/;"	v	file:
 fy_get_browser	src/fy_util.c	/^char *fy_get_browser(const char *p)$/;"	f
 fy_get_os	src/fy_util.c	/^char *fy_get_os(const char *p)$/;"	f
+fy_get_param_default	src/modules/fy_api_adlog_module.c	/^static const char *fy_get_param_default(fy_request *r, const char *key, const char *def_val)$/;"	f	file:
+fy_get_phone_type	src/modules/fy_api_adlog_module.c	/^static const char *fy_get_phone_type(fy_request *r)$/;"	f	file:
+fy_get_region	src/modules/fy_api_adlog_module.c	/^static const char *fy_get_region(fy_request *r)$/;"	f	file:
 fy_graph_addr	src/modules/fy_graph_module.c	/^static const char *fy_graph_addr;$/;"	v	file:
 fy_graph_adid	src/modules/fy_graph_module.c	/^static const char *fy_graph_adid;$/;"	v	file:
 fy_graph_duration	src/modules/fy_graph_module.c	/^static int fy_graph_duration;$/;"	v	file:
@@ -349,6 +363,7 @@ fy_request_create	src/fy_framework.c	/^fy_request *fy_request_create(fy_pool_t *
 fy_request_next_module	src/fy_framework.c	/^void fy_request_next_module(fy_request *r)$/;"	f
 fy_request_run	src/fy_framework.c	/^static void fy_request_run(fy_request *r)$/;"	f	file:
 fy_request_t	src/fy_framework.h	/^struct fy_request_t {$/;"	s
+fy_str_split	src/fy_util.c	/^int fy_str_split(const char *haystack, const char *split, char **array, int array_size, int elem_len)$/;"	f
 fy_submit_subtask	src/fy_framework.c	/^void fy_submit_subtask(fy_task *task, fy_request *r)$/;"	f
 fy_task	src/fy_framework.h	/^typedef struct fy_task_t fy_task;$/;"	t	typeref:struct:fy_task_t
 fy_task_display	src/fy_framework.c	/^static void fy_task_display(fy_task *task, size_t level)$/;"	f	file:
@@ -434,6 +449,7 @@ jc_pool_large_s	src/json4c/jc_alloc.c	/^struct jc_pool_large_s {$/;"	s	file:
 jc_pool_large_t	src/json4c/jc_alloc.h	/^typedef struct jc_pool_large_s jc_pool_large_t;$/;"	t	typeref:struct:jc_pool_large_s
 jc_pool_s	src/json4c/jc_alloc.c	/^struct jc_pool_s {$/;"	s	file:
 jc_pool_t	src/json4c/jc_alloc.h	/^typedef struct jc_pool_s       jc_pool_t;$/;"	t	typeref:struct:jc_pool_s
+jc_str_copy	src/json4c/jc_type.c	/^size_t jc_str_copy(void *dst, jc_str_t *s, size_t dst_n)$/;"	f
 jc_str_s	src/json4c/jc_type.c	/^struct jc_str_s {$/;"	s	file:
 jc_str_state_t	src/json4c/jc_type.c	/^} jc_str_state_t;$/;"	t	typeref:enum:__anon5	file:
 jc_str_t	src/json4c/jc_type.h	/^typedef struct jc_str_s      jc_str_t;$/;"	t	typeref:struct:jc_str_s
@@ -505,8 +521,8 @@ send_buf	src/fy_info.h	/^    char         *send_buf;$/;"	m	struct:fy_info_t
 send_buf_end	src/fy_info.h	/^    char         *send_buf_end;$/;"	m	struct:fy_info_t
 send_buf_rpos	src/fy_info.h	/^    char         *send_buf_rpos;$/;"	m	struct:fy_info_t
 send_buf_wpos	src/fy_info.h	/^    char         *send_buf_wpos;$/;"	m	struct:fy_info_t
-set_param	src/modules/fy_api_adidx_module.c	254;"	d	file:
-set_param	src/modules/fy_api_adidx_module.c	306;"	d	file:
+set_param	src/modules/fy_api_adidx_module.c	280;"	d	file:
+set_param	src/modules/fy_api_adidx_module.c	334;"	d	file:
 size	src/fy_alloc.c	/^    size_t             size;$/;"	m	struct:fy_pool_large_s	file:
 size	src/fy_connection.h	/^    size_t            size;$/;"	m	struct:fy_conn_pool_t
 size	src/json4c/jc_alloc.c	/^    size_t             size;$/;"	m	struct:jc_pool_large_s	file:

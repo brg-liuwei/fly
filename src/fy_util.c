@@ -126,6 +126,14 @@ char *fy_get_os(const char *p)
         return "";
     }
 
+#ifndef FY_OS
+#define FY_OS(haystack, needle, os) \
+    do { \
+        if (strstr(haystack, needle) != NULL) { \
+            return os; \
+        } \
+    } while (0)
+
     FY_OS(p, "Windows NT 6.2", "Windows8");
     FY_OS(p, "Windows NT 6.1", "Windows7");
     FY_OS(p, "Windows NT 6.0", "Vista");
@@ -142,6 +150,9 @@ char *fy_get_os(const char *p)
     FY_OS(p, "Google Web", "GoogleWebOS");
     FY_OS(p, "Linux", "Linux");
     return "";
+
+#undef FY_OS
+#endif
 }
 
 char *fy_get_browser(const char *p)
@@ -149,6 +160,14 @@ char *fy_get_browser(const char *p)
     if (p == NULL) {
         return "";
     }
+
+#ifndef FY_BRW
+#define FY_BRW(haystack, needle, browser) \
+    do { \
+        if (strstr(haystack, needle) != NULL) { \
+            return browser; \
+        } \
+    } while (0)
 
     FY_BRW(p, "360SE", "360SE");
     FY_BRW(p, "Chrome", "Chrome");
@@ -172,6 +191,9 @@ char *fy_get_browser(const char *p)
     FY_BRW(p, "Maxthon", "Maxthon");
     FY_BRW(p, "MyIE2", "MyIE2");
     return "";
+
+#undef FY_BRW
+#endif
 }
 
 char *fy_fcgi_get_param(const char *key, fy_request *r)
@@ -189,4 +211,40 @@ char *fy_fcgi_get_param(const char *key, fy_request *r)
     fy_log_debug("%s = %s\n", key, p);
 #endif
     return p;
+}
+
+int fy_str_split(const char *haystack, const char *split, char **array, int array_size, int elem_len)
+{
+    int          array_len;
+    char        *w;
+    size_t       v_len;
+    const char  *p, *pe;
+
+    assert(haystack != NULL);
+
+    p = haystack;
+    w = (char *)array;
+    for (array_len = 0;
+            array_len < array_size && p != NULL;
+            ++array_len, w += elem_len)
+    {
+        pe = strstr(p, split);
+        if (pe == NULL) {
+            v_len = strlen(p);
+            if (v_len >= elem_len) {
+                return -1;
+            }
+            memcpy(w, p, v_len);
+            w[v_len] = '\0';
+            return array_len + 1;
+        }
+        v_len = pe - p;
+        if (v_len >= elem_len) {
+            return -1;
+        }
+        memcpy(w, p, v_len);
+        w[v_len] = '\0';
+        p = pe + 1;
+    }
+    return array_len;
 }

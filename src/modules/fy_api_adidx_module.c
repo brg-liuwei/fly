@@ -51,35 +51,45 @@ static fy_event_loop *fy_adidx_event_loop;
 
 static fy_conn_pool *fy_adidx_conn_pool;
 static int fy_adidx_conn_pool_size;
-static const char *fy_adidx_server_addr;
-static int fy_adidx_server_port;
+
+#define FY_MAX_IDX_SERVER 128
+#define FY_MAX_IP_LEN sizeof("255.255.255.255:99999")
+static char fy_adidx_server_addrs[FY_MAX_IDX_SERVER][FY_MAX_IP_LEN];
+static int fy_adidx_server_n;
 
 static const char *fy_api_adidx_uri;
 
 static int fy_adidx_module_conf(fy_module *m, void *ptr)
 {
+    const char *servers;
+
     fy_adidx_conn_pool_size = fy_atoi(fy_conf_get_param("adidx_conn_pool_size"));
-    fy_adidx_server_addr = fy_conf_get_param("adidx_server_addr");
-    fy_adidx_server_port = fy_atoi(fy_conf_get_param("adidx_server_port"));
     fy_api_adidx_uri = fy_conf_get_param("adidx_api_uri");
-    if (fy_adidx_conn_pool_size == 0
-            || fy_adidx_server_addr == NULL
-            || fy_adidx_server_port == 0)
-    {
+
+    if (fy_adidx_conn_pool_size == 0) {
         fy_log_error("adidx conf error\n");
         return -1;
     }
-    return 0;
+
+    servers = fy_conf_get_param("adidx_server_addr");
+    if (servers == NULL) {
+        return -1;
+    }
+    fy_adidx_server_n = fy_str_split(servers, ",", 
+            (char **)fy_adidx_server_addrs, FY_MAX_IDX_SERVER, FY_MAX_IP_LEN);
+    return fy_adidx_server_n <= 0 ? -1 : 0;
 }
 
 static int fy_adidx_module_init(fy_module *module, void *ev_loop)
 {
-    int             i;
+    int             i, j, port;
+    char           *p;
+    const char     *addr;
     fy_connection  *conn;
 
     fy_adidx_event_loop = (fy_event_loop *)ev_loop;
     fy_adidx_conn_pool = fy_create_conn_pool(fy_mem_pool,
-            fy_adidx_conn_pool_size, 1);
+            fy_adidx_conn_pool_size * fy_adidx_server_n, 1);
 
     if (fy_adidx_conn_pool == NULL) {
         fy_log_error("fy_adidx_module create conn pool error\n");
@@ -87,18 +97,34 @@ static int fy_adidx_module_init(fy_module *module, void *ev_loop)
     }
 
     for (i = 0; i != fy_adidx_conn_pool_size; ++i) {
-        conn = fy_pop_connection(fy_adidx_conn_pool);
-        if (fy_create_nonblocking_conn(conn, 
-                    fy_adidx_server_addr, fy_adidx_server_port) == -1)
-        {
-            fy_log_error("fy_adidx_module: fy_create_nonblocking_conn errno: %d\n", errno);
-            return -1;
-        }
-        conn->revent->handler = fy_adidx_read_handler;
-        conn->wevent->handler = fy_adidx_conn_handler;
-        if (fy_event_add(conn, fy_adidx_event_loop, FY_EVOUT) == -1) {
-            fy_log_error("fy_adidx_module: fy_event_add errno: %d\n", errno);
-            return -1;
+        for (j = 0; j != fy_adidx_server_n; ++j) {
+
+            p = strstr(fy_adidx_server_addrs[j], ":");
+            if (p == NULL) {
+                fy_log_error("fy_adidx_server_addrs error: addr[%d]: %s\n", j, fy_adidx_server_addrs[j]);
+                return -1;
+            }
+            *p = '\0';
+            port = fy_atoi(p + 1);
+            if (port == 0) {
+                fy_log_error("port error: %s\n", p + 1);
+                return -1;
+            }
+            addr = fy_adidx_server_addrs[j];
+
+            conn = fy_pop_connection(fy_adidx_conn_pool);
+            if (fy_create_nonblocking_conn(conn, addr, port) == -1) {
+                fy_log_error("fy_adidx_module: fy_create_nonblocking_conn errno: %d\n", errno);
+                return -1;
+            }
+            *p = ':';
+
+            conn->revent->handler = fy_adidx_read_handler;
+            conn->wevent->handler = fy_adidx_conn_handler;
+            if (fy_event_add(conn, fy_adidx_event_loop, FY_EVOUT) == -1) {
+                fy_log_error("fy_adidx_module: fy_event_add errno: %d\n", errno);
+                return -1;
+            }
         }
     }
 
@@ -251,11 +277,13 @@ error:
 
 static int fy_adidx_write_ready(void *request)
 {
-#define set_param(param, key) do { \
+#define set_param(param, key, filter) do { \
     if ((val = fy_fcgi_get_param(param, r)) != NULL) { \
-        pw += snprintf(pw, pe - pw, "%s=%s&", key, val); \
-        if (pw >= pe) { \
-            goto error; \
+        if (strcasecmp(val, filter) != 0) { \
+            pw += snprintf(pw, pe - pw, "%s=%s&", key, val); \
+            if (pw >= pe) { \
+                goto error; \
+            } \
         } \
     } \
 } while (0)
@@ -273,9 +301,9 @@ static int fy_adidx_write_ready(void *request)
     pw = &params[0];
     pe = &params[4096];
 
-    set_param("ZONE", "zone");
-    set_param("REGION", "region");
-    set_param("POSQUERY", "query");
+    set_param("ZONE", "zone", "");
+    set_param("REGION", "region", "un");
+    set_param("POSQUERY", "query", "");
 
     n = pw - &params[0];
     

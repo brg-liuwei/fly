@@ -59,5 +59,11 @@ jc_val_t *jc_array_get(jc_array_t *jarray, size_t idx);
 const char *jc_json_str(jc_json_t *js);
 const char *jc_json_str_n(jc_json_t *js, size_t *len);
 
+/* json string function 
+ * copy *dst_n chars at max
+ * return length of s
+ * */
+size_t jc_str_copy(void *dst, jc_str_t *s, size_t dst_n);
+
 #endif
 

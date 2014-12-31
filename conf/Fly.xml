@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Global>
-    <debug_log_path>/var/log/api/fly_debug.log</debug_log_path>
-    <info_log_path>/var/log/api/fly_info.log</info_log_path>
-    <error_log_path>/var/log/api/fly_error.log</error_log_path>
+    <debug_log_path>fly_debug.log</debug_log_path>
+    <info_log_path>fly_info.log</info_log_path>
+    <error_log_path>fly_error.log</error_log_path>
     <poll_size>4096</poll_size>
 </Global>
 
@@ -21,11 +21,14 @@
 
 <fy_api_adidx_module>
     <adidx_conn_pool_size>256</adidx_conn_pool_size>
-    <adidx_server_addr>10.162.106.133</adidx_server_addr>
-    <!-- <adidx_server_addr>10.161.243.122</adidx_server_addr> -->
-    <adidx_server_port>7779</adidx_server_port>
+    <adidx_server_addr>10.162.106.133:7779</adidx_server_addr> <!-- qt-dw-master -->
+    <!-- <adidx_server_addr>10.161.243.122</adidx_server_addr> --> <!-- kv-store2 -->
     <adidx_api_uri>/api/ad/getad</adidx_api_uri>
 </fy_api_adidx_module>
+
+<fy_api_adlog_module>
+    <adlog_api_uri>/api/ad/getad</adlog_api_uri>
+</fy_api_adlog_module>
 
 <fy_api_adfilter_module>
     <adfilter_api_uri>/api/ad/getad</adfilter_api_uri>

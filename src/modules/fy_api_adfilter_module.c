@@ -97,7 +97,12 @@ static int fy_adfilter_task_submit(fy_task *task, void *request)
 
     new_json = jc_json_parse(jc_json_str(jval->data.j));
     jc_json_destroy(r->info->json_rc);
-    r->info->json_rc = new_json;
+    r->info->json_rc = jc_json_create();
+    jc_json_add_json(r->info->json_rc, "data", new_json);
+    new_json = r->info->json_rc;
+    jc_json_add_str(new_json, "errormsg", "ok");
+    jc_json_add_num(new_json, "errorno", 0);
+    jc_json_add_num(new_json, "expiredtime", fy_cur_sec() + 60);
 
 end:
     fy_request_next_module(r);

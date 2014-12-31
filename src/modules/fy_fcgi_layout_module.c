@@ -68,6 +68,7 @@ error:
             "Content-type: text/html\r\n"
             "Content-Length: %lu\r\n\r\n%s\r",
             output_n, output);
+    r->info->json_rc = err_js;
     fy_request_next_module(r);
     return 0;
 }

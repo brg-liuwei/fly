@@ -12,6 +12,7 @@ extern fy_module fy_api_adpos_module;
 extern fy_module fy_api_adidx_module;
 extern fy_module fy_api_adfilter_module;
 extern fy_module fy_fcgi_layout_module;
+extern fy_module fy_api_adlog_module;
 extern fy_module fy_fcgi_finish_module;
 
 fy_module *fy_modules[] = {
@@ -21,6 +22,7 @@ fy_module *fy_modules[] = {
     &fy_api_adidx_module,
     &fy_api_adfilter_module,
     &fy_fcgi_layout_module,
+    &fy_api_adlog_module,
     &fy_fcgi_finish_module,
     &null_module
 };
