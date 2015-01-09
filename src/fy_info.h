@@ -30,6 +30,7 @@ struct fy_info_t {
     char         *recv_buf_end;
 
     int           recv_state;
+    char*         delivery_adid;
 
     jc_json_t    *json_rc;
 

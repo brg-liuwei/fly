@@ -53,7 +53,7 @@ static int fy_adfilter_task_submit(fy_task *task, void *request)
 {
     int             randidx;
     size_t          size;
-    jc_val_t       *jval;
+    jc_val_t       *jval, *adid;
     jc_json_t      *new_json;
     jc_array_t     *jarray;
     fy_request     *r;
@@ -75,7 +75,6 @@ static int fy_adfilter_task_submit(fy_task *task, void *request)
     }
 
     if ((jval = jc_json_find(r->info->json_rc, "data")) == NULL) {
-        fy_log_error("cannot find data in json_str: %s\n", jc_json_str(r->info->json_rc));
         goto end;
     }
 
@@ -86,13 +85,26 @@ static int fy_adfilter_task_submit(fy_task *task, void *request)
     jarray = jval->data.a;
     size = jc_array_size(jarray);
     if (size == 0) {
+        jc_json_destroy(r->info->json_rc);
+        r->info->json_rc = NULL;
         goto end;
     }
 
     randidx = rand() % size;
     jval = jc_array_get(jarray, randidx);
     if (jval->type != JC_JSON) {
+        jc_json_destroy(r->info->json_rc);
+        r->info->json_rc = NULL;
         goto end;
+    }
+
+    if ((adid = jc_json_find(jval->data.j, "id")) != NULL) {
+        if (adid->type == JC_STR) {
+#define FYADHEADER "testad-"
+            r->info->delivery_adid = fy_pool_alloc(r->pool, 64);
+            memcpy(r->info->delivery_adid, FYADHEADER, sizeof(FYADHEADER) - 1);
+            jc_str_copy(r->info->delivery_adid + sizeof(FYADHEADER) - 1, adid->data.s, 64 - sizeof(FYADHEADER));
+        }
     }
 
     new_json = jc_json_parse(jc_json_str(jval->data.j));
@@ -103,6 +115,7 @@ static int fy_adfilter_task_submit(fy_task *task, void *request)
     jc_json_add_str(new_json, "errormsg", "ok");
     jc_json_add_num(new_json, "errorno", 0);
     jc_json_add_num(new_json, "expiredtime", fy_cur_sec() + 60);
+    fy_request_next_module(r);
 
 end:
     fy_request_next_module(r);

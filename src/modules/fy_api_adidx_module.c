@@ -53,7 +53,9 @@ static fy_conn_pool *fy_adidx_conn_pool;
 static int fy_adidx_conn_pool_size;
 
 #define FY_MAX_IDX_SERVER 128
+#ifndef FY_MAX_IP_LEN
 #define FY_MAX_IP_LEN sizeof("255.255.255.255:99999")
+#endif
 static char fy_adidx_server_addrs[FY_MAX_IDX_SERVER][FY_MAX_IP_LEN];
 static int fy_adidx_server_n;
 
@@ -79,7 +81,6 @@ static int fy_adidx_module_conf(fy_module *m, void *ptr)
             (char **)fy_adidx_server_addrs, FY_MAX_IDX_SERVER, FY_MAX_IP_LEN);
     return fy_adidx_server_n <= 0 ? -1 : 0;
 }
-
 static int fy_adidx_module_init(fy_module *module, void *ev_loop)
 {
     int             i, j, port;
@@ -400,6 +401,7 @@ static int fy_adidx_task_submit(fy_task *task, void *request)
 
     conn->request = r;
     conn->revent->handler = fy_adidx_read_handler;
+    r->info->recv_state = 0;
     conn->wevent->handler = fy_adidx_write_handler;
 
     fy_event_mod(conn, fy_adidx_event_loop, FY_EVOUT);
