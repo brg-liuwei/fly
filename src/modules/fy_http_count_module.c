@@ -171,6 +171,8 @@ static int fy_http_count_task_submit(fy_task *task, void *request)
     }
 
     conn = (fy_connection *)fy_pool_alloc(r->pool, sizeof(fy_connection));
+    conn->revent = (fy_event *)fy_pool_alloc(r->pool, sizeof(fy_event));
+    conn->wevent = (fy_event *)fy_pool_alloc(r->pool, sizeof(fy_event));
 
     if (fy_create_nonblocking_conn(conn, fy_http_count_server_ips[i], fy_http_count_server_ports[i]) == -1) {
         fy_request_next_module(r);
