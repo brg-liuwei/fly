@@ -172,16 +172,20 @@ static int fy_http_count_task_submit(fy_task *task, void *request)
 
     conn = (fy_connection *)fy_pool_alloc(r->pool, sizeof(fy_connection));
     conn->revent = (fy_event *)fy_pool_alloc(r->pool, sizeof(fy_event));
+    conn->revent->conn = conn;
     conn->wevent = (fy_event *)fy_pool_alloc(r->pool, sizeof(fy_event));
+    conn->wevent->conn = conn;
 
     if (fy_create_nonblocking_conn(conn, fy_http_count_server_ips[i], fy_http_count_server_ports[i]) == -1) {
         fy_request_next_module(r);
         return -1;
     }
+
+    conn->request = r;
     conn->revent->handler = fy_http_count_read_handler;
     conn->wevent->handler = fy_http_count_write_handler;
 
-    fy_event_mod(conn, fy_http_count_event_loop, FY_EVOUT | FY_EVIN);
+    fy_event_add(conn, fy_http_count_event_loop, FY_EVOUT);
     return 0;
 }
 
@@ -194,6 +198,7 @@ static int fy_http_count_read_handler(fy_event *ev, void *request)
         close(c->fd);
         c->fd = -1;
     }
+    fy_request_next_module(request);
     return 0;
 }
 

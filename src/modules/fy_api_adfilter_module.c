@@ -115,7 +115,6 @@ static int fy_adfilter_task_submit(fy_task *task, void *request)
     jc_json_add_str(new_json, "errormsg", "ok");
     jc_json_add_num(new_json, "errorno", 0);
     jc_json_add_num(new_json, "expiredtime", fy_cur_sec() + 60);
-    fy_request_next_module(r);
 
 end:
     fy_request_next_module(r);

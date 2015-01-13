@@ -234,4 +234,4 @@ static int fy_fcgi_accept_module_init_unix_listener(fy_module *module, void *ptr
 #endif
 
     return fy_event_add(conn, ptr, FY_EVIN);
-} 
+}
