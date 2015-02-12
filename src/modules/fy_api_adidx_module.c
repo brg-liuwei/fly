@@ -305,6 +305,7 @@ static int fy_adidx_write_ready(void *request)
     set_param("ZONE", "zone", "");
     set_param("REGION", "region", "un");
     set_param("POSQUERY", "query", "");
+    set_param("PHONETYPE", "phonetype", "");
 
     n = pw - &params[0];
     

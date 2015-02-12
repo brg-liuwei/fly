@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Global>
-    <debug_log_path>fly_debug.log</debug_log_path>
-    <info_log_path>fly_info.log</info_log_path>
-    <error_log_path>fly_error.log</error_log_path>
+    <debug_log_path>/var/log/api/fly_debug.log</debug_log_path>
+    <info_log_path>/var/log/api/fly_info.log</info_log_path>
+    <error_log_path>/var/log/api/fly_error.log</error_log_path>
     <poll_size>4096</poll_size>
 </Global>
 
@@ -12,15 +12,19 @@
 </fy_fcgi_accept_module>
 
 <fy_api_adpos_module>
-    <adpos_conn_pool_size>4</adpos_conn_pool_size>
-    <adpos_server_addr>xxx.xxx.xxx.xxx</adpos_server_addr>
-    <adpos_server_port>xxxx</adpos_server_port>
+    <adpos_conn_pool_size>8</adpos_conn_pool_size>
+    <adpos_server_addr>10.161.212.75</adpos_server_addr>
+    <!-- <adpos_server_addr>10.162.106.133</adpos_server_addr> -->
+    <!-- <adidx_server_addr>10.161.243.122</adidx_server_addr> -->
+    <adpos_server_port>7778</adpos_server_port>
     <adpos_api_uri>/api/ad/poslist</adpos_api_uri>
 </fy_api_adpos_module>
 
 <fy_api_adidx_module>
-    <adidx_conn_pool_size>32</adidx_conn_pool_size>
-    <adidx_server_addr>xxx.xxx.xxx.xxx:xxxx</adidx_server_addr>
+    <adidx_conn_pool_size>64</adidx_conn_pool_size>
+    <adidx_server_addr>10.161.212.75:7779</adidx_server_addr> <!-- adindex1 -->
+    <!-- <adidx_server_addr>10.162.106.133:7779</adidx_server_addr> qt-dw-master -->
+    <!-- <adidx_server_addr>10.161.243.122</adidx_server_addr> --> <!-- kv-store2 -->
     <adidx_api_uri>/api/ad/getad</adidx_api_uri>
 </fy_api_adidx_module>
 
@@ -32,15 +36,9 @@
     <adfilter_api_uri>/api/ad/getad</adfilter_api_uri>
 </fy_api_adfilter_module>
 
-<fy_http_count_module>
-    <tair_area>1</tair_area>
-    <count_uri>/api/ad/getad</count_uri>
-    <count_server_addr>xxx.xxx.xxx.xxx:xxxx,xxx.xxx.xxx.xxx:xxxx</count_server_addr>
-</fy_http_count_module>
-
 <fy_graph_module>
-    <duration></duration>
-    <adid></adid>
+    <duration>3</duration>
+    <adid>5</adid>
     <tracker></tracker>
     <graph_addr></graph_addr>
     <graph_uri>/api/ad/splash</graph_uri>

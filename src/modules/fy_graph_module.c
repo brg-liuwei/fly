@@ -70,7 +70,7 @@ static int fy_graph_task_submit(fy_task *task, void *request)
     fy_info     *info;
     jc_json_t   *graph_data;
     fy_request  *r;
-    const char  *doc_uri;
+    const char  *doc_uri, *phone_type;
 
     r = (fy_request *)request;
 
@@ -79,6 +79,15 @@ static int fy_graph_task_submit(fy_task *task, void *request)
         fy_request_next_module(r);
         return 0;
     }
+
+    /* ----------------------------------- */
+    /* 二月十三号为乐视开屏定向iOS做的修改 */
+    phone_type = fy_fcgi_get_param("PHONETYPE", r);
+    if (phone_type == NULL || strcmp(phone_type, "iOS") != 0) {
+        fy_request_next_module(r);
+        return 0;
+    }
+    /* ----------------------------------- */
 
     info = r->info;
 
