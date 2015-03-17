@@ -44,3 +44,42 @@
     <graph_uri>/api/ad/splash</graph_uri>
 </fy_graph_module>
 
+<fy_c_module>
+    <c_uri>/api/ad/c</c_uri>
+    <size>30</size>
+
+    <name0>定时</name0>
+    <url0>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy005;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url0>
+    <percent0>200</percent0>
+    <region0>01,04,08</region0>
+
+    <name1>分享</name1>
+    <url1>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy003;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url1>
+    <percent1>200</percent1>
+    <region1>CN</region1>
+
+    <name2>聊天</name2>
+    <url2>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy008;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url2>
+    <percent2>200</percent2>
+    <region2>CN</region2>
+
+    <name3>签到</name3>
+    <url3>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy006;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url3>
+    <percent3>200</percent3>
+    <region3>23,26,11,02</region3>
+
+    <name4>收藏</name4>
+    <url4>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy004;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url4>
+    <percent4>200</percent4>
+    <region4>CN</region4>
+
+    <name5>播放后</name5>
+    <url5>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy009;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url5>
+    <percent5>200</percent5>
+    <region5>CN</region5>
+
+    <name6>播放前</name6>
+    <url6>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy007;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url6>
+    <percent6>200</percent6>
+    <region6>CN</region6>
+</fy_c_module>

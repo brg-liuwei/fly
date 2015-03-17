@@ -122,7 +122,3 @@ error:
     fy_request_next_module(r);
     return 0;
 }
-
-
-
-
