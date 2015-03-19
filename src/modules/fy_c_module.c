@@ -69,7 +69,7 @@ static int fy_c_module_conf(fy_module *m, void *ptr)
         regions = fy_conf_get_param(key_region);
 
         if (name == NULL || url == NULL 
-                || percent <= 0 || percent > 1000 
+                || percent < 0 || percent > 1000 
                 || regions == NULL)
         {
             continue;

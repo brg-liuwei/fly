@@ -45,41 +45,356 @@
 </fy_graph_module>
 
 <fy_c_module>
-    <c_uri>/api/ad/c</c_uri>
-    <size>30</size>
-
-    <name0>定时</name0>
+    <name0>2655912定时</name0>
+    <percent0>3</percent0>
     <url0>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy005;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url0>
-    <percent0>200</percent0>
-    <region0>01,04,08</region0>
+    <region0>CN</region0>
 
-    <name1>分享</name1>
+    <name1>2655912分享</name1>
+    <percent1>5</percent1>
     <url1>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy003;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url1>
-    <percent1>200</percent1>
     <region1>CN</region1>
 
-    <name2>聊天</name2>
+    <name2>2655912聊天</name2>
+    <percent2>20</percent2>
     <url2>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy008;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url2>
-    <percent2>200</percent2>
     <region2>CN</region2>
 
-    <name3>签到</name3>
+    <name3>2655912签到</name3>
+    <percent3>15</percent3>
     <url3>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy006;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url3>
-    <percent3>200</percent3>
-    <region3>23,26,11,02</region3>
+    <region3>CN</region3>
 
-    <name4>收藏</name4>
+    <name4>2655912收藏</name4>
+    <percent4>10</percent4>
     <url4>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy004;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url4>
-    <percent4>200</percent4>
     <region4>CN</region4>
 
-    <name5>播放后</name5>
+    <name5>2655912播放后</name5>
+    <percent5>30</percent5>
     <url5>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy009;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url5>
-    <percent5>200</percent5>
     <region5>CN</region5>
 
-    <name6>播放前</name6>
-    <url6>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy007;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url6>
-    <percent6>200</percent6>
+    <name6>2655912播放前</name6>
+    <percent6>70</percent6>
+    <url6>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy00-;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url6>
     <region6>CN</region6>
+
+    <name7>2655912下载</name7>
+    <percent7>10</percent7>
+    <url7>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy007;u2=[mama];u3=[2655912];dc_muid={DCMUID};ord={ORDR}?</url7>
+    <region7>CN</region7>
+
+    <name8>2664832定时</name8>
+    <percent8>3</percent8>
+    <url8>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy005;u2=[nvzhubo];u3=[2664832];dc_muid={DCMUID};ord={ORDR}?</url8>
+    <region8>CN</region8>
+
+    <name9>2664832分享</name9>
+    <percent9>5</percent9>
+    <url9>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy003;u2=[nvzhubo];u3=[2664832];dc_muid={DCMUID};ord={ORDR}?</url9>
+    <region9>CN</region9>
+
+    <name10>2664832聊天</name10>
+    <percent10>20</percent10>
+    <url10>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy008;u2=[nvzhubo];u3=[2664832];dc_muid={DCMUID};ord={ORDR}?</url10>
+    <region10>CN</region10>
+
+    <name11>2664832签到</name11>
+    <percent11>15</percent11>
+    <url11>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy006;u2=[nvzhubo];u3=[2664832];dc_muid={DCMUID};ord={ORDR}?</url11>
+    <region11>CN</region11>
+
+    <name12>2664832收藏</name12>
+    <percent12>10</percent12>
+    <url12>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy004;u2=[nvzhubo];u3=[2664832];dc_muid={DCMUID};ord={ORDR}?</url12>
+    <region12>CN</region12>
+
+    <name13>2664832播放后</name13>
+    <percent13>30</percent13>
+    <url13>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy009;u2=[nvzhubo];u3=[2664832];dc_muid={DCMUID};ord={ORDR}?</url13>
+    <region13>CN</region13>
+
+    <name14>2664832播放前</name14>
+    <percent14>80</percent14>
+    <url14>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy00-;u2=[nvzhubo];u3=[2664832];dc_muid={DCMUID};ord={ORDR}?</url14>
+    <region14>CN</region14>
+
+    <name15>2664832下载</name15>
+    <percent15>7</percent15>
+    <url15>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy007;u2=[nvzhubo];u3=[2664832];dc_muid={DCMUID};ord={ORDR}?</url15>
+    <region15>CN</region15>
+
+    <name16>2666402定时</name16>
+    <percent16>3</percent16>
+    <url16>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy005;u2=[tianxiaojian];u3=[2666402];dc_muid={DCMUID};ord={ORDR}?</url16>
+    <region16>CN</region16>
+
+    <name17>2666402分享</name17>
+    <percent17>5</percent17>
+    <url17>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy003;u2=[tianxiaojian];u3=[2666402];dc_muid={DCMUID};ord={ORDR}?</url17>
+    <region17>CN</region17>
+
+    <name18>2666402聊天</name18>
+    <percent18>20</percent18>
+    <url18>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy008;u2=[tianxiaojian];u3=[2666402];dc_muid={DCMUID};ord={ORDR}?</url18>
+    <region18>CN</region18>
+
+    <name19>2666402签到</name19>
+    <percent19>15</percent19>
+    <url19>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy006;u2=[tianxiaojian];u3=[2666402];dc_muid={DCMUID};ord={ORDR}?</url19>
+    <region19>CN</region19>
+
+    <name20>2666402收藏</name20>
+    <percent20>10</percent20>
+    <url20>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy004;u2=[tianxiaojian];u3=[2666402];dc_muid={DCMUID};ord={ORDR}?</url20>
+    <region20>CN</region20>
+
+    <name21>2666402播放后</name21>
+    <percent21>30</percent21>
+    <url21>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy009;u2=[tianxiaojian];u3=[2666402];dc_muid={DCMUID};ord={ORDR}?</url21>
+    <region21>CN</region21>
+
+    <name22>2666402播放前</name22>
+    <percent22>70</percent22>
+    <url22>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy00-;u2=[tianxiaojian];u3=[2666402];dc_muid={DCMUID};ord={ORDR}?</url22>
+    <region22>CN</region22>
+
+    <name23>2666402下载</name23>
+    <percent23>7</percent23>
+    <url23>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy007;u2=[tianxiaojian];u3=[2666402];dc_muid={DCMUID};ord={ORDR}?</url23>
+    <region23>CN</region23>
+
+    <name24>2671227定时</name24>
+    <percent24>3</percent24>
+    <url24>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy005;u2=[qinggan];u3=[2671227];dc_muid={DCMUID};ord={ORDR}?</url24>
+    <region24>CN</region24>
+
+    <name25>2671227分享</name25>
+    <percent25>5</percent25>
+    <url25>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy003;u2=[qinggan];u3=[2671227];dc_muid={DCMUID};ord={ORDR}?</url25>
+    <region25>CN</region25>
+
+    <name26>2671227聊天</name26>
+    <percent26>20</percent26>
+    <url26>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy008;u2=[qinggan];u3=[2671227];dc_muid={DCMUID};ord={ORDR}?</url26>
+    <region26>CN</region26>
+
+    <name27>2671227签到</name27>
+    <percent27>15</percent27>
+    <url27>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy006;u2=[qinggan];u3=[2671227];dc_muid={DCMUID};ord={ORDR}?</url27>
+    <region27>CN</region27>
+
+    <name28>2671227收藏</name28>
+    <percent28>10</percent28>
+    <url28>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy004;u2=[qinggan];u3=[2671227];dc_muid={DCMUID};ord={ORDR}?</url28>
+    <region28>CN</region28>
+
+    <name29>2671227播放后</name29>
+    <percent29>38</percent29>
+    <url29>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy009;u2=[qinggan];u3=[2671227];dc_muid={DCMUID};ord={ORDR}?</url29>
+    <region29>CN</region29>
+
+    <name30>2671227播放前</name30>
+    <percent30>75</percent30>
+    <url30>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy00-;u2=[qinggan];u3=[2671227];dc_muid={DCMUID};ord={ORDR}?</url30>
+    <region30>CN</region30>
+
+    <name31>2671227下载</name31>
+    <percent31>9</percent31>
+    <url31>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy007;u2=[qinggan];u3=[2671227];dc_muid={DCMUID};ord={ORDR}?</url31>
+    <region31>CN</region31>
+
+    <name32>2683185定时</name32>
+    <percent32>3</percent32>
+    <url32>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy005;u2=[nvrenqing];u3=[2683185];dc_muid={DCMUID};ord={ORDR}?</url32>
+    <region32>CN</region32>
+
+    <name33>2683185分享</name33>
+    <percent33>5</percent33>
+    <url33>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy003;u2=[nvrenqing];u3=[2683185];dc_muid={DCMUID};ord={ORDR}?</url33>
+    <region33>CN</region33>
+
+    <name34>2683185聊天</name34>
+    <percent34>20</percent34>
+    <url34>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy008;u2=[nvrenqing];u3=[2683185];dc_muid={DCMUID};ord={ORDR}?</url34>
+    <region34>CN</region34>
+
+    <name35>2683185签到</name35>
+    <percent35>15</percent35>
+    <url35>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy006;u2=[nvrenqing];u3=[2683185];dc_muid={DCMUID};ord={ORDR}?</url35>
+    <region35>CN</region35>
+
+    <name36>2683185收藏</name36>
+    <percent36>4</percent36>
+    <url36>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy004;u2=[nvrenqing];u3=[2683185];dc_muid={DCMUID};ord={ORDR}?</url36>
+    <region36>CN</region36>
+
+    <name37>2683185播放后</name37>
+    <percent37>30</percent37>
+    <url37>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy009;u2=[nvrenqing];u3=[2683185];dc_muid={DCMUID};ord={ORDR}?</url37>
+    <region37>CN</region37>
+
+    <name38>2683185播放前</name38>
+    <percent38>75</percent38>
+    <url38>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy00-;u2=[nvrenqing];u3=[2683185];dc_muid={DCMUID};ord={ORDR}?</url38>
+    <region38>CN</region38>
+
+    <name39>2683185下载</name39>
+    <percent39>9</percent39>
+    <url39>http://ad.doubleclick.net/ddm/activity/src=3234812;type=drago0;cat=vichy007;u2=[nvrenqing];u3=[2683185];dc_muid={DCMUID};ord={ORDR}?</url39>
+    <region39>CN</region39>
+
+    <name40>开机大图曝光</name40>
+    <percent40>1000</percent40>
+    <url40>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116251321;dc_trk_aid=289248493;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url40>
+    <region40>CN</region40>
+
+    <name41>开机大图点击</name41>
+    <percent41>50</percent41>
+    <url41>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116251321;dc_trk_aid=289248493;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url41>
+    <region41>CN</region41>
+
+    <name42>情感频道曝光</name42>
+    <percent42>300</percent42>
+    <url42>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116251320;dc_trk_aid=289248492;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url42>
+    <region42>CN</region42>
+
+    <name43>情感频道点击</name43>
+    <percent43>80</percent43>
+    <url43>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116251320;dc_trk_aid=289248492;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url43>
+    <region43>CN</region43>
+
+    <name44>音乐频道曝光</name44>
+    <percent44>500</percent44>
+    <url44>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116251319;dc_trk_aid=289253570;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url44>
+    <region44>CN</region44>
+
+    <name45>音乐频道点击</name45>
+    <percent45>100</percent45>
+    <url45>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116251319;dc_trk_aid=289253570;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url45>
+    <region45>CN</region45>
+
+    <name46>小说频道曝光</name46>
+    <percent46>450</percent46>
+    <url46>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116251318;dc_trk_aid=289248491;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url46>
+    <region46>CN</region46>
+
+    <name47>小说频道点击</name47>
+    <percent47>50</percent47>
+    <url47>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116251318;dc_trk_aid=289248491;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url47>
+    <region47>CN</region47>
+
+    <name48>专辑pv</name48>
+    <percent48>300</percent48>
+    <url48>http://ad.doubleclick.net/activity;src=3234812;type=drago0;cat=vichy0;dc_muid={DCMUID};ord={ORDR}?</url48>
+    <region48>CN</region48>
+
+    <name49>专辑uv</name49>
+    <percent49>280</percent49>
+    <url49>http://ad.doubleclick.net/activity;src=3234812;type=drago0;cat=vichy00;dc_muid={DCMUID};ord={{ORDR}?</url49>
+    <region49>CN</region49>
+
+    <name50>正式开机大图曝光</name50>
+    <percent50>0</percent50>
+    <url50>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116069636;dc_trk_aid=289085644;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url50>
+    <region50>CN</region50>
+
+    <name51>正式开机大图点击</name51>
+    <percent51>0</percent51>
+    <url51>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116069636;dc_trk_aid=289085644;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url51>
+    <region51>CN</region51>
+
+    <name52>内容分类入口曝光</name52>
+    <percent52>0</percent52>
+    <url52>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116078504;dc_trk_aid=289085645;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url52>
+    <region52>CN</region52>
+
+    <name53>内容分类入口点击</name53>
+    <percent53>0</percent53>
+    <url53>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116078504;dc_trk_aid=289085645;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url53>
+    <region53>CN</region53>
+
+    <name54>情感_女性_主播频道_音频贴片曝光</name54>
+    <percent54>0</percent54>
+    <url54>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116078505;dc_trk_aid=289085558;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url54>
+    <region54>CN</region54>
+
+    <name55>情感_女性_主播频道_音频贴片点击</name55>
+    <percent55>0</percent55>
+    <url55>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116078505;dc_trk_aid=289085558;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url55>
+    <region55>CN</region55>
+
+    <name56>女性频道_焦点图曝光</name56>
+    <percent56>0</percent56>
+    <url56>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116078507;dc_trk_aid=289085646;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url56>
+    <region56>CN</region56>
+
+    <name57>女性频道_焦点图点击</name57>
+    <percent57>0</percent57>
+    <url57>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116078507;dc_trk_aid=289085646;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url57>
+    <region57>CN</region57>
+
+    <name58>主播show频道_焦点图曝光</name58>
+    <percent58>0</percent58>
+    <url58>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116078507;dc_trk_aid=289085646;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url58>
+    <region58>CN</region58>
+
+    <name59>主播show频道_焦点图点击</name59>
+    <percent59>0</percent59>
+    <url59>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116078507;dc_trk_aid=289085646;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url59>
+    <region59>CN</region59>
+
+    <name60>情感频道_焦点图曝光</name60>
+    <percent60>0</percent60>
+    <url60>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116078508;dc_trk_aid=289083975;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url60>
+    <region60>CN</region60>
+
+    <name61>情感频道_焦点图点击</name61>
+    <percent61>0</percent61>
+    <url61>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116078508;dc_trk_aid=289083975;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url61>
+    <region61>CN</region61>
+
+    <name62>首页_主播show频道推荐入口曝光</name62>
+    <percent62>0</percent62>
+    <url62>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116078509;dc_trk_aid=289084350;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url62>
+    <region62>CN</region62>
+
+    <name63>首页_主播show频道推荐入口点击</name63>
+    <percent63>0</percent63>
+    <url63>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116078509;dc_trk_aid=289084350;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url63>
+    <region63>CN</region63>
+
+    <name64>首页_情感频道推荐入口曝光</name64>
+    <percent64>0</percent64>
+    <url64>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116078510;dc_trk_aid=289085559;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url64>
+    <region64>CN</region64>
+
+    <name65>首页_情感频道推荐入口点击</name65>
+    <percent65>0</percent65>
+    <url65>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116078510;dc_trk_aid=289085559;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url65>
+    <region65>CN</region65>
+
+    <name66>首页_焦点图曝光</name66>
+    <percent66>0</percent66>
+    <url66>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116078511;dc_trk_aid=289085560;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url66>
+    <region66>CN</region66>
+
+    <name67>首页_焦点图点击</name67>
+    <percent67>0</percent67>
+    <url67>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116078511;dc_trk_aid=289085560;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url67>
+    <region67>CN</region67>
+
+    <name68>APP短信提醒曝光</name68>
+    <percent68>0</percent68>
+    <url68>http://ad.doubleclick.net/ddm/trackimp/N6708.171847000WEBHOST.COM/B8594625.116078512;dc_trk_aid=289083976;dc_trk_cid=61872907;dc_muid={DCMUID};ord={ORDR}?</url68>
+    <region68>CN</region68>
+
+    <name69>APP短信提醒点击</name69>
+    <percent69>0</percent69>
+    <url69>http://ad.doubleclick.net/ddm/trackclk/N6708.171847000WEBHOST.COM/B8594625.116078512;dc_trk_aid=289083976;dc_trk_cid=61872907;dc_muid={DCMUID}?http://fm.vichy.com.cn</url69>
+    <region69>CN</region69>
+
+    <size>70</size>
+    <c_uri>/api/ad/c</c_uri>
 </fy_c_module>
