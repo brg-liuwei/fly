@@ -3,7 +3,7 @@
 <Global>
     <debug_log_path>/dev/null</debug_log_path>
     <info_log_path>/dev/null</info_log_path>
-    <error_log_path>/dev/null</error_log_path>
+    <error_log_path>/var/log/fly_error.log</error_log_path>
     <poll_size>4096</poll_size>
 </Global>
 
@@ -12,8 +12,8 @@
 </fy_fcgi_accept_module>
 
 <fy_api_adpos_module>
-    <adpos_conn_pool_size>8</adpos_conn_pool_size>
-    <adpos_server_addr>10.161.212.75</adpos_server_addr>
+    <adpos_conn_pool_size>64</adpos_conn_pool_size>
+    <adpos_server_addr>127.0.0.1</adpos_server_addr>
     <!-- <adpos_server_addr>10.162.106.133</adpos_server_addr> -->
     <!-- <adidx_server_addr>10.161.243.122</adidx_server_addr> -->
     <adpos_server_port>7778</adpos_server_port>
@@ -21,8 +21,9 @@
 </fy_api_adpos_module>
 
 <fy_api_adidx_module>
-    <adidx_conn_pool_size>64</adidx_conn_pool_size>
-    <adidx_server_addr>10.161.212.75:7779</adidx_server_addr> <!-- adindex1 -->
+    <adidx_conn_pool_size>256</adidx_conn_pool_size>
+    <adidx_server_addr>127.0.0.1:7779</adidx_server_addr>
+    <!-- <adidx_server_addr>10.161.212.75:7779</adidx_server_addr> adindex1 -->
     <!-- <adidx_server_addr>10.162.106.133:7779</adidx_server_addr> qt-dw-master -->
     <!-- <adidx_server_addr>10.161.243.122</adidx_server_addr> --> <!-- kv-store2 -->
     <adidx_api_uri>/api/ad/getad</adidx_api_uri>
