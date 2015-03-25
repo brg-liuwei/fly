@@ -1,4 +1,4 @@
-# Install script for directory: /opt/fly/src
+# Install script for directory: /usr/local/fly/src
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

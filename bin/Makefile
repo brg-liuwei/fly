@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/local/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /opt/fly
+CMAKE_SOURCE_DIR = /usr/local/fly
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /opt/fly
+CMAKE_BINARY_DIR = /usr/local/fly
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /opt/fly && $(CMAKE_COMMAND) -E cmake_progress_start /opt/fly/CMakeFiles /opt/fly/bin/CMakeFiles/progress.marks
-	cd /opt/fly && $(MAKE) -f CMakeFiles/Makefile2 bin/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /opt/fly/CMakeFiles 0
+	cd /usr/local/fly && $(CMAKE_COMMAND) -E cmake_progress_start /usr/local/fly/CMakeFiles /usr/local/fly/bin/CMakeFiles/progress.marks
+	cd /usr/local/fly && $(MAKE) -f CMakeFiles/Makefile2 bin/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /usr/local/fly/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /opt/fly && $(MAKE) -f CMakeFiles/Makefile2 bin/clean
+	cd /usr/local/fly && $(MAKE) -f CMakeFiles/Makefile2 bin/clean
 .PHONY : clean
 
 # The main clean target
@@ -88,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /opt/fly && $(MAKE) -f CMakeFiles/Makefile2 bin/preinstall
+	cd /usr/local/fly && $(MAKE) -f CMakeFiles/Makefile2 bin/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /opt/fly && $(MAKE) -f CMakeFiles/Makefile2 bin/preinstall
+	cd /usr/local/fly && $(MAKE) -f CMakeFiles/Makefile2 bin/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /opt/fly && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /usr/local/fly && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 bin/CMakeFiles/fly.dir/rule:
-	cd /opt/fly && $(MAKE) -f CMakeFiles/Makefile2 bin/CMakeFiles/fly.dir/rule
+	cd /usr/local/fly && $(MAKE) -f CMakeFiles/Makefile2 bin/CMakeFiles/fly.dir/rule
 .PHONY : bin/CMakeFiles/fly.dir/rule
 
 # Convenience name for target.
@@ -112,7 +112,7 @@ fly: bin/CMakeFiles/fly.dir/rule
 
 # fast build rule for target.
 fly/fast:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/build
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/build
 .PHONY : fly/fast
 
 fy_alloc.o: fy_alloc.c.o
@@ -120,7 +120,7 @@ fy_alloc.o: fy_alloc.c.o
 
 # target to build an object file
 fy_alloc.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_alloc.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_alloc.c.o
 .PHONY : fy_alloc.c.o
 
 fy_alloc.i: fy_alloc.c.i
@@ -128,7 +128,7 @@ fy_alloc.i: fy_alloc.c.i
 
 # target to preprocess a source file
 fy_alloc.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_alloc.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_alloc.c.i
 .PHONY : fy_alloc.c.i
 
 fy_alloc.s: fy_alloc.c.s
@@ -136,7 +136,7 @@ fy_alloc.s: fy_alloc.c.s
 
 # target to generate assembly for a file
 fy_alloc.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_alloc.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_alloc.c.s
 .PHONY : fy_alloc.c.s
 
 fy_conf.o: fy_conf.c.o
@@ -144,7 +144,7 @@ fy_conf.o: fy_conf.c.o
 
 # target to build an object file
 fy_conf.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_conf.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_conf.c.o
 .PHONY : fy_conf.c.o
 
 fy_conf.i: fy_conf.c.i
@@ -152,7 +152,7 @@ fy_conf.i: fy_conf.c.i
 
 # target to preprocess a source file
 fy_conf.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_conf.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_conf.c.i
 .PHONY : fy_conf.c.i
 
 fy_conf.s: fy_conf.c.s
@@ -160,7 +160,7 @@ fy_conf.s: fy_conf.c.s
 
 # target to generate assembly for a file
 fy_conf.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_conf.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_conf.c.s
 .PHONY : fy_conf.c.s
 
 fy_connection.o: fy_connection.c.o
@@ -168,7 +168,7 @@ fy_connection.o: fy_connection.c.o
 
 # target to build an object file
 fy_connection.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_connection.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_connection.c.o
 .PHONY : fy_connection.c.o
 
 fy_connection.i: fy_connection.c.i
@@ -176,7 +176,7 @@ fy_connection.i: fy_connection.c.i
 
 # target to preprocess a source file
 fy_connection.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_connection.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_connection.c.i
 .PHONY : fy_connection.c.i
 
 fy_connection.s: fy_connection.c.s
@@ -184,7 +184,7 @@ fy_connection.s: fy_connection.c.s
 
 # target to generate assembly for a file
 fy_connection.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_connection.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_connection.c.s
 .PHONY : fy_connection.c.s
 
 fy_event.o: fy_event.c.o
@@ -192,7 +192,7 @@ fy_event.o: fy_event.c.o
 
 # target to build an object file
 fy_event.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_event.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_event.c.o
 .PHONY : fy_event.c.o
 
 fy_event.i: fy_event.c.i
@@ -200,7 +200,7 @@ fy_event.i: fy_event.c.i
 
 # target to preprocess a source file
 fy_event.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_event.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_event.c.i
 .PHONY : fy_event.c.i
 
 fy_event.s: fy_event.c.s
@@ -208,7 +208,7 @@ fy_event.s: fy_event.c.s
 
 # target to generate assembly for a file
 fy_event.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_event.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_event.c.s
 .PHONY : fy_event.c.s
 
 fy_framework.o: fy_framework.c.o
@@ -216,7 +216,7 @@ fy_framework.o: fy_framework.c.o
 
 # target to build an object file
 fy_framework.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_framework.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_framework.c.o
 .PHONY : fy_framework.c.o
 
 fy_framework.i: fy_framework.c.i
@@ -224,7 +224,7 @@ fy_framework.i: fy_framework.c.i
 
 # target to preprocess a source file
 fy_framework.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_framework.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_framework.c.i
 .PHONY : fy_framework.c.i
 
 fy_framework.s: fy_framework.c.s
@@ -232,7 +232,7 @@ fy_framework.s: fy_framework.c.s
 
 # target to generate assembly for a file
 fy_framework.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_framework.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_framework.c.s
 .PHONY : fy_framework.c.s
 
 fy_info.o: fy_info.c.o
@@ -240,7 +240,7 @@ fy_info.o: fy_info.c.o
 
 # target to build an object file
 fy_info.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_info.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_info.c.o
 .PHONY : fy_info.c.o
 
 fy_info.i: fy_info.c.i
@@ -248,7 +248,7 @@ fy_info.i: fy_info.c.i
 
 # target to preprocess a source file
 fy_info.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_info.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_info.c.i
 .PHONY : fy_info.c.i
 
 fy_info.s: fy_info.c.s
@@ -256,7 +256,7 @@ fy_info.s: fy_info.c.s
 
 # target to generate assembly for a file
 fy_info.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_info.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_info.c.s
 .PHONY : fy_info.c.s
 
 fy_logger.o: fy_logger.c.o
@@ -264,7 +264,7 @@ fy_logger.o: fy_logger.c.o
 
 # target to build an object file
 fy_logger.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_logger.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_logger.c.o
 .PHONY : fy_logger.c.o
 
 fy_logger.i: fy_logger.c.i
@@ -272,7 +272,7 @@ fy_logger.i: fy_logger.c.i
 
 # target to preprocess a source file
 fy_logger.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_logger.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_logger.c.i
 .PHONY : fy_logger.c.i
 
 fy_logger.s: fy_logger.c.s
@@ -280,7 +280,7 @@ fy_logger.s: fy_logger.c.s
 
 # target to generate assembly for a file
 fy_logger.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_logger.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_logger.c.s
 .PHONY : fy_logger.c.s
 
 fy_md5.o: fy_md5.c.o
@@ -288,7 +288,7 @@ fy_md5.o: fy_md5.c.o
 
 # target to build an object file
 fy_md5.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_md5.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_md5.c.o
 .PHONY : fy_md5.c.o
 
 fy_md5.i: fy_md5.c.i
@@ -296,7 +296,7 @@ fy_md5.i: fy_md5.c.i
 
 # target to preprocess a source file
 fy_md5.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_md5.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_md5.c.i
 .PHONY : fy_md5.c.i
 
 fy_md5.s: fy_md5.c.s
@@ -304,7 +304,7 @@ fy_md5.s: fy_md5.c.s
 
 # target to generate assembly for a file
 fy_md5.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_md5.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_md5.c.s
 .PHONY : fy_md5.c.s
 
 fy_modules.o: fy_modules.c.o
@@ -312,7 +312,7 @@ fy_modules.o: fy_modules.c.o
 
 # target to build an object file
 fy_modules.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_modules.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_modules.c.o
 .PHONY : fy_modules.c.o
 
 fy_modules.i: fy_modules.c.i
@@ -320,7 +320,7 @@ fy_modules.i: fy_modules.c.i
 
 # target to preprocess a source file
 fy_modules.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_modules.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_modules.c.i
 .PHONY : fy_modules.c.i
 
 fy_modules.s: fy_modules.c.s
@@ -328,7 +328,7 @@ fy_modules.s: fy_modules.c.s
 
 # target to generate assembly for a file
 fy_modules.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_modules.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_modules.c.s
 .PHONY : fy_modules.c.s
 
 fy_time.o: fy_time.c.o
@@ -336,7 +336,7 @@ fy_time.o: fy_time.c.o
 
 # target to build an object file
 fy_time.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_time.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_time.c.o
 .PHONY : fy_time.c.o
 
 fy_time.i: fy_time.c.i
@@ -344,7 +344,7 @@ fy_time.i: fy_time.c.i
 
 # target to preprocess a source file
 fy_time.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_time.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_time.c.i
 .PHONY : fy_time.c.i
 
 fy_time.s: fy_time.c.s
@@ -352,7 +352,7 @@ fy_time.s: fy_time.c.s
 
 # target to generate assembly for a file
 fy_time.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_time.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_time.c.s
 .PHONY : fy_time.c.s
 
 fy_util.o: fy_util.c.o
@@ -360,7 +360,7 @@ fy_util.o: fy_util.c.o
 
 # target to build an object file
 fy_util.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_util.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_util.c.o
 .PHONY : fy_util.c.o
 
 fy_util.i: fy_util.c.i
@@ -368,7 +368,7 @@ fy_util.i: fy_util.c.i
 
 # target to preprocess a source file
 fy_util.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_util.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_util.c.i
 .PHONY : fy_util.c.i
 
 fy_util.s: fy_util.c.s
@@ -376,7 +376,7 @@ fy_util.s: fy_util.c.s
 
 # target to generate assembly for a file
 fy_util.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_util.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/fy_util.c.s
 .PHONY : fy_util.c.s
 
 json4c/jc_alloc.o: json4c/jc_alloc.c.o
@@ -384,7 +384,7 @@ json4c/jc_alloc.o: json4c/jc_alloc.c.o
 
 # target to build an object file
 json4c/jc_alloc.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.o
 .PHONY : json4c/jc_alloc.c.o
 
 json4c/jc_alloc.i: json4c/jc_alloc.c.i
@@ -392,7 +392,7 @@ json4c/jc_alloc.i: json4c/jc_alloc.c.i
 
 # target to preprocess a source file
 json4c/jc_alloc.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.i
 .PHONY : json4c/jc_alloc.c.i
 
 json4c/jc_alloc.s: json4c/jc_alloc.c.s
@@ -400,7 +400,7 @@ json4c/jc_alloc.s: json4c/jc_alloc.c.s
 
 # target to generate assembly for a file
 json4c/jc_alloc.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.s
 .PHONY : json4c/jc_alloc.c.s
 
 json4c/jc_type.o: json4c/jc_type.c.o
@@ -408,7 +408,7 @@ json4c/jc_type.o: json4c/jc_type.c.o
 
 # target to build an object file
 json4c/jc_type.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_type.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_type.c.o
 .PHONY : json4c/jc_type.c.o
 
 json4c/jc_type.i: json4c/jc_type.c.i
@@ -416,7 +416,7 @@ json4c/jc_type.i: json4c/jc_type.c.i
 
 # target to preprocess a source file
 json4c/jc_type.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_type.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_type.c.i
 .PHONY : json4c/jc_type.c.i
 
 json4c/jc_type.s: json4c/jc_type.c.s
@@ -424,7 +424,7 @@ json4c/jc_type.s: json4c/jc_type.c.s
 
 # target to generate assembly for a file
 json4c/jc_type.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_type.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_type.c.s
 .PHONY : json4c/jc_type.c.s
 
 json4c/jc_wchar.o: json4c/jc_wchar.c.o
@@ -432,7 +432,7 @@ json4c/jc_wchar.o: json4c/jc_wchar.c.o
 
 # target to build an object file
 json4c/jc_wchar.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.o
 .PHONY : json4c/jc_wchar.c.o
 
 json4c/jc_wchar.i: json4c/jc_wchar.c.i
@@ -440,7 +440,7 @@ json4c/jc_wchar.i: json4c/jc_wchar.c.i
 
 # target to preprocess a source file
 json4c/jc_wchar.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.i
 .PHONY : json4c/jc_wchar.c.i
 
 json4c/jc_wchar.s: json4c/jc_wchar.c.s
@@ -448,7 +448,7 @@ json4c/jc_wchar.s: json4c/jc_wchar.c.s
 
 # target to generate assembly for a file
 json4c/jc_wchar.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.s
 .PHONY : json4c/jc_wchar.c.s
 
 modules/fy_api_adfilter_module.o: modules/fy_api_adfilter_module.c.o
@@ -456,7 +456,7 @@ modules/fy_api_adfilter_module.o: modules/fy_api_adfilter_module.c.o
 
 # target to build an object file
 modules/fy_api_adfilter_module.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.o
 .PHONY : modules/fy_api_adfilter_module.c.o
 
 modules/fy_api_adfilter_module.i: modules/fy_api_adfilter_module.c.i
@@ -464,7 +464,7 @@ modules/fy_api_adfilter_module.i: modules/fy_api_adfilter_module.c.i
 
 # target to preprocess a source file
 modules/fy_api_adfilter_module.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.i
 .PHONY : modules/fy_api_adfilter_module.c.i
 
 modules/fy_api_adfilter_module.s: modules/fy_api_adfilter_module.c.s
@@ -472,7 +472,7 @@ modules/fy_api_adfilter_module.s: modules/fy_api_adfilter_module.c.s
 
 # target to generate assembly for a file
 modules/fy_api_adfilter_module.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.s
 .PHONY : modules/fy_api_adfilter_module.c.s
 
 modules/fy_api_adidx_module.o: modules/fy_api_adidx_module.c.o
@@ -480,7 +480,7 @@ modules/fy_api_adidx_module.o: modules/fy_api_adidx_module.c.o
 
 # target to build an object file
 modules/fy_api_adidx_module.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.o
 .PHONY : modules/fy_api_adidx_module.c.o
 
 modules/fy_api_adidx_module.i: modules/fy_api_adidx_module.c.i
@@ -488,7 +488,7 @@ modules/fy_api_adidx_module.i: modules/fy_api_adidx_module.c.i
 
 # target to preprocess a source file
 modules/fy_api_adidx_module.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.i
 .PHONY : modules/fy_api_adidx_module.c.i
 
 modules/fy_api_adidx_module.s: modules/fy_api_adidx_module.c.s
@@ -496,7 +496,7 @@ modules/fy_api_adidx_module.s: modules/fy_api_adidx_module.c.s
 
 # target to generate assembly for a file
 modules/fy_api_adidx_module.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.s
 .PHONY : modules/fy_api_adidx_module.c.s
 
 modules/fy_api_adlog_module.o: modules/fy_api_adlog_module.c.o
@@ -504,7 +504,7 @@ modules/fy_api_adlog_module.o: modules/fy_api_adlog_module.c.o
 
 # target to build an object file
 modules/fy_api_adlog_module.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.o
 .PHONY : modules/fy_api_adlog_module.c.o
 
 modules/fy_api_adlog_module.i: modules/fy_api_adlog_module.c.i
@@ -512,7 +512,7 @@ modules/fy_api_adlog_module.i: modules/fy_api_adlog_module.c.i
 
 # target to preprocess a source file
 modules/fy_api_adlog_module.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.i
 .PHONY : modules/fy_api_adlog_module.c.i
 
 modules/fy_api_adlog_module.s: modules/fy_api_adlog_module.c.s
@@ -520,7 +520,7 @@ modules/fy_api_adlog_module.s: modules/fy_api_adlog_module.c.s
 
 # target to generate assembly for a file
 modules/fy_api_adlog_module.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.s
 .PHONY : modules/fy_api_adlog_module.c.s
 
 modules/fy_api_adpos_module.o: modules/fy_api_adpos_module.c.o
@@ -528,7 +528,7 @@ modules/fy_api_adpos_module.o: modules/fy_api_adpos_module.c.o
 
 # target to build an object file
 modules/fy_api_adpos_module.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.o
 .PHONY : modules/fy_api_adpos_module.c.o
 
 modules/fy_api_adpos_module.i: modules/fy_api_adpos_module.c.i
@@ -536,7 +536,7 @@ modules/fy_api_adpos_module.i: modules/fy_api_adpos_module.c.i
 
 # target to preprocess a source file
 modules/fy_api_adpos_module.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.i
 .PHONY : modules/fy_api_adpos_module.c.i
 
 modules/fy_api_adpos_module.s: modules/fy_api_adpos_module.c.s
@@ -544,7 +544,7 @@ modules/fy_api_adpos_module.s: modules/fy_api_adpos_module.c.s
 
 # target to generate assembly for a file
 modules/fy_api_adpos_module.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.s
 .PHONY : modules/fy_api_adpos_module.c.s
 
 modules/fy_c_module.o: modules/fy_c_module.c.o
@@ -552,7 +552,7 @@ modules/fy_c_module.o: modules/fy_c_module.c.o
 
 # target to build an object file
 modules/fy_c_module.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_c_module.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_c_module.c.o
 .PHONY : modules/fy_c_module.c.o
 
 modules/fy_c_module.i: modules/fy_c_module.c.i
@@ -560,7 +560,7 @@ modules/fy_c_module.i: modules/fy_c_module.c.i
 
 # target to preprocess a source file
 modules/fy_c_module.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_c_module.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_c_module.c.i
 .PHONY : modules/fy_c_module.c.i
 
 modules/fy_c_module.s: modules/fy_c_module.c.s
@@ -568,7 +568,7 @@ modules/fy_c_module.s: modules/fy_c_module.c.s
 
 # target to generate assembly for a file
 modules/fy_c_module.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_c_module.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_c_module.c.s
 .PHONY : modules/fy_c_module.c.s
 
 modules/fy_fcgi_accept_module.o: modules/fy_fcgi_accept_module.c.o
@@ -576,7 +576,7 @@ modules/fy_fcgi_accept_module.o: modules/fy_fcgi_accept_module.c.o
 
 # target to build an object file
 modules/fy_fcgi_accept_module.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.o
 .PHONY : modules/fy_fcgi_accept_module.c.o
 
 modules/fy_fcgi_accept_module.i: modules/fy_fcgi_accept_module.c.i
@@ -584,7 +584,7 @@ modules/fy_fcgi_accept_module.i: modules/fy_fcgi_accept_module.c.i
 
 # target to preprocess a source file
 modules/fy_fcgi_accept_module.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.i
 .PHONY : modules/fy_fcgi_accept_module.c.i
 
 modules/fy_fcgi_accept_module.s: modules/fy_fcgi_accept_module.c.s
@@ -592,7 +592,7 @@ modules/fy_fcgi_accept_module.s: modules/fy_fcgi_accept_module.c.s
 
 # target to generate assembly for a file
 modules/fy_fcgi_accept_module.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.s
 .PHONY : modules/fy_fcgi_accept_module.c.s
 
 modules/fy_fcgi_finish_module.o: modules/fy_fcgi_finish_module.c.o
@@ -600,7 +600,7 @@ modules/fy_fcgi_finish_module.o: modules/fy_fcgi_finish_module.c.o
 
 # target to build an object file
 modules/fy_fcgi_finish_module.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.o
 .PHONY : modules/fy_fcgi_finish_module.c.o
 
 modules/fy_fcgi_finish_module.i: modules/fy_fcgi_finish_module.c.i
@@ -608,7 +608,7 @@ modules/fy_fcgi_finish_module.i: modules/fy_fcgi_finish_module.c.i
 
 # target to preprocess a source file
 modules/fy_fcgi_finish_module.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.i
 .PHONY : modules/fy_fcgi_finish_module.c.i
 
 modules/fy_fcgi_finish_module.s: modules/fy_fcgi_finish_module.c.s
@@ -616,7 +616,7 @@ modules/fy_fcgi_finish_module.s: modules/fy_fcgi_finish_module.c.s
 
 # target to generate assembly for a file
 modules/fy_fcgi_finish_module.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.s
 .PHONY : modules/fy_fcgi_finish_module.c.s
 
 modules/fy_fcgi_layout_module.o: modules/fy_fcgi_layout_module.c.o
@@ -624,7 +624,7 @@ modules/fy_fcgi_layout_module.o: modules/fy_fcgi_layout_module.c.o
 
 # target to build an object file
 modules/fy_fcgi_layout_module.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.o
 .PHONY : modules/fy_fcgi_layout_module.c.o
 
 modules/fy_fcgi_layout_module.i: modules/fy_fcgi_layout_module.c.i
@@ -632,7 +632,7 @@ modules/fy_fcgi_layout_module.i: modules/fy_fcgi_layout_module.c.i
 
 # target to preprocess a source file
 modules/fy_fcgi_layout_module.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.i
 .PHONY : modules/fy_fcgi_layout_module.c.i
 
 modules/fy_fcgi_layout_module.s: modules/fy_fcgi_layout_module.c.s
@@ -640,7 +640,7 @@ modules/fy_fcgi_layout_module.s: modules/fy_fcgi_layout_module.c.s
 
 # target to generate assembly for a file
 modules/fy_fcgi_layout_module.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.s
 .PHONY : modules/fy_fcgi_layout_module.c.s
 
 modules/fy_graph_module.o: modules/fy_graph_module.c.o
@@ -648,7 +648,7 @@ modules/fy_graph_module.o: modules/fy_graph_module.c.o
 
 # target to build an object file
 modules/fy_graph_module.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.o
 .PHONY : modules/fy_graph_module.c.o
 
 modules/fy_graph_module.i: modules/fy_graph_module.c.i
@@ -656,7 +656,7 @@ modules/fy_graph_module.i: modules/fy_graph_module.c.i
 
 # target to preprocess a source file
 modules/fy_graph_module.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.i
 .PHONY : modules/fy_graph_module.c.i
 
 modules/fy_graph_module.s: modules/fy_graph_module.c.s
@@ -664,7 +664,7 @@ modules/fy_graph_module.s: modules/fy_graph_module.c.s
 
 # target to generate assembly for a file
 modules/fy_graph_module.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.s
 .PHONY : modules/fy_graph_module.c.s
 
 modules/fy_http_count_module.o: modules/fy_http_count_module.c.o
@@ -672,7 +672,7 @@ modules/fy_http_count_module.o: modules/fy_http_count_module.c.o
 
 # target to build an object file
 modules/fy_http_count_module.c.o:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.o
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.o
 .PHONY : modules/fy_http_count_module.c.o
 
 modules/fy_http_count_module.i: modules/fy_http_count_module.c.i
@@ -680,7 +680,7 @@ modules/fy_http_count_module.i: modules/fy_http_count_module.c.i
 
 # target to preprocess a source file
 modules/fy_http_count_module.c.i:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.i
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.i
 .PHONY : modules/fy_http_count_module.c.i
 
 modules/fy_http_count_module.s: modules/fy_http_count_module.c.s
@@ -688,7 +688,7 @@ modules/fy_http_count_module.s: modules/fy_http_count_module.c.s
 
 # target to generate assembly for a file
 modules/fy_http_count_module.c.s:
-	cd /opt/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.s
+	cd /usr/local/fly && $(MAKE) -f bin/CMakeFiles/fly.dir/build.make bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.s
 .PHONY : modules/fy_http_count_module.c.s
 
 # Help Target
@@ -783,6 +783,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /opt/fly && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /usr/local/fly && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

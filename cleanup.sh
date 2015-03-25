@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -rf bin
+rm -rf bin/*
 rm -rf CMakeFiles
 
 rm -f Makefile

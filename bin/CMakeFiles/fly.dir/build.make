@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/local/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /opt/fly
+CMAKE_SOURCE_DIR = /usr/local/fly
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /opt/fly
+CMAKE_BINARY_DIR = /usr/local/fly
 
 # Include any dependencies generated for this target.
 include bin/CMakeFiles/fly.dir/depend.make
@@ -54,17 +54,17 @@ include bin/CMakeFiles/fly.dir/flags.make
 
 bin/CMakeFiles/fly.dir/fy_conf.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/fy_conf.c.o: src/fy_conf.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/fy_conf.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_conf.c.o   -c /opt/fly/src/fy_conf.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_conf.c.o   -c /usr/local/fly/src/fy_conf.c
 
 bin/CMakeFiles/fly.dir/fy_conf.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/fy_conf.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/fy_conf.c > CMakeFiles/fly.dir/fy_conf.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/fy_conf.c > CMakeFiles/fly.dir/fy_conf.c.i
 
 bin/CMakeFiles/fly.dir/fy_conf.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/fy_conf.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/fy_conf.c -o CMakeFiles/fly.dir/fy_conf.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/fy_conf.c -o CMakeFiles/fly.dir/fy_conf.c.s
 
 bin/CMakeFiles/fly.dir/fy_conf.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/fy_conf.c.o.requires
@@ -77,17 +77,17 @@ bin/CMakeFiles/fly.dir/fy_conf.c.o.provides.build: bin/CMakeFiles/fly.dir/fy_con
 
 bin/CMakeFiles/fly.dir/fy_connection.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/fy_connection.c.o: src/fy_connection.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/fy_connection.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_connection.c.o   -c /opt/fly/src/fy_connection.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_connection.c.o   -c /usr/local/fly/src/fy_connection.c
 
 bin/CMakeFiles/fly.dir/fy_connection.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/fy_connection.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/fy_connection.c > CMakeFiles/fly.dir/fy_connection.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/fy_connection.c > CMakeFiles/fly.dir/fy_connection.c.i
 
 bin/CMakeFiles/fly.dir/fy_connection.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/fy_connection.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/fy_connection.c -o CMakeFiles/fly.dir/fy_connection.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/fy_connection.c -o CMakeFiles/fly.dir/fy_connection.c.s
 
 bin/CMakeFiles/fly.dir/fy_connection.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/fy_connection.c.o.requires
@@ -100,17 +100,17 @@ bin/CMakeFiles/fly.dir/fy_connection.c.o.provides.build: bin/CMakeFiles/fly.dir/
 
 bin/CMakeFiles/fly.dir/fy_event.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/fy_event.c.o: src/fy_event.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/fy_event.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_event.c.o   -c /opt/fly/src/fy_event.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_event.c.o   -c /usr/local/fly/src/fy_event.c
 
 bin/CMakeFiles/fly.dir/fy_event.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/fy_event.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/fy_event.c > CMakeFiles/fly.dir/fy_event.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/fy_event.c > CMakeFiles/fly.dir/fy_event.c.i
 
 bin/CMakeFiles/fly.dir/fy_event.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/fy_event.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/fy_event.c -o CMakeFiles/fly.dir/fy_event.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/fy_event.c -o CMakeFiles/fly.dir/fy_event.c.s
 
 bin/CMakeFiles/fly.dir/fy_event.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/fy_event.c.o.requires
@@ -123,17 +123,17 @@ bin/CMakeFiles/fly.dir/fy_event.c.o.provides.build: bin/CMakeFiles/fly.dir/fy_ev
 
 bin/CMakeFiles/fly.dir/fy_framework.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/fy_framework.c.o: src/fy_framework.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/fy_framework.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_framework.c.o   -c /opt/fly/src/fy_framework.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_framework.c.o   -c /usr/local/fly/src/fy_framework.c
 
 bin/CMakeFiles/fly.dir/fy_framework.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/fy_framework.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/fy_framework.c > CMakeFiles/fly.dir/fy_framework.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/fy_framework.c > CMakeFiles/fly.dir/fy_framework.c.i
 
 bin/CMakeFiles/fly.dir/fy_framework.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/fy_framework.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/fy_framework.c -o CMakeFiles/fly.dir/fy_framework.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/fy_framework.c -o CMakeFiles/fly.dir/fy_framework.c.s
 
 bin/CMakeFiles/fly.dir/fy_framework.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/fy_framework.c.o.requires
@@ -146,17 +146,17 @@ bin/CMakeFiles/fly.dir/fy_framework.c.o.provides.build: bin/CMakeFiles/fly.dir/f
 
 bin/CMakeFiles/fly.dir/fy_info.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/fy_info.c.o: src/fy_info.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/fy_info.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_info.c.o   -c /opt/fly/src/fy_info.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_info.c.o   -c /usr/local/fly/src/fy_info.c
 
 bin/CMakeFiles/fly.dir/fy_info.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/fy_info.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/fy_info.c > CMakeFiles/fly.dir/fy_info.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/fy_info.c > CMakeFiles/fly.dir/fy_info.c.i
 
 bin/CMakeFiles/fly.dir/fy_info.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/fy_info.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/fy_info.c -o CMakeFiles/fly.dir/fy_info.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/fy_info.c -o CMakeFiles/fly.dir/fy_info.c.s
 
 bin/CMakeFiles/fly.dir/fy_info.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/fy_info.c.o.requires
@@ -169,17 +169,17 @@ bin/CMakeFiles/fly.dir/fy_info.c.o.provides.build: bin/CMakeFiles/fly.dir/fy_inf
 
 bin/CMakeFiles/fly.dir/fy_logger.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/fy_logger.c.o: src/fy_logger.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/fy_logger.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_logger.c.o   -c /opt/fly/src/fy_logger.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_logger.c.o   -c /usr/local/fly/src/fy_logger.c
 
 bin/CMakeFiles/fly.dir/fy_logger.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/fy_logger.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/fy_logger.c > CMakeFiles/fly.dir/fy_logger.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/fy_logger.c > CMakeFiles/fly.dir/fy_logger.c.i
 
 bin/CMakeFiles/fly.dir/fy_logger.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/fy_logger.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/fy_logger.c -o CMakeFiles/fly.dir/fy_logger.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/fy_logger.c -o CMakeFiles/fly.dir/fy_logger.c.s
 
 bin/CMakeFiles/fly.dir/fy_logger.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/fy_logger.c.o.requires
@@ -192,17 +192,17 @@ bin/CMakeFiles/fly.dir/fy_logger.c.o.provides.build: bin/CMakeFiles/fly.dir/fy_l
 
 bin/CMakeFiles/fly.dir/fy_modules.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/fy_modules.c.o: src/fy_modules.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/fy_modules.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_modules.c.o   -c /opt/fly/src/fy_modules.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_modules.c.o   -c /usr/local/fly/src/fy_modules.c
 
 bin/CMakeFiles/fly.dir/fy_modules.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/fy_modules.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/fy_modules.c > CMakeFiles/fly.dir/fy_modules.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/fy_modules.c > CMakeFiles/fly.dir/fy_modules.c.i
 
 bin/CMakeFiles/fly.dir/fy_modules.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/fy_modules.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/fy_modules.c -o CMakeFiles/fly.dir/fy_modules.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/fy_modules.c -o CMakeFiles/fly.dir/fy_modules.c.s
 
 bin/CMakeFiles/fly.dir/fy_modules.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/fy_modules.c.o.requires
@@ -215,17 +215,17 @@ bin/CMakeFiles/fly.dir/fy_modules.c.o.provides.build: bin/CMakeFiles/fly.dir/fy_
 
 bin/CMakeFiles/fly.dir/fy_time.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/fy_time.c.o: src/fy_time.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/fy_time.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_time.c.o   -c /opt/fly/src/fy_time.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_time.c.o   -c /usr/local/fly/src/fy_time.c
 
 bin/CMakeFiles/fly.dir/fy_time.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/fy_time.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/fy_time.c > CMakeFiles/fly.dir/fy_time.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/fy_time.c > CMakeFiles/fly.dir/fy_time.c.i
 
 bin/CMakeFiles/fly.dir/fy_time.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/fy_time.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/fy_time.c -o CMakeFiles/fly.dir/fy_time.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/fy_time.c -o CMakeFiles/fly.dir/fy_time.c.s
 
 bin/CMakeFiles/fly.dir/fy_time.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/fy_time.c.o.requires
@@ -238,17 +238,17 @@ bin/CMakeFiles/fly.dir/fy_time.c.o.provides.build: bin/CMakeFiles/fly.dir/fy_tim
 
 bin/CMakeFiles/fly.dir/fy_util.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/fy_util.c.o: src/fy_util.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/fy_util.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_util.c.o   -c /opt/fly/src/fy_util.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_util.c.o   -c /usr/local/fly/src/fy_util.c
 
 bin/CMakeFiles/fly.dir/fy_util.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/fy_util.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/fy_util.c > CMakeFiles/fly.dir/fy_util.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/fy_util.c > CMakeFiles/fly.dir/fy_util.c.i
 
 bin/CMakeFiles/fly.dir/fy_util.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/fy_util.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/fy_util.c -o CMakeFiles/fly.dir/fy_util.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/fy_util.c -o CMakeFiles/fly.dir/fy_util.c.s
 
 bin/CMakeFiles/fly.dir/fy_util.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/fy_util.c.o.requires
@@ -261,17 +261,17 @@ bin/CMakeFiles/fly.dir/fy_util.c.o.provides.build: bin/CMakeFiles/fly.dir/fy_uti
 
 bin/CMakeFiles/fly.dir/fy_md5.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/fy_md5.c.o: src/fy_md5.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/fy_md5.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_md5.c.o   -c /opt/fly/src/fy_md5.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_md5.c.o   -c /usr/local/fly/src/fy_md5.c
 
 bin/CMakeFiles/fly.dir/fy_md5.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/fy_md5.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/fy_md5.c > CMakeFiles/fly.dir/fy_md5.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/fy_md5.c > CMakeFiles/fly.dir/fy_md5.c.i
 
 bin/CMakeFiles/fly.dir/fy_md5.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/fy_md5.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/fy_md5.c -o CMakeFiles/fly.dir/fy_md5.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/fy_md5.c -o CMakeFiles/fly.dir/fy_md5.c.s
 
 bin/CMakeFiles/fly.dir/fy_md5.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/fy_md5.c.o.requires
@@ -284,17 +284,17 @@ bin/CMakeFiles/fly.dir/fy_md5.c.o.provides.build: bin/CMakeFiles/fly.dir/fy_md5.
 
 bin/CMakeFiles/fly.dir/fy_alloc.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/fy_alloc.c.o: src/fy_alloc.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/fy_alloc.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_alloc.c.o   -c /opt/fly/src/fy_alloc.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/fy_alloc.c.o   -c /usr/local/fly/src/fy_alloc.c
 
 bin/CMakeFiles/fly.dir/fy_alloc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/fy_alloc.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/fy_alloc.c > CMakeFiles/fly.dir/fy_alloc.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/fy_alloc.c > CMakeFiles/fly.dir/fy_alloc.c.i
 
 bin/CMakeFiles/fly.dir/fy_alloc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/fy_alloc.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/fy_alloc.c -o CMakeFiles/fly.dir/fy_alloc.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/fy_alloc.c -o CMakeFiles/fly.dir/fy_alloc.c.s
 
 bin/CMakeFiles/fly.dir/fy_alloc.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/fy_alloc.c.o.requires
@@ -307,17 +307,17 @@ bin/CMakeFiles/fly.dir/fy_alloc.c.o.provides.build: bin/CMakeFiles/fly.dir/fy_al
 
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.o: src/modules/fy_fcgi_accept_module.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.o   -c /opt/fly/src/modules/fy_fcgi_accept_module.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.o   -c /usr/local/fly/src/modules/fy_fcgi_accept_module.c
 
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/modules/fy_fcgi_accept_module.c > CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/modules/fy_fcgi_accept_module.c > CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.i
 
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/modules/fy_fcgi_accept_module.c -o CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/modules/fy_fcgi_accept_module.c -o CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.s
 
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.o.requires
@@ -330,17 +330,17 @@ bin/CMakeFiles/fly.dir/modules/fy_fcgi_accept_module.c.o.provides.build: bin/CMa
 
 bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.o: src/modules/fy_graph_module.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_graph_module.c.o   -c /opt/fly/src/modules/fy_graph_module.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_graph_module.c.o   -c /usr/local/fly/src/modules/fy_graph_module.c
 
 bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/modules/fy_graph_module.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/modules/fy_graph_module.c > CMakeFiles/fly.dir/modules/fy_graph_module.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/modules/fy_graph_module.c > CMakeFiles/fly.dir/modules/fy_graph_module.c.i
 
 bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/modules/fy_graph_module.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/modules/fy_graph_module.c -o CMakeFiles/fly.dir/modules/fy_graph_module.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/modules/fy_graph_module.c -o CMakeFiles/fly.dir/modules/fy_graph_module.c.s
 
 bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.o.requires
@@ -353,17 +353,17 @@ bin/CMakeFiles/fly.dir/modules/fy_graph_module.c.o.provides.build: bin/CMakeFile
 
 bin/CMakeFiles/fly.dir/modules/fy_c_module.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/modules/fy_c_module.c.o: src/modules/fy_c_module.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/modules/fy_c_module.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_c_module.c.o   -c /opt/fly/src/modules/fy_c_module.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_c_module.c.o   -c /usr/local/fly/src/modules/fy_c_module.c
 
 bin/CMakeFiles/fly.dir/modules/fy_c_module.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/modules/fy_c_module.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/modules/fy_c_module.c > CMakeFiles/fly.dir/modules/fy_c_module.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/modules/fy_c_module.c > CMakeFiles/fly.dir/modules/fy_c_module.c.i
 
 bin/CMakeFiles/fly.dir/modules/fy_c_module.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/modules/fy_c_module.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/modules/fy_c_module.c -o CMakeFiles/fly.dir/modules/fy_c_module.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/modules/fy_c_module.c -o CMakeFiles/fly.dir/modules/fy_c_module.c.s
 
 bin/CMakeFiles/fly.dir/modules/fy_c_module.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/modules/fy_c_module.c.o.requires
@@ -376,17 +376,17 @@ bin/CMakeFiles/fly.dir/modules/fy_c_module.c.o.provides.build: bin/CMakeFiles/fl
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.o: src/modules/fy_api_adpos_module.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.o   -c /opt/fly/src/modules/fy_api_adpos_module.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.o   -c /usr/local/fly/src/modules/fy_api_adpos_module.c
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/modules/fy_api_adpos_module.c > CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/modules/fy_api_adpos_module.c > CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.i
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/modules/fy_api_adpos_module.c -o CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/modules/fy_api_adpos_module.c -o CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.s
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.o.requires
@@ -399,17 +399,17 @@ bin/CMakeFiles/fly.dir/modules/fy_api_adpos_module.c.o.provides.build: bin/CMake
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.o: src/modules/fy_api_adidx_module.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.o   -c /opt/fly/src/modules/fy_api_adidx_module.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.o   -c /usr/local/fly/src/modules/fy_api_adidx_module.c
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/modules/fy_api_adidx_module.c > CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/modules/fy_api_adidx_module.c > CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.i
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/modules/fy_api_adidx_module.c -o CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/modules/fy_api_adidx_module.c -o CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.s
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.o.requires
@@ -422,17 +422,17 @@ bin/CMakeFiles/fly.dir/modules/fy_api_adidx_module.c.o.provides.build: bin/CMake
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.o: src/modules/fy_api_adfilter_module.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.o   -c /opt/fly/src/modules/fy_api_adfilter_module.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.o   -c /usr/local/fly/src/modules/fy_api_adfilter_module.c
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/modules/fy_api_adfilter_module.c > CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/modules/fy_api_adfilter_module.c > CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.i
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/modules/fy_api_adfilter_module.c -o CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/modules/fy_api_adfilter_module.c -o CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.s
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.o.requires
@@ -445,17 +445,17 @@ bin/CMakeFiles/fly.dir/modules/fy_api_adfilter_module.c.o.provides.build: bin/CM
 
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.o: src/modules/fy_fcgi_layout_module.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_18)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.o   -c /opt/fly/src/modules/fy_fcgi_layout_module.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.o   -c /usr/local/fly/src/modules/fy_fcgi_layout_module.c
 
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/modules/fy_fcgi_layout_module.c > CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/modules/fy_fcgi_layout_module.c > CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.i
 
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/modules/fy_fcgi_layout_module.c -o CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/modules/fy_fcgi_layout_module.c -o CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.s
 
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.o.requires
@@ -468,17 +468,17 @@ bin/CMakeFiles/fly.dir/modules/fy_fcgi_layout_module.c.o.provides.build: bin/CMa
 
 bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.o: src/modules/fy_http_count_module.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_19)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_19)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_http_count_module.c.o   -c /opt/fly/src/modules/fy_http_count_module.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_http_count_module.c.o   -c /usr/local/fly/src/modules/fy_http_count_module.c
 
 bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/modules/fy_http_count_module.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/modules/fy_http_count_module.c > CMakeFiles/fly.dir/modules/fy_http_count_module.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/modules/fy_http_count_module.c > CMakeFiles/fly.dir/modules/fy_http_count_module.c.i
 
 bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/modules/fy_http_count_module.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/modules/fy_http_count_module.c -o CMakeFiles/fly.dir/modules/fy_http_count_module.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/modules/fy_http_count_module.c -o CMakeFiles/fly.dir/modules/fy_http_count_module.c.s
 
 bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.o.requires
@@ -491,17 +491,17 @@ bin/CMakeFiles/fly.dir/modules/fy_http_count_module.c.o.provides.build: bin/CMak
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.o: src/modules/fy_api_adlog_module.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_20)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_20)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.o   -c /opt/fly/src/modules/fy_api_adlog_module.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.o   -c /usr/local/fly/src/modules/fy_api_adlog_module.c
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/modules/fy_api_adlog_module.c > CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/modules/fy_api_adlog_module.c > CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.i
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/modules/fy_api_adlog_module.c -o CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/modules/fy_api_adlog_module.c -o CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.s
 
 bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.o.requires
@@ -514,17 +514,17 @@ bin/CMakeFiles/fly.dir/modules/fy_api_adlog_module.c.o.provides.build: bin/CMake
 
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.o: src/modules/fy_fcgi_finish_module.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_21)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_21)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.o   -c /opt/fly/src/modules/fy_fcgi_finish_module.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.o   -c /usr/local/fly/src/modules/fy_fcgi_finish_module.c
 
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/modules/fy_fcgi_finish_module.c > CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/modules/fy_fcgi_finish_module.c > CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.i
 
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/modules/fy_fcgi_finish_module.c -o CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/modules/fy_fcgi_finish_module.c -o CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.s
 
 bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.o.requires
@@ -537,17 +537,17 @@ bin/CMakeFiles/fly.dir/modules/fy_fcgi_finish_module.c.o.provides.build: bin/CMa
 
 bin/CMakeFiles/fly.dir/json4c/jc_type.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/json4c/jc_type.c.o: src/json4c/jc_type.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_22)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_22)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/json4c/jc_type.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/json4c/jc_type.c.o   -c /opt/fly/src/json4c/jc_type.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/json4c/jc_type.c.o   -c /usr/local/fly/src/json4c/jc_type.c
 
 bin/CMakeFiles/fly.dir/json4c/jc_type.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/json4c/jc_type.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/json4c/jc_type.c > CMakeFiles/fly.dir/json4c/jc_type.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/json4c/jc_type.c > CMakeFiles/fly.dir/json4c/jc_type.c.i
 
 bin/CMakeFiles/fly.dir/json4c/jc_type.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/json4c/jc_type.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/json4c/jc_type.c -o CMakeFiles/fly.dir/json4c/jc_type.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/json4c/jc_type.c -o CMakeFiles/fly.dir/json4c/jc_type.c.s
 
 bin/CMakeFiles/fly.dir/json4c/jc_type.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/json4c/jc_type.c.o.requires
@@ -560,17 +560,17 @@ bin/CMakeFiles/fly.dir/json4c/jc_type.c.o.provides.build: bin/CMakeFiles/fly.dir
 
 bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.o: src/json4c/jc_alloc.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_23)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_23)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/json4c/jc_alloc.c.o   -c /opt/fly/src/json4c/jc_alloc.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/json4c/jc_alloc.c.o   -c /usr/local/fly/src/json4c/jc_alloc.c
 
 bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/json4c/jc_alloc.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/json4c/jc_alloc.c > CMakeFiles/fly.dir/json4c/jc_alloc.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/json4c/jc_alloc.c > CMakeFiles/fly.dir/json4c/jc_alloc.c.i
 
 bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/json4c/jc_alloc.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/json4c/jc_alloc.c -o CMakeFiles/fly.dir/json4c/jc_alloc.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/json4c/jc_alloc.c -o CMakeFiles/fly.dir/json4c/jc_alloc.c.s
 
 bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.o.requires
@@ -583,17 +583,17 @@ bin/CMakeFiles/fly.dir/json4c/jc_alloc.c.o.provides.build: bin/CMakeFiles/fly.di
 
 bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.o: bin/CMakeFiles/fly.dir/flags.make
 bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.o: src/json4c/jc_wchar.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /opt/fly/CMakeFiles $(CMAKE_PROGRESS_24)
+	$(CMAKE_COMMAND) -E cmake_progress_report /usr/local/fly/CMakeFiles $(CMAKE_PROGRESS_24)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.o"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/json4c/jc_wchar.c.o   -c /opt/fly/src/json4c/jc_wchar.c
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/fly.dir/json4c/jc_wchar.c.o   -c /usr/local/fly/src/json4c/jc_wchar.c
 
 bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fly.dir/json4c/jc_wchar.c.i"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /opt/fly/src/json4c/jc_wchar.c > CMakeFiles/fly.dir/json4c/jc_wchar.c.i
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /usr/local/fly/src/json4c/jc_wchar.c > CMakeFiles/fly.dir/json4c/jc_wchar.c.i
 
 bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fly.dir/json4c/jc_wchar.c.s"
-	cd /opt/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /opt/fly/src/json4c/jc_wchar.c -o CMakeFiles/fly.dir/json4c/jc_wchar.c.s
+	cd /usr/local/fly/bin && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /usr/local/fly/src/json4c/jc_wchar.c -o CMakeFiles/fly.dir/json4c/jc_wchar.c.s
 
 bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.o.requires:
 .PHONY : bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.o.requires
@@ -661,7 +661,7 @@ bin/fly: bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.o
 bin/fly: bin/CMakeFiles/fly.dir/build.make
 bin/fly: bin/CMakeFiles/fly.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking C executable fly"
-	cd /opt/fly/bin && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fly.dir/link.txt --verbose=$(VERBOSE)
+	cd /usr/local/fly/bin && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fly.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 bin/CMakeFiles/fly.dir/build: bin/fly
@@ -694,10 +694,10 @@ bin/CMakeFiles/fly.dir/requires: bin/CMakeFiles/fly.dir/json4c/jc_wchar.c.o.requ
 .PHONY : bin/CMakeFiles/fly.dir/requires
 
 bin/CMakeFiles/fly.dir/clean:
-	cd /opt/fly/bin && $(CMAKE_COMMAND) -P CMakeFiles/fly.dir/cmake_clean.cmake
+	cd /usr/local/fly/bin && $(CMAKE_COMMAND) -P CMakeFiles/fly.dir/cmake_clean.cmake
 .PHONY : bin/CMakeFiles/fly.dir/clean
 
 bin/CMakeFiles/fly.dir/depend:
-	cd /opt/fly && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /opt/fly /opt/fly/src /opt/fly /opt/fly/bin /opt/fly/bin/CMakeFiles/fly.dir/DependInfo.cmake --color=$(COLOR)
+	cd /usr/local/fly && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /usr/local/fly /usr/local/fly/src /usr/local/fly /usr/local/fly/bin /usr/local/fly/bin/CMakeFiles/fly.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : bin/CMakeFiles/fly.dir/depend
 
