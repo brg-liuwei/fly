@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Global>
-    <debug_log_path>/var/log/api/fly_debug.log</debug_log_path>
-    <info_log_path>/var/log/api/fly_info.log</info_log_path>
-    <error_log_path>/var/log/api/fly_error.log</error_log_path>
+    <debug_log_path>/dev/null</debug_log_path>
+    <info_log_path>/dev/null</info_log_path>
+    <error_log_path>/dev/null</error_log_path>
     <poll_size>4096</poll_size>
 </Global>
 
