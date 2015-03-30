@@ -1,6 +1,8 @@
 tags
 bin/*
 CMakeFiles
+Makefile
+src/fy_config.h
 *.cmake
 CMakeCache.txt
 conf/*
