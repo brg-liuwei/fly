@@ -7,6 +7,7 @@
 #define FLY_DEFAULT_CONF_FILE "conf/Fly.xml"
 
 int fy_conf_init(const char *path);
+void fy_conf_ok();
 int fy_module_conf_begin(fy_module *m);
 int fy_module_conf_end(fy_module *m);
 const char *fy_conf_get_param(const char *key);

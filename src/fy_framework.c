@@ -103,6 +103,8 @@ int main(int argc, char *argv[])
     }
 
     fy_module_init(loop);
+
+    fy_conf_ok();
     
     if (fy_check_mode) {
         fy_module_display_no_null();
@@ -169,18 +171,15 @@ void fy_module_init(void *data)
 
         /* module conf */
         if (module->module_conf) {
-
             if (fy_module_conf_begin(module) == -1) {
                 fy_log_error("fy_module_conf_begin of module: %s failed\n",
                         module->module_name);
                 exit(-1);
             }
-
             if (module->module_conf(module, NULL) < 0) {
                 fy_log_error("module: %s conf failed\n", module->module_name);
                 exit(-1);
             }
-
             fy_module_conf_end(module);
         }
 
