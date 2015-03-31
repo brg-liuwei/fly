@@ -34,7 +34,8 @@ int fy_conf_init(const char *path)
 void fy_conf_ok()
 {
     if (fy_conf_tree != NULL) {
-        mxmlDelete(fy_conf_tree);
+        // CANNOT delete fy_conf_tree!
+        // mxmlDelete(fy_conf_tree);
         fy_conf_tree = NULL;
     }
 }
