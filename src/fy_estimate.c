@@ -30,18 +30,17 @@ void fy_request_estimate_end(fy_request *r)
     size_t interval; /* unit: u second */
 
     ++cnt;
-
-    if (cnt < 100) {
-        /* remove startup data */
-        return;
-    }
-
     cnt %= 1000;
 
     gettimeofday(&r->info->request_end, NULL);
 
     interval = (r->info->request_end.tv_sec - r->info->request_begin.tv_sec) * 1000 * 1000 +
         (r->info->request_end.tv_usec - r->info->request_end.tv_usec);
+
+    if (interval == 1000000 || interval == 0) {
+        fy_log_error("cnt %d interval: %d\n", cnt);
+        return;
+    }
 
     if (interval > max_interval) {
         max_interval = interval;
