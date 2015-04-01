@@ -5,7 +5,7 @@ void fy_conn_estimate(fy_conn_pool *pool, fy_module *module)
     static int cnt = 0;
 
     cnt += 1;
-    cnt %= 100;
+    cnt %= 511;
 
     if (cnt == 0) {
         fy_log_info("module %s free conn: %d, usage_percent %.2f%%\n",
@@ -14,7 +14,7 @@ void fy_conn_estimate(fy_conn_pool *pool, fy_module *module)
 }
 
 static size_t max_interval = 0;
-static size_t min_interval = 1000 * 1000 * 1000;
+static size_t min_interval = (size_t)-1;
 static size_t total_interval;
 static size_t total_request;
 
@@ -27,12 +27,12 @@ void fy_request_estimate_end(fy_request *r)
 {
     static int cnt = 0;
 
-    size_t interval; // unit: micro second
+    size_t interval; // unit: u second
 
     gettimeofday(&r->info->request_end, NULL);
 
-    interval = (r->info->request_end.tv_sec - r->info->request_begin.tv_sec) * 1000 +
-        (r->info->request_end.tv_usec - r->info->request_end.tv_usec) / 1000;
+    interval = (r->info->request_end.tv_sec - r->info->request_begin.tv_sec) * 1000 * 1000 +
+        (r->info->request_end.tv_usec - r->info->request_end.tv_usec);
 
     if (interval > max_interval) {
         max_interval = interval;
@@ -44,12 +44,12 @@ void fy_request_estimate_end(fy_request *r)
     ++total_request;
 
     ++cnt;
-    cnt %= 100;
+    cnt %= 1000;
 
     if (cnt == 0) {
-        fy_log_info("max_interval: %ld ms\n", max_interval);
-        fy_log_info("min_interval: %ld ms\n", min_interval);
-        fy_log_info("avg_interval: %.2f ms\n", total_interval * 1.0 / total_request);
+        fy_log_info("max_interval: %ld us\n", max_interval);
+        fy_log_info("min_interval: %ld us\n", min_interval);
+        fy_log_info("avg_interval: %ld us\n", total_interval / total_request);
     }
 }
 
