@@ -3,6 +3,7 @@
 
 #include "fy_event.h"
 #include "fy_alloc.h"
+#include "fy_framework.h"
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -70,5 +71,9 @@ int fy_create_nonblocking_conn(fy_connection *conn, const char *remote_addr, int
 void fy_repair_conn_pool(fy_conn_pool *pool, void *ev_loop,
         int (*conn_handler)(fy_event *, void *),
         int (*read_handler)(fy_event *, void *));
+
+size_t fy_free_conns(fy_conn_pool *pool);
+double fy_conn_usage_percent(fy_conn_pool *pool);
+void fy_conn_estimate(fy_conn_pool *pool, fy_module *module);
 
 #endif

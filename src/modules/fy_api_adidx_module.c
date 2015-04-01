@@ -390,6 +390,8 @@ static int fy_adidx_task_submit(fy_task *task, void *request)
         return 0;
     }
 
+    fy_conn_estimate(fy_adidx_conn_pool, &fy_api_adidx_module);
+
     if ((conn = fy_pop_connection(fy_adidx_conn_pool)) == NULL) {
         fy_request_next_module(r);
         return -1;
@@ -408,3 +410,4 @@ static int fy_adidx_task_submit(fy_task *task, void *request)
     fy_event_mod(conn, fy_adidx_event_loop, FY_EVOUT);
     return 0;
 }
+
