@@ -1,5 +1,7 @@
 #include "fy_fcgi_finish_module.h"
 #include "fy_logger.h"
+#include "fy_estimate.h"
+
 #include <stdlib.h>
 #include <assert.h>
 
@@ -39,6 +41,8 @@ static int fy_fcgi_finish_task_submit(fy_task *task, void *request)
 #ifdef FY_DEBUG
     fy_log_debug("FCGX_Finish_r\n");
 #endif
+
+    fy_request_estimate_end(r);
 
     if (r->cln != NULL) {
         r->cln(r);

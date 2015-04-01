@@ -2,6 +2,7 @@
 #define __FY_INFO_H__
 
 #include "fy_alloc.h"
+#include "fy_time.h"
 
 #include "jc_type.h"
 
@@ -9,15 +10,17 @@
 
 typedef struct fy_info_t fy_info;
 
+typedef struct timeval timeval_t;
+
 struct fy_info_t {
     int           req_type;
     int           res_type;
     int64_t       current;
 
-    int           graph_duration;
-    char         *graph_tracker;
-    char         *graph_adid;
-    char         *graph_addr;
+    // int           graph_duration;
+    // char         *graph_tracker;
+    // char         *graph_adid;
+    // char         *graph_addr;
 
     char         *send_buf;
     char         *send_buf_rpos;
@@ -33,6 +36,9 @@ struct fy_info_t {
     char*         delivery_adid;
 
     jc_json_t    *json_rc;
+
+    timeval_t     request_begin;
+    timeval_t     request_end;
 
     void        (*cln)(struct fy_info_t *);
 };

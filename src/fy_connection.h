@@ -74,6 +74,5 @@ void fy_repair_conn_pool(fy_conn_pool *pool, void *ev_loop,
 
 size_t fy_free_conns(fy_conn_pool *pool);
 double fy_conn_usage_percent(fy_conn_pool *pool);
-void fy_conn_estimate(fy_conn_pool *pool, fy_module *module);
 
 #endif

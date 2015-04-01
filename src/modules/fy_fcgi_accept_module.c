@@ -5,6 +5,7 @@
 #include "fy_logger.h"
 #include "fy_util.h"
 #include "fy_conf.h"
+#include "fy_estimate.h"
 
 #include <fastcgi.h>
 #include <errno.h>
@@ -89,13 +90,14 @@ static int fy_fcgi_accept_read_handler(fy_event *ev, void *ptr)
         fy_log_debug("fy_fcgi_accept_module::read_handler::fy_request_create error\n");
         goto free2;
     }
-    request->pool = pool;
 
     request->info = fy_info_create(pool);
     if (request->info == NULL) {
         fy_log_debug("fy_fcgi_accept_module::read_handler::fy_info_create error\n");
         goto free2;
     }
+
+    fy_request_estimate_begin(request);
 
     request->fcgi_request = r;
     request->module = &fy_fcgi_accept_module;

@@ -270,18 +270,5 @@ size_t fy_free_conns(fy_conn_pool *pool)
 
 double fy_conn_usage_percent(fy_conn_pool *pool)
 {
-    return pool->free_size * 100.0 / pool->size;
-}
-
-void fy_conn_estimate(fy_conn_pool *pool, fy_module *module)
-{
-    static int cnt = 0;
-
-    cnt += 1;
-    cnt %= 1000;
-
-    if (cnt == 0) {
-        fy_log_info("module %s free conn: %d, usage_percent %.2f%%\n",
-                module->module_name, fy_free_conns(pool), fy_conn_usage_percent(pool));
-    }
+    return (pool->size - pool->free_size) * 100.0 / pool->size;
 }

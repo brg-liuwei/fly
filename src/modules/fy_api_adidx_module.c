@@ -4,6 +4,7 @@
 #include "fy_time.h"
 #include "fy_util.h"
 #include "fy_conf.h"
+#include "fy_estimate.h"
 
 #include "jc_type.h"
 
@@ -390,8 +391,6 @@ static int fy_adidx_task_submit(fy_task *task, void *request)
         return 0;
     }
 
-    fy_conn_estimate(fy_adidx_conn_pool, &fy_api_adidx_module);
-
     if ((conn = fy_pop_connection(fy_adidx_conn_pool)) == NULL) {
         fy_request_next_module(r);
         return -1;
@@ -408,6 +407,8 @@ static int fy_adidx_task_submit(fy_task *task, void *request)
     conn->wevent->handler = fy_adidx_write_handler;
 
     fy_event_mod(conn, fy_adidx_event_loop, FY_EVOUT);
+
+    fy_conn_estimate(fy_adidx_conn_pool, &fy_api_adidx_module);
+
     return 0;
 }
-

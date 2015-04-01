@@ -293,6 +293,7 @@ fy_request *fy_request_create(fy_pool_t *pool)
     r = (fy_request *)fy_pool_alloc(pool, sizeof(fy_request));
     if (r != NULL) {
         r->cln = fy_request_cleanup;
+        r->pool = pool;
     }
     return r;
 }
