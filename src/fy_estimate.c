@@ -38,7 +38,7 @@ void fy_request_estimate_end(fy_request *r)
         (r->info->request_end.tv_usec - r->info->request_end.tv_usec);
 
     if (interval == 1000000 || interval == 0) {
-        fy_log_error("cnt %d interval: %d\n", cnt);
+        fy_log_error("cnt %d interval: %d\n", cnt, interval);
         return;
     }
 
