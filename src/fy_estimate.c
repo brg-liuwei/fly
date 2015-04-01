@@ -27,7 +27,16 @@ void fy_request_estimate_end(fy_request *r)
 {
     static int cnt = 0;
 
-    size_t interval; // unit: u second
+    size_t interval; /* unit: u second */
+
+    ++cnt;
+
+    if (cnt < 100) {
+        /* remove startup data */
+        return;
+    }
+
+    cnt %= 1000;
 
     gettimeofday(&r->info->request_end, NULL);
 
@@ -42,9 +51,6 @@ void fy_request_estimate_end(fy_request *r)
     }
     total_interval += interval;
     ++total_request;
-
-    ++cnt;
-    cnt %= 1000;
 
     if (cnt == 0) {
         fy_log_info("max_interval: %ld us\n", max_interval);
