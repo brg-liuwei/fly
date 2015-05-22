@@ -18,34 +18,34 @@ static void fy_util_initialize()
             hex2ch[h][l] = ((h - '0') << 4) + (l - '0');
         }
         for (l = 'a'; l <= 'f'; ++l) {
-            hex2ch[h][l] = ((h - '0') << 4) + (l - 'a');
+            hex2ch[h][l] = ((h - '0') << 4) + (l - 'a' + 10);
         }
         for (l = 'A'; l <= 'F'; ++l) {
-            hex2ch[h][l] = ((h - '0') << 4) + (l - 'A');
+            hex2ch[h][l] = ((h - '0') << 4) + (l - 'A' + 10);
         }
     }
 
     for (h = 'a'; h <= 'f'; ++h) {
         for (l = '0'; l <= '9'; ++l) {
-            hex2ch[h][l] = ((h - 'a') << 4) + (l - '0');
+            hex2ch[h][l] = ((h - 'a' + 10) << 4) + (l - '0');
         }
         for (l = 'a'; l <= 'f'; ++l) {
-            hex2ch[h][l] = ((h - 'a') << 4) + (l - 'a');
+            hex2ch[h][l] = ((h - 'a' + 10) << 4) + (l - 'a' + 10);
         }
         for (l = 'A'; l <= 'F'; ++l) {
-            hex2ch[h][l] = ((h - 'a') << 4) + (l - 'A');
+            hex2ch[h][l] = ((h - 'a' + 10) << 4) + (l - 'A' + 10);
         }
     }
 
     for (h = 'A'; h <= 'F'; ++h) {
         for (l = '0'; l <= '9'; ++l) {
-            hex2ch[h][l] = ((h - 'A') << 4) + (l - '0');
+            hex2ch[h][l] = ((h - 'A' + 10) << 4) + (l - '0');
         }
         for (l = 'a'; l <= 'f'; ++l) {
-            hex2ch[h][l] = ((h - 'A') << 4) + (l - 'a');
+            hex2ch[h][l] = ((h - 'A' + 10) << 4) + (l - 'a' + 10);
         }
         for (l = 'A'; l <= 'F'; ++l) {
-            hex2ch[h][l] = ((h - 'A') << 4) + (l - 'A');
+            hex2ch[h][l] = ((h - 'A' + 10) << 4) + (l - 'A' + 10);
         }
     }
     fy_util_init = 1;
@@ -120,7 +120,7 @@ int fy_hex_atoi_n(const char *ptr, size_t n)
     return value;
 }
 
-char *fy_get_os(const char *p)
+const char *fy_get_os(const char *p)
 {
     if (p == NULL) {
         return "";
@@ -155,7 +155,7 @@ char *fy_get_os(const char *p)
 #endif
 }
 
-char *fy_get_browser(const char *p)
+const char *fy_get_browser(const char *p)
 {
     if (p == NULL) {
         return "";
@@ -196,9 +196,9 @@ char *fy_get_browser(const char *p)
 #endif
 }
 
-char *fy_fcgi_get_param(const char *key, fy_request *r)
+const char *fy_fcgi_get_param(const char *key, fy_request *r)
 {
-    char   *p;
+    const char   *p;
 
     p = FCGX_GetParam(key, r->fcgi_request->envp);
     if (p == NULL || p[0] == '\0') {
