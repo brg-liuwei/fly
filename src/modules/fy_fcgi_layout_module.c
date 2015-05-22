@@ -60,7 +60,7 @@ error:
     assert(err_js != NULL);
 
     jc_json_add_num(err_js, "errorno", 1);
-    jc_json_add_str(err_js, "errormsg", "internal error");
+    jc_json_add_str(err_js, "errormsg", "no suitable ads");
     jc_json_add_num(err_js, "expiredtime", fy_cur_sec());
     jc_json_add_json(err_js, "data", jc_json_create());
     output = jc_json_str_n(err_js, &output_n);
