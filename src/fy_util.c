@@ -62,6 +62,10 @@ size_t fy_url_decode(const char *e, size_t e_size, char *d, size_t d_size)
     }
 
     for (ee = 0, dd = 0; ee < e_size; ++ee, ++dd) {
+        if (e[ee] == '+') {
+            d[dd] = ' ';
+            continue;
+        }
         if (e[ee] != '%') {
             d[dd] = e[ee];
             continue;
