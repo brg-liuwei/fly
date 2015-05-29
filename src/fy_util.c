@@ -200,9 +200,9 @@ const char *fy_get_browser(const char *p)
 #endif
 }
 
-const char *fy_fcgi_get_param(const char *key, fy_request *r)
+char *fy_fcgi_get_param(const char *key, fy_request *r)
 {
-    const char   *p;
+    char   *p;
 
     p = FCGX_GetParam(key, r->fcgi_request->envp);
     if (p == NULL || p[0] == '\0') {
