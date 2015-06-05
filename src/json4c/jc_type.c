@@ -99,6 +99,8 @@ static int jc_kv_incr(jc_json_t *js)
     if (new_keys == NULL || new_vals == NULL) {
         return -1;
     }
+    memcpy((jc_key_t *)new_keys, (jc_key_t *)js->keys, js->size);
+    memcpy((jc_val_t *)new_vals, (jc_val_t *)js->vals, js->size);
     js->keys = new_keys;
     js->vals = new_vals;
     js->free += JC_INCSTEP;
