@@ -200,6 +200,9 @@ int fy_event_add(void *conn, void *loop, __uint32_t events)
 
 int fy_event_mod(void *conn, void *loop, __uint32_t events)
 {
+#ifdef FY_HAVE_KQUEUE
+    fy_event_del(conn, loop); /* on FreeBSD platform, should delete old event first */
+#endif
     return fy_event_regist(conn, loop, events, 0);
 }
 
